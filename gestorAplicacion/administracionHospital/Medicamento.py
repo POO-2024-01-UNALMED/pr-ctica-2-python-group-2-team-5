@@ -1,5 +1,7 @@
 import Serializable
 
+#Elaborado por Jeronimo
+
 class Medicamneto:
 #inicializador y atributos
     def __init__(self, nombre, enfermedad, descripcion, cantidad, precio):

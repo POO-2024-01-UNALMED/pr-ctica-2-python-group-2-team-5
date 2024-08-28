@@ -1,8 +1,9 @@
-import Cita
-import CitaVacuna
-import Habitacion
-import Formula
+from gestorAplicacion.servicios import Cita
+from gestorAplicacion.servicios import CitaVacuna
+from gestorAplicacion.servicios import Habitacion
+from gestorAplicacion.servicios import Formula
 
+#Elaborado por Jeronimo
 class Pago():
 
     #constante Iva
