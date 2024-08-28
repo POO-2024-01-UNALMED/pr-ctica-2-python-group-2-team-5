@@ -9,7 +9,7 @@ class Servicio(ABC):
     #Inicializador.
     def __init__(self, paciente):
         self._paciente = paciente
-        self._IDSERVICIO = self.generadorID + 1 #Corregir por si acaso
+        self._IDSERVICIO = Servicio.generadorID + 1
         self._estadoPago = False
 
     #Métodos.
