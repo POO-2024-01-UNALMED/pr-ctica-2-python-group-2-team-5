@@ -5,7 +5,7 @@ from gestorAplicacion.servicios import Servicio
 
 class Cita(Servicio):
     #inicializador y atributos
-    def __init__(self, doctor: Doctor, fecha: str, paciente: Paciente):
+    def __init__(self, doctor: Doctor, fecha: str, paciente):
         super().__init__(paciente)
         self.doctor = doctor
         self.fecha = fecha
@@ -20,3 +20,4 @@ class Cita(Servicio):
         
         def mensaje(self):
             return "del servicio cita médica"
+        
