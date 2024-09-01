@@ -1,8 +1,8 @@
-import Serializable
+#import Serializable
 
 #Elaborado por Jeronimo
 
-class Medicamneto:
+class Medicamento:
 #inicializador y atributos
     def __init__(self, nombre, enfermedad, descripcion, cantidad, precio):
         self.nombre = nombre
@@ -51,4 +51,4 @@ class Medicamneto:
 
     def __str__(self):
 
-        return f'Nombre: {self.nombre}\nEnfermedad: {self.enfermedad.nombre} {self.enfermedad.tipologia}\n Descripcion: {self.descripcion}"
+        return f"Nombre: {self.nombre}\nEnfermedad: {self.enfermedad.nombre} {self.enfermedad.tipologia}\n Descripcion: {self.descripcion}"
