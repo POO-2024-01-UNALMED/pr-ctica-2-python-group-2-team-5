@@ -48,7 +48,6 @@ class Medicamneto:
         return self.precio
     
     #str
-
     def __str__(self):
 
-        return f'Nombre: {self.nombre}\nEnfermedad: {self.enfermedad.nombre} {self.enfermedad.tipologia}\n Descripcion: {self.descripcion}"
+        return f'Nombre: {self.nombre}\nEnfermedad: {self.enfermedad.nombre} {self.enfermedad.tipologia}\n Descripcion: {self.descripcion}'
