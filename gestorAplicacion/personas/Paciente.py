@@ -1,5 +1,5 @@
-from gestorAplicacion.administracionHospital import CategoriaHabitacion, Habitacion, HistoriaClinica, Hospital, Pago
-from gestorAplicacion.servicios import Cita, CitaVacuna, Formula, Enfermedad
+from gestorAplicacion.administracionHospital import CategoriaHabitacion, HistoriaClinica, Hospital, Pago, Enfermedad
+from gestorAplicacion.servicios import Cita, Cita_Vacuna, Formula, Habitacion
 from gestorAplicacion.personas import Persona
 
 class Paciente(Persona, Pago):
@@ -47,7 +47,7 @@ class Paciente(Persona, Pago):
         precio_total += eps_precios.get(self.tipo_eps, 0)
         return precio_total * (1 + self.IVA)
 
-    def calcular_precio_cita_vacuna(self, cita_asignada: CitaVacuna):
+    def calcular_precio_cita_vacuna(self, cita_asignada: Cita_Vacuna):
         tipo_vacuna_precios = {
             "Obligatoria": 1000,
             "No obligatoria": 3000
@@ -81,7 +81,7 @@ class Paciente(Persona, Pago):
         return f"{doctor.bienvenida()}\nPor favor selecciona los medicamentos que vas a formularle a: {self.nombre}"
 
     # Método que agrega una cita a la lista de citas de la historia clínica del paciente
-    def actualizar_historial_vacunas(self, cita_asignada: CitaVacuna):
+    def actualizar_historial_vacunas(self, cita_asignada: Cita_Vacuna):
         self.historia_clinica.historial_vacunas.append(cita_asignada)
 
     # to string
