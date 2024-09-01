@@ -1,4 +1,4 @@
-from gestorAplicacion.servicios import Cita
+from gestorAplicacion.servicios.Cita import Cita
 
 class Doctor:
     
