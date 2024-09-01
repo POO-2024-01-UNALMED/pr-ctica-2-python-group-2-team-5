@@ -28,7 +28,7 @@ class AgendarCita:
                     print("Regresando al menú principal...")
                     return
                 else:
-                    print("Opción no váñida. Intente de nuevo.")
+                    print("Opción no valida. Intente de nuevo.")
 
         #Bienveida.
         print(pacienteCita.bienvenida())
