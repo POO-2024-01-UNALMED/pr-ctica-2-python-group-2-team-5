@@ -87,9 +87,10 @@ class Hospital:
         self._listaVacunas = listaVacunas
 
     @classmethod
-    def getHabitaciones(cls):
+    def getListaHabitaciones(cls):
         return cls.habitaciones
 
     @classmethod
-    def setHabitaciones(cls, habitaciones):
+    def setListaHabitaciones(cls, habitaciones):
         cls.habitaciones = habitaciones
+
