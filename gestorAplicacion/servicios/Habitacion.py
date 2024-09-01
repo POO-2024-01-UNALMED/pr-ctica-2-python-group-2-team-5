@@ -1,8 +1,8 @@
 #Importar lo necesario...
-from gestorAplicacion.servicios import Servicio
-from gestorAplicacion.administracionHospital import CategoriaHabitacion
-from gestorAplicacion.administracionHospital import Hospital
-from gestorAplicacion.personas import Paciente
+from gestorAplicacion.servicios.Servicio import Servicio
+from gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
+from gestorAplicacion.administracionHospital.Hospital import Hospital
+from gestorAplicacion.personas.Paciente import Paciente
 
 #Clase Habitacion, que permite la revisión de disponibilidad de habitaciones y separación por categorías
 class Habitacion(Servicio):
@@ -65,9 +65,3 @@ class Habitacion(Servicio):
 
     def setDias(self, dias):
         self._dias = dias
-
-    def getPaciente(self):
-        return self._paciente
-
-    def setPaciente(self, paciente):
-        self._paciente = paciente

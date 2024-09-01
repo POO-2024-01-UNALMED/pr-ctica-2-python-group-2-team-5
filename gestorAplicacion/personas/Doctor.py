@@ -1,4 +1,4 @@
-from gestorAplicacion.servicios import Cita
+from gestorAplicacion.servicios.Cita import Cita
 
 class Doctor:
     
@@ -52,3 +52,4 @@ class Doctor:
 
     def set_agenda_doctor(self, agenda):
         self.agenda_doctor = agenda
+
