@@ -52,3 +52,4 @@ class Doctor:
 
     def set_agenda_doctor(self, agenda):
         self.agenda_doctor = agenda
+
