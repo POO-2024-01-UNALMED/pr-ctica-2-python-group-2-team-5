@@ -115,6 +115,59 @@ class AsignarHabiatcion:
                     # la habitacion ahora esta ocupada:
                     Habitacion.setOcupada(True)
 
-                    #
+                    #Asignar habitacion al paciente y viceversa:
+                    Habitacion.setPacinete(paciente)
+                    paciente.setHabitacionAsignada(Habitacion)
+
+                    #Informacion de la habitacion asignada:
+                    print("\nSe le ha asignado una habitacion! A continuación está la información de su reserva:")
+                    print(f"Cédula del Paciente: {paciente.getCedula()}")
+                    print(f"Nombre del Paciente: {paciente.getNombre()}")
+                    print(f"Número de Id del la habitación: {Habitacion.getNumero()}")
+                    print(f"Categoría de la habitacion: {Habitacion.getCategoria()}")
+
+                else:
+                    print(f"Que pena me da!, Latin Brothers. No hay habitaciones disponibles en este momento para la categoría {paciente.getCategoriaHabitacion()}")
+                    eleccion = input("¿Desea elegir una habitación de otra categoría (S/N)? ").strip().upper()
+
+                    if eleccion == "S":
+                        categoria = Habitacion.buscarOtracategoria(paciente.getCategoriaHabitacion())
+                        otraHabitacionDisponibles = Habitacion.buscarHabitacionDisponible(categoria)
+                        otraHabitacion = AsignarHabiatcion.disponibilidadHabitacion(otraHabitacionDisponibles, paciente)
+
+                        if otraHabitacion:
+                            # la habitacion ahora esta ocupada:
+                            otraHabitacion.setOcupada(True)
+                            #Asignar habitacion al paciente y viceversa:
+                            otraHabitacion.setPacinete(paciente)
+                            paciente.setHabitacionAsignada(otraHabitacion)
+
+                            #Días de uso:
+                            dias = int(input("¿Cuántos días estima que hará uso de la habitación? "))
+                            paciente.getHabitacionAsignada().setDias(dias)
+
+                            #Informacion de la habitación asignada:
+                            print("\nSe le ha asignado una habitación! A continuación está la información de su reserva:")
+                            print(f"Cédula del Paciente: {paciente.getcedula()}")
+                            print(f"Nombre del Paciente: {paciente.getNombre()}")
+                            print(f"Número de Id del la habitación: {otraHabitacion.getNumero()}")
+                            print(f"Categoría de la habitación: {otraHabitacion.getCategoria()}")
+
+                        else:
+                            print(f"Lo siento, no hay habitaciones disponibles en este momento para ninguna de las categoría.")
+
+                    else:
+                        print("operación cancelada por el usuario.")
+
+            else:
+                print("El paciente ya tiene una habitación reservada.")
+        else:
+            print(f"El paciente con identificación {nIdentificacion} no está registrado en el sistema.")
+
+            
+
+
+
+
 
 
