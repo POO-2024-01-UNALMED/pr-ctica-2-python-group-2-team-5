@@ -25,7 +25,7 @@ class Hospital:
         return doctoresDisponibles
 
     #Buscar paciente con su número de cedula.
-    def bucarPaciente(self, cedula):
+    def buscarPaciente(self, cedula):
         for paciente in self._listaPacientes:
             if paciente.getCedula() == cedula:
                 return paciente
@@ -93,4 +93,8 @@ class Hospital:
     @classmethod
     def setListaHabitaciones(cls, habitaciones):
         cls.habitaciones = habitaciones
+
+    @property
+    def listaPacientes(self):
+        return self._listaPacientes
 
