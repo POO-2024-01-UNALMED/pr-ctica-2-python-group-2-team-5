@@ -1,3 +1,7 @@
+from baseDatos.serializador import serializar
+from gestorAplicacion.administracionHospital.hospital import Hospital
+
+
 def menu_gestion_vacunas(hospital):
     while True:
         print("───────── MENU DE GESTION DE VACUNAS ─────────")
