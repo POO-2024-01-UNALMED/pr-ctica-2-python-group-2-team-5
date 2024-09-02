@@ -5,29 +5,25 @@ from gestorAplicacion.personas import Persona
 class Paciente(Persona, Pago):
 
     # Constructor
-    def __init__(self, cedula: int, nombre: str, tipo_eps: str, categoria_habitacion: CategoriaHabitacion = None):
-        super().__init__(cedula, nombre, tipo_eps)
-        self.historia_clinica = HistoriaClinica(self)
-        self.categoria_habitacion = categoria_habitacion
-        self.habitacion_asignada = None
+    def __init__(self, cedula: int, nombre: str, tipoEps: str, categoria_habitacion: CategoriaHabitacion):
+        super().__init__(cedula, nombre, tipoEps)
+        self._historiaClinica: HistoriaClinica
+        self._categoriaHabitacion: CategoriaHabitacion = categoria_habitacion
+        self._habitacionAsignada: Habitacion
 
-    # Método encargado de realizar la búsqueda de medicamentos disponibles
     def med_enfermedad(self, enfermedad: Enfermedad, hospital: Hospital):
         medicamentos = hospital.medicamentos_disponibles()
         med_enfermedades = [med for med in medicamentos if enfermedad.nombre == med.enfermedad.nombre and enfermedad.tipologia == med.enfermedad.tipologia]
         return med_enfermedades
 
-    # Método encargado de buscar doctores por especialidad y tipo de EPS
     def buscar_doctor_eps(self, especialidad: str, hospital: Hospital):
         doctores_por_especialidad = hospital.buscar_tipo_doctor(especialidad)
         doctores_disponibles = [doctor for doctor in doctores_por_especialidad if doctor.tipo_eps == self.tipo_eps]
         return doctores_disponibles
 
-    # Método encargado de actualizar la historia clínica
     def actualizar_historial_citas(self, cita_asignada: Cita):
         self.historia_clinica.historial_citas.append(cita_asignada)
 
-    # Sobrecarga de métodos con calcular precio de los distintos servicios
     def calcular_precio_formula(self, formula: Formula):
         precio = sum(med.precio * (0.8 if self.tipo_eps == "Contributivo" else 0.7 if self.tipo_eps == "Subsidiado" else 1) for med in formula.lista_medicamentos)
         return precio * (1 + self.IVA)

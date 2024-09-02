@@ -66,10 +66,14 @@ class gestionPaciente:
         print("\n---INFORMACION DEL PACIENTE---")
         print(paciente)
         print("\n---HISTORIA CLINICA---")
-        print("Enfermedades: ")
+        print("\nEnfermedades: ")
         for i in (paciente.getHistorialClinica().getEnfermedad()):
             print(i)
-        print()
+        print("\nFormulas")
+        for i in (paciente.getHistorialClinica().getFormulas()):
+            print(i)
+        print("\nCitas")
+        for i in (paciente.getHistorialClinica().getCitas()):
 
 
 
