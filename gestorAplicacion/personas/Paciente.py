@@ -66,24 +66,32 @@ class Paciente(Persona, Pago):
             precio = habitacion_asignada.categoria.valor * habitacion_asignada.dias
         return precio * (1 + self.IVA)
 
-    # Método que busca las vacunas por tipo ingresado, invocando el método de hospital, y filtrándolas por EPS del paciente
+
     def buscar_vacuna_por_eps(self, tipo: str, hospital: Hospital):
         vacunas_por_tipo = hospital.buscar_tipo_vacuna(tipo)
         vacunas_disponibles = [vacuna for vacuna in vacunas_por_tipo if self.tipo_eps in vacuna.tipo_eps]
         return vacunas_disponibles
 
-    # Método de bienvenida del Doctor
     def mensaje_doctor(self, doctor: Persona):
         return f"{doctor.bienvenida()}\nPor favor selecciona los medicamentos que vas a formularle a: {self.nombre}"
 
-    # Método que agrega una cita a la lista de citas de la historia clínica del paciente
     def actualizar_historial_vacunas(self, cita_asignada: Cita_Vacuna):
         self.historia_clinica.historial_vacunas.append(cita_asignada)
 
-    # to string
     def __str__(self):
         return f"---------------------------\nNombre: {self.nombre}\nCédula: {self.cedula}\nTipo de EPS: {self.tipo_eps}\n---------------------------"
 
-    # Método de despedida
     def despedida(self, cita_asignada: Cita):
         return f"¡Adiós {self.nombre}! {cita_asignada.mensaje()}"
+
+
+    def getHistoriaClinica(self):
+        return self._historiaClinica
+    def getCategoriaHabitacion(self):
+        return self._categoriaHabitacion
+    def getHabitacion(self):
+        return self._habitacion
+    def setCategoriaHabitacion(self, habitacion: CategoriaHabitacion):
+        self._categoriaHabitacion = habitacion
+    def setHabitacionAsignada(self, habitacion: Habitacion):
+        self._habitacionAsignada = habitacion
