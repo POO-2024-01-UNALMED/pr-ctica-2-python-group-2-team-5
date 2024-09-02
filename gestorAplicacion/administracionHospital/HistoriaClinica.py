@@ -1,13 +1,14 @@
 #Importar las clases necesarias...
 from Hospital import Hospital
+from gestorAplicacion.personas.Paciente import Paciente
 
 
 #Clase HistoriaClinica: Revisar actividad del paciente dentro del hospital.
 
 class HistoriaClinica:
     #Inicializador.
-    def __init__(self, paciente):
-        self._PACIENTE = paciente
+    def __init__(self, paciente: Paciente):
+        self.paciente = paciente
         self._historialCitas = []
         self._listaFormulas = []
         self._historialVacunas = []
@@ -31,7 +32,7 @@ class HistoriaClinica:
 
     #Setters y getters.
     def getPaciente(self):
-        return self._PACIENTE
+        return self.paciente
 
     def getHistorialCitas(self):
         return self._historialCitas

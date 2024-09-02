@@ -1,4 +1,4 @@
-#Importar lo necesario...
+
 from gestorAplicacion.servicios import Cita_Vacuna
 
 
