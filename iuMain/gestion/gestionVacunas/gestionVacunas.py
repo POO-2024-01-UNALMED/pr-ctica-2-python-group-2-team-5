@@ -1,5 +1,4 @@
-from baseDatos.serializador import serializar
-from gestorAplicacion.administracionHospital.hospital import Hospital
+#agregar imports
 
 
 def menu_gestion_vacunas(hospital):

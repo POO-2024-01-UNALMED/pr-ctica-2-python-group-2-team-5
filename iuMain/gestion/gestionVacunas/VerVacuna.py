@@ -1,5 +1,5 @@
 from gestorAplicacion.administracionHospital import Hospital, Vacuna
-from uiMain.gestion.gestionVacunas import RegistrarEliminarVacunas
+from iuMain.gestion.gestionVacunas import RegistrarEliminarVacunas
 import sys
 
 class VerVacuna:
