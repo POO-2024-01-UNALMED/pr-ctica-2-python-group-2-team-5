@@ -1,5 +1,6 @@
 from gestorAplicacion.administracionHospital.Hospital import *
 from baseDatos.Serializador import *
+from gestion.gestionDoctores import *
 
 
 class GestionDoctor:
