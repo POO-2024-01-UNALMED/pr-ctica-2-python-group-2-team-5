@@ -39,7 +39,7 @@ class AgendarCita:
         #Si no hay doctores por el tipo de EPS buscada.
         while len(doctoresDisponibles) == 0:
             print("\nPor favor, seleccione el tipo de cita que requiere: ")
-            opcion = int(input("1. General.\n2. Odontología.\n3. Oftanmología.\n4. Regresar al menú"))
+            opcion = int(input("1. General.\n2. Odontología.\n3. Oftalmología.\n4. Regresar al menú"))
 
             #Casos de error.
             while opcion < 1 or opcion > 4:
