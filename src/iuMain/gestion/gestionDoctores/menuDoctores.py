@@ -1,3 +1,4 @@
+from baseDatos.Serializador import Serializador
 from src.iuMain.gestion.gestionDoctores import gestionDoctores
 
 
@@ -40,7 +41,7 @@ class GestionDoctor:
                 return
 
             elif opcion == "7":
-                Serializador.serializar(hospital)
+                Serializador.serializarDoctores(hospital)
                 exit(0)
 
             else:

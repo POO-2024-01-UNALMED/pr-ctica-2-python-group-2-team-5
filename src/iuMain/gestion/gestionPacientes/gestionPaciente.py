@@ -1,11 +1,13 @@
-from src.gestorAplicacion import Paciente
+from gestorAplicacion.administracionHospital.Hospital import Hospital
+from gestorAplicacion.personas.Paciente import Paciente
+
 
 
 
 class GestionPaciente:
+
     @staticmethod
-    def eliminarPaciente(self, hospital: Hospital):
-        #Crear el Scanner
+    def eliminarPaciente(hospital):
         cedula = str(print("Ingrese la cedula del paciente a eliminar"))
         paciente = hospital.buscarPaciente(cedula)
 
@@ -16,7 +18,7 @@ class GestionPaciente:
             print("El paciente ha sido ELIMINADO con éxito")
 
     @staticmethod
-    def registrarPaciente(self, hospital: Hospital):
+    def registrarPaciente(hospital):
         print("Por favor introduzca la informacion del Paciente")
 
         nombre = str(input("Ingrese el nombre del paciente: "))
@@ -39,11 +41,11 @@ class GestionPaciente:
         print("El paciente ha sido registrado con Éxito, recuerde que la Historia Clínica se encuentra VACIA")
         print(paciente)
 
-    def mostrarInformacionPaciente(self, hospital: Hospital):
+
+    @staticmethod
+    def mostrarInformacionPaciente(hospital):
         cedula = int(input("Ingrese la cedula del paciente: "))
-
         paciente = hospital.buscarPaciente(cedula)
-
 
         if paciente is None:
             while (True):
@@ -51,7 +53,7 @@ class GestionPaciente:
                 opcion = int(input("1. Sí \n2. No \nSeleccione una opción: "))
 
                 if opcion == 1:
-                    gestionPaciente.registrarPaciente(self, hospital)
+                    hospital.registrarPaciente(hospital)
                     print("El paciente ha sido registrado")
                     return
                 elif opcion == 2:
@@ -65,16 +67,20 @@ class GestionPaciente:
         print(paciente)
         print("\n---HISTORIA CLINICA---")
         print("\nEnfermedades: ")
+
         for i in (paciente.getHistorialClinica().getEnfermedad()):
             print(i)
         print("\nFormulas: ")
+
         for i in (paciente.getHistorialClinica().getFormulas()):
             print(i)
         print("\nCitas: ")
+
         for cita in (paciente.getHistorialClinica().getHistorialCitas()):
             print("Fecha: " + cita.getFecha())
             print("Doctor: " + cita.getDoctor().getNombre())
         print("\nHistorial Vacunas: ")
+
         for vacuna in paciente.getHistoriaClinica().getHistoriaVacunas():
             print(vacuna.getVacuna.getNombre())
 

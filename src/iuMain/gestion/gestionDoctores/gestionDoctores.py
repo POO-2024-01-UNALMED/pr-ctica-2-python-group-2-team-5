@@ -1,5 +1,5 @@
-from src.gestorAplicacion import Hospital
-from src.gestorAplicacion import Doctor
+from gestorAplicacion.administracionHospital.Hospital import Hospital
+from gestorAplicacion.personas.Doctor import Doctor
 
 
 class gestionDoctores:
@@ -9,7 +9,6 @@ class gestionDoctores:
         print("Por favor introduce la información del doctor para su registro")
         nombre = input("Ingrese el nombre del doctor: ")
         id = int(input("Ingrese el número de cédula: "))
-
         if hospital.buscar_doctor(id) is not None:
             print("Este doctor ya esta registrado")
             return
