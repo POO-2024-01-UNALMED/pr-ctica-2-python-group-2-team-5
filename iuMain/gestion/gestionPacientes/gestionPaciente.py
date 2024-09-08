@@ -4,7 +4,7 @@ from gestorAplicacion.personas.Paciente import Paciente
 
 
 
-class gestionPaciente:
+class GestionPaciente:
     @staticmethod
     def eliminarPaciente(self, hospital: Hospital):
         #Crear el Scanner

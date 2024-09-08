@@ -2,7 +2,7 @@
 from gestorAplicacion.administracionHospital import Hospital, Medicamento, Enfermedad
 from gestorAplicacion.personas import Doctor, Paciente
 from gestorAplicacion.servicios import Formula
-#from uiMain.gestion.gestionPaciente import RegistrarPaciente
+from iuMain.gestion.gestionPacientes.gestionPaciente import GestionPaciente
 
 class FormulaMedica:
     def __init__(self, hospital):
@@ -34,7 +34,7 @@ class FormulaMedica:
             while True:
                 opcion = input("El paciente no está registrado.\n¿Desea registrarlo?\n1. Sí\n2. No\nSeleccione una opción: ")
                 if opcion == '1':
-                    #RegistrarPaciente.registrar_paciente(self.hospital)
+                    GestionPaciente.registrarPaciente(self.hospital)
                     return None
                 elif opcion == '2':
                     print("Adiós")
