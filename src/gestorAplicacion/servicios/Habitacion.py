@@ -1,30 +1,37 @@
-#Importar lo necesario...
-from src.gestorAplicacion.servicios.Servicio import Servicio
-from src.gestorAplicacion import CategoriaHabitacion
-from src.gestorAplicacion import Hospital
+
+from gestorAplicacion.servicios import Servicio
+from gestorAplicacion.administracionHospital import CategoriaHabitacion, Hospital
+from gestorAplicacion.personas import Paciente
+
 
 
 #Clase Habitacion, que permite la revisión de disponibilidad de habitaciones y separación por categorías
 class Habitacion(Servicio):
     #Inicializador.
     def __init__(self, numero, categoria, ocupada, dias, paciente):
-        self._numero = numero
-        self._categoria = categoria
-        self._ocupada = ocupada
-        self._dias = dias
         super().__init__(paciente)
+        self.numero = numero
+        self.categoria = categoria
+        self.ocupada = ocupada
+        self.dias = dias
+        
 
     #Métodos.
 
     #Buscar habitaciones libres.
     @classmethod
     def BuscarHabitacionDisponible(cls, categoria):
+
         habitacionesDisponibles = []
+
         for habitacion in Hospital.getListaHabitaciones():
+
             if not habitacion.isOcupada() and habitacion.getCategoria() == categoria:
                 habitacionesDisponibles.append(habitacion)
+
         if len(habitacionesDisponibles) == 0:
             return None
+        
         return habitacionesDisponibles
 
     #Método para asignar la categoría de la haitación a reservar.
@@ -39,29 +46,29 @@ class Habitacion(Servicio):
             paciente.getHabitacionAsignada.setEstadoPago(True)
 
     def descripcionServicio(self):
-        return f"{self._IDSERVICIO} - Habitación {self._numero} ocupada {self._dias} dias."
+        return f"{self.idServicio} - Habitación {self.numero} ocupada {self.dias} dias."
 
     #Setters y getters.
     def getNumero(self):
-        return self._numero
+        return self.numero
 
     def setNumero(self, numero):
-        self._numero = numero
+        self.numero = numero
 
     def getCategoria(self):
-        return self._categoria
+        return self.categoria
 
     def setCategoria(self, categoria):
-        self._categoria = categoria
+        self.categoria = categoria
 
     def isOcupada(self):
-        return self._ocupada
+        return self.ocupada
 
     def setOcupada(self, ocupada):
-        self._ocupada = ocupada
+        self.ocupada = ocupada
 
     def getDias(self):
-        return self._dias
+        return self.dias
 
     def setDias(self, dias):
-        self._dias = dias
+        self.dias = dias

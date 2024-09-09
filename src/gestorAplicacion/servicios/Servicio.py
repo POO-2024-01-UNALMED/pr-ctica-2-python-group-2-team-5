@@ -1,16 +1,19 @@
 #Importar lo necesario...
 from abc import ABC, abstractmethod
+from baseDatos import Serializador
+from gestorAplicacion.personas import Paciente
+from gestorAplicacion.administracionHospital import HistoriaClinica
 
 #Clase abstracta Servicio que sirve de referencia para los demás servicios en el hospital
-class Servicio(ABC):
+class Servicio(ABC, Serializador):
     #Atributo de clase.
     generadorID = 1000
 
     #Inicializador.
     def __init__(self, paciente):
-        self._paciente = paciente
-        self._IDSERVICIO = Servicio.generadorID + 1
-        self._estadoPago = False
+        self.paciente = paciente
+        self.idServicio = Servicio.generadorID + 1
+        self.estadoPago = False
 
     #Métodos.
 
@@ -43,16 +46,16 @@ class Servicio(ABC):
 
     #Setters y getters
     def getPaciente(self):
-        return self._paciente
+        return self.paciente
 
     def setPaciente(self, paciente):
-        self._paciente = paciente
+        self.paciente = paciente
 
     def getIdServicio(self):
-        return self.IDSERVICIO
+        return self.idServicio
 
     def isEstadoPago(self):
-        return self._estadoPago
+        return self.estadoPago
 
     def setEstadoPago(self, estadoPago):
-        self._estadoPago = estadoPago
+        self.estadoPago = estadoPago

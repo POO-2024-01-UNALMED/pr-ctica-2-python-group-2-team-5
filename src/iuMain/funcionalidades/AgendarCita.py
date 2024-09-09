@@ -1,5 +1,7 @@
-#Importar lo necesario...
-from src.iuMain.gestion.gestionPacientes.gestionPaciente import GestionPaciente
+from gestorAplicacion.administracionHospital import Hospital
+from gestorAplicacion.personas import Paciente, Doctor
+from gestorAplicacion.servicios import Cita
+from iuMain.gestion.gestionPacientes.gestionPaciente import GestionPaciente
 
 #Clase Agendar cita, que corresponde a la funcionalidad 1.
 class AgendarCita:

@@ -1,6 +1,8 @@
 #Importar lo necesario...
-from src.gestorAplicacion import Formula
-from src.iuMain.gestion.gestionPacientes.gestionPaciente import GestionPaciente
+from gestorAplicacion import Formula
+from gestorAplicacion.administracionHospital import Hospital, Medicamento, Enfermedad
+from gestorAplicacion.personas import Doctor, Paciente
+from iuMain.gestion.gestionPacientes.gestionPaciente import GestionPaciente
 
 class FormulaMedica:
     def __init__(self, hospital):
