@@ -1,6 +1,8 @@
 #Importar las clases necesarias...
 from Hospital import Hospital
-from src.gestorAplicacion import Paciente
+from src.gestorAplicacion.personas import Paciente, Doctor
+from gestorAplicacion.servicios import Cita, CitaVacuna,Formula
+#faltan las del serializable
 
 
 #Clase HistoriaClinica: Revisar actividad del paciente dentro del hospital.
@@ -9,10 +11,10 @@ class HistoriaClinica:
     #Inicializador.
     def __init__(self, paciente: Paciente):
         self.paciente = paciente
-        self._historialCitas = []
-        self._listaFormulas = []
-        self._historialVacunas = []
-        self._enfermedades = []
+        self.historialCitas = []
+        self.listaFormulas = []
+        self.historialVacunas = []
+        self.enfermedades = []
 
     #Métodos.
 
@@ -21,39 +23,39 @@ class HistoriaClinica:
         doctoresDisp = Hospital.buscarTipoDoctor(especialidad)
         docCita = []
         for doc in doctoresDisp:
-            for cita in self._historialCitas:
+            for cita in self.historialCitas:
                 if doc.getCedula() == cita.getDoctor().getCedula():
                     docCita.append(doc)
         return docCita
 
     #Agregar fórmulas al atributo de la clase.
     def agregarFormula(self, formulaPaciente):
-        self._listaFormulas.append(formulaPaciente)
+        self.listaFormulas.append(formulaPaciente)
 
     #Setters y getters.
     def getPaciente(self):
         return self.paciente
 
     def getHistorialCitas(self):
-        return self._historialCitas
+        return self.historialCitas
 
     def setHistorialCitas(self, historialCitas):
-        self._historialCitas = historialCitas
+        self.historialCitas = historialCitas
 
     def getListaFormulas(self):
-        return self._listaFormulas
+        return self.listaFormulas
 
     def setListaFormulas(self, listaFormulas):
-        self._listaFormulas = listaFormulas
+        self.listaFormulas = listaFormulas
 
     def getHistorialVacunas(self):
-        return self._historialVacunas
+        return self.historialVacunas
 
     def setHistorialVacunas(self, historialVacunas):
-        self._historialVacunas = historialVacunas
+        self.historialVacunas = historialVacunas
 
     def getEnfermedades(self):
-        return self._enfermedades
+        return self.enfermedades
 
     def setEnfermedades(self, enfermedades):
-        self._enfermedades = enfermedades
+        self.enfermedades = enfermedades

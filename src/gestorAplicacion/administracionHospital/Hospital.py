@@ -1,5 +1,7 @@
 #Importar las clases necesarias...
-
+from baseDatos import Deserializador
+from gestorAplicacion.personas import Doctor, Paciente
+from gestorAplicacion.servicios import Habitacion
 
 #Clase Hospital que lleva el registro general de servicios y personas.
 class Hospital:

@@ -1,4 +1,4 @@
-#import Serializable
+#importar Serializable no se como es en python
 
 #Elaborado por Jeronimo
 
