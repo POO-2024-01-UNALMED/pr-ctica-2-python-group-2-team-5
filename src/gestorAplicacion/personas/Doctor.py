@@ -21,7 +21,7 @@ class Doctor(Persona):
         return agendaDisponible
 
     # Metodo que asigna el paciente a una determinada cita de un doctor
-    def actualizar_agenda(self, pacienteAsignado, numeroCita: int, agendaDisponible):
+    def actualizarAgenda(self, pacienteAsignado, numeroCita: int, agendaDisponible):
         if numeroCita <= 0 or numeroCita > len(agendaDisponible):
             return None  # por si se equivocan y escriben un numero demasiado grande
         citaAsignada = None
@@ -42,15 +42,15 @@ class Doctor(Persona):
         return f"Nombre: {self.nombre}\nCedula: {self.cedula}\nTipo de EPS: {self.tipoEps}\nEspecialidad: {self.especialidad}"
 
     # Métodos get y set
-    def get_especialidad(self):
+    def getEspecialidad(self):
         return self.especialidad
 
-    def set_especialidad(self, especialidad: str):
+    def setEspecialidad(self, especialidad: str):
         self.especialidad = especialidad
 
-    def get_agenda_doctor(self):
+    def getAgendaDoctor(self):
         return self.agendaDoctor
 
-    def set_agenda_doctor(self, agenda):
+    def setAgendaDoctor(self, agenda):
         self.agendaDoctor = agenda
 

@@ -1,8 +1,8 @@
-#Importar lo necesario...
-from src.gestorAplicacion import Paciente
+from gestorAplicacion.administracionHospital import Hospital, Vacuna
+from gestorAplicacion.servicios import CitaVacuna
+from gestorAplicacion.personas import Paciente
+from iuMain.gestion.gestionPacientes import gestionPaciente
 
-
-#from uiMain.gestion.gestionPaciente import RegistrarPaciente
 
 class Vacunacion:
 
@@ -10,16 +10,16 @@ class Vacunacion:
     def vacunacion(hospital):
         print("Ingrese la cédula del paciente: ")
 
-        numero_cedula = int(input())
-        paciente_asignado = hospital.buscar_paciente(numero_cedula)
+        numeroCedula = int(input())
+        pacienteAsignado = hospital.buscarPaciente(numeroCedula)
 
-        if paciente_asignado is None:
+        if pacienteAsignado is None:
             while True:
                 print("El paciente no está registrado.\n¿Desea registrarlo?")
                 print("1. Si\n2. No \nSeleccione una opción")
                 opcion = int(input())
                 if opcion == 1:
-                    #registrar_paciente(hospital)
+                    gestionPaciente.registrarPaciente(hospital)
                     return
                 elif opcion == 2:
                     print("Adiós")
@@ -27,92 +27,92 @@ class Vacunacion:
                 else:
                     print("Opción Inválida")
 
-        print(paciente_asignado.bienvenida())
+        print(pacienteAsignado.bienvenida())
 
         print("\nSeleccione el tipo de vacuna que requiere")
         print("1. Obligatoria")
         print("2. No obligatoria")
         print("Ingrese una opción: ")
         
-        tipo_vacuna = int(input())
+        tipoVacuna = int(input())
 
-        while tipo_vacuna < 1 or tipo_vacuna > 2:
+        while tipoVacuna < 1 or tipoVacuna > 2:
             print("Opción fuera de rango, por favor ingrese otro número: ")
-            tipo_vacuna = int(input())
+            tipoVacuna = int(input())
 
         print("Vacunas Disponibles")
 
-        vacunas_disponibles = []
+        vacunasDisponibles = []
 
-        if tipo_vacuna == 1:
-            vacunas_disponibles = paciente_asignado.buscar_vacuna_por_eps("Obligatoria", hospital)
-            if not vacunas_disponibles:
+        if tipoVacuna == 1:
+            vacunasDisponibles = pacienteAsignado.buscarVacunaPorEps("Obligatoria", hospital)
+            if not vacunasDisponibles:
                 print("No hay vacunas disponibles para usted de tipo obligatoria")
                 return
-            for i, vacuna in enumerate(vacunas_disponibles, 1):
-                print(f"{i}. {vacuna.get_nombre()}")
+            for i, vacuna in enumerate(vacunasDisponibles, 1):
+                print(f"{i}. {vacuna.getNombre()}")
 
-        elif tipo_vacuna == 2:
-            vacunas_disponibles = paciente_asignado.buscar_vacuna_por_eps("No obligatoria", hospital)
-            if not vacunas_disponibles:
+        elif tipoVacuna == 2:
+            vacunasDisponibles = pacienteAsignado.buscarVacunaPorEps("No obligatoria", hospital)
+            if not vacunasDisponibles:
                 print("No hay vacunas disponibles para usted de tipo no obligatoria")
                 return
-            for i, vacuna in enumerate(vacunas_disponibles, 1):
-                print(f"{i}. {vacuna.get_nombre()}")
+            for i, vacuna in enumerate(vacunasDisponibles, 1):
+                print(f"{i}. {vacuna.getNombre()}")
 
         print("\nSeleccione la vacuna que requiere aplicarse: ")
-        numero_vacuna = int(input())
+        numeroVacuna = int(input())
 
-        verificar_vacuna = False
+        verificarVacuna = False
 
         while True:
-            while numero_vacuna < 1 or numero_vacuna > len(vacunas_disponibles):
+            while numeroVacuna < 1 or numeroVacuna > len(vacunasDisponibles):
                 print("Opción fuera de rango, por favor ingrese otro número: ")
-                numero_vacuna = int(input())
+                numeroVacuna = int(input())
 
-            for i, historial in enumerate(paciente_asignado.get_historia_clinica().get_historial_vacunas()):
-                if historial.get_vacuna().get_nombre() == vacunas_disponibles[numero_vacuna - 1].get_nombre():
-                    verificar_vacuna = True
+            for i, historial in enumerate(pacienteAsignado.getHistoriaClinica().getHistorialVacunas()):
+                if historial.getVacuna().getNombre() == vacunasDisponibles[numeroVacuna - 1].getNombre():
+                    verificarVacuna = True
                     print("Usted ya se puso esta vacuna, por favor ingrese otra opción o ingrese el número 0 para terminar el proceso: ")
-                    numero_vacuna = int(input())
-                    if numero_vacuna == 0:
+                    numeroVacuna = int(input())
+                    if numeroVacuna == 0:
                         return
                     break
                 else:
-                    verificar_vacuna = False
+                    verificarVacuna = False
 
-            if not verificar_vacuna:
+            if not verificarVacuna:
                 break
 
-        agenda_disponible = vacunas_disponibles[numero_vacuna - 1].mostrar_agenda_disponible()
+        agendaDisponible = vacunasDisponibles[numeroVacuna - 1].mostrarAgendaDisponible()
 
-        if not agenda_disponible:
+        if not agendaDisponible:
             print("No hay citas disponibles para esta vacuna")
             return
 
         print("\nCitas disponibles: ")
-        for i, cita in enumerate(agenda_disponible, 1):
-            print(f"{i}. {cita.get_fecha()}")
+        for i, cita in enumerate(agendaDisponible, 1):
+            print(f"{i}. {cita.getFecha()}")
 
         print("\nSeleccione la cita de su preferencia: ")
-        numero_cita = int(input())
+        numeroCita = int(input())
 
-        cita_asignada = vacunas_disponibles[numero_vacuna - 1].actualizar_agenda(paciente_asignado, numero_cita, agenda_disponible)
+        citaAsignada = vacunasDisponibles[numeroVacuna - 1].actualizarAgenda(pacienteAsignado, numeroCita, agendaDisponible)
 
         print("\nCita asignada correctamente, puede acudir al centro asistencial con la siguiente información: ")
-        paciente_asignado.actualizar_historial_vacunas(cita_asignada)
+        pacienteAsignado.actualizarHistorialVacunas(citaAsignada)
 
         print("\nResumen de su cita: ")
-        print(f"Fecha: {cita_asignada.get_fecha()}")
-        print(f"Paciente: {cita_asignada.get_paciente().get_nombre()}")
-        print(f"Vacuna: {cita_asignada.get_vacuna().get_nombre()}")
+        print(f"Fecha: {citaAsignada.getFecha()}")
+        print(f"Paciente: {citaAsignada.getPaciente().getNombre()}")
+        print(f"Vacuna: {citaAsignada.getVacuna().getNombre()}")
         print("Asistente médico: Enfermera")
 
-        agenda_disponible.clear()
-        vacunas_disponibles.clear()
+        agendaDisponible.clear()
+        vacunasDisponibles.clear()
 
         print("\nEste es el historial de vacunas aplicadas del paciente seleccionado: ")
-        for i, historial in enumerate(paciente_asignado.get_historia_clinica().get_historial_vacunas(), 1):
-            print(f"{i}. Vacuna: {historial.get_vacuna().get_nombre()}")
+        for i, historial in enumerate(pacienteAsignado.getHistoriaClinica().getHistorialVacunas(), 1):
+            print(f"{i}. Vacuna: {historial.getVacuna().getNombre()}")
 
-        print(f"\n{paciente_asignado.despedida(cita_asignada)}")
+        print(f"\n{pacienteAsignado.despedida(citaAsignada)}")

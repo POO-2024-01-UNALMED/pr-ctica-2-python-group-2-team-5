@@ -1,10 +1,11 @@
 #Importar las clases necesarias...
-from baseDatos import Deserializador, Serializador
+from baseDatos import Deserializador
 from gestorAplicacion.personas import Doctor, Paciente
 from gestorAplicacion.servicios import Habitacion
+from gestorAplicacion.administracionHospital import Vacuna, Medicamento
 
 #Clase Hospital que lleva el registro general de servicios y personas.
-class Hospital(Serializador):
+class Hospital:
     #Atributo de clase.
     habitaciones = []
 
@@ -35,14 +36,14 @@ class Hospital(Serializador):
 
     #Buscar doctor con la cédula.
     def buscarDoctor(self, cedula):
-        for doctor in self._listaDoctores:
+        for doctor in self.listaDoctores:
             if doctor.getCedula() == cedula:
                 return doctor
         return None
 
     #Buscar vacuna por el nombre.
     def buscarVacuna(self, nombre):
-        for vacuna in self._listaVacunas:
+        for vacuna in self.listaVacunas:
             if vacuna.getNombre() == nombre:
                 return vacuna
         return None
@@ -50,43 +51,43 @@ class Hospital(Serializador):
     #Buscar medicamentos dispinibles.
     def medicamentosDisponibles(self):
         medicamentos = []
-        for i in range(len(self._listaMedicamentos)):
-            if self._listaMedicamentos[i].getCantidad() > 0:
-                medicamentos.append(self._listaMedicamentos[i])
+        for i in range(len(self.listaMedicamentos)):
+            if self.listaMedicamentos[i].getCantidad() > 0:
+                medicamentos.append(self.listaMedicamentos[i])
         return medicamentos
 
     #Buscar vacunas por tipo.
     def buscarTipoVacuna(self, tipo):
         vacunas = []
-        for i in range(1, len(self._listaVacunas)):
-            if self._listaVacunas[i - 1].getTipo() == tipo:
-                vacunas.append(self._listaVacunas[i - 1])
+        for i in range(1, len(self.listaVacunas)):
+            if self.listaVacunas[i - 1].getTipo() == tipo:
+                vacunas.append(self.listaVacunas[i - 1])
         return vacunas
 
     #Setters y getters.
     def getListaDoctores(self):
-        return self._listaDoctores
+        return self.listaDoctores
 
     def setListaDoctores(self, listaDoctores):
-        self._listaDoctores = listaDoctores
+        self.listaDoctores = listaDoctores
 
     def getListaPacientes(self):
-        return self._listaPacientes
+        return self.listaPacientes
 
     def setListaPacientes(self, listaPacientes):
-        self._listaPacientes = listaPacientes
+        self.listaPacientes = listaPacientes
 
     def getListaMedicamentos(self):
-        return self._listaMedicamentos
+        return self.listaMedicamentos
 
     def setListaMedicamentos(self, listaMedicamentos):
-        self._listaMedicamentos = listaMedicamentos
+        self.listaMedicamentos = listaMedicamentos
 
     def getListaVacunas(self):
-        return self._listaVacunas
+        return self.listaVacunas
 
     def setListaVacunas(self, listaVacunas):
-        self._listaVacunas = listaVacunas
+        self.listaVacunas = listaVacunas
 
     @classmethod
     def getListaHabitaciones(cls):
@@ -98,5 +99,5 @@ class Hospital(Serializador):
 
     @property
     def listaPacientes(self):
-        return self._listaPacientes
+        return self.listaPacientes
 

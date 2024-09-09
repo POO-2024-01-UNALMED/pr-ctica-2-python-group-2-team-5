@@ -2,12 +2,12 @@
 from Hospital import Hospital
 from src.gestorAplicacion.personas import Paciente, Doctor
 from gestorAplicacion.servicios import Cita, CitaVacuna,Formula
-from baseDatos import Serializador
+
 
 
 #Clase HistoriaClinica: Revisar actividad del paciente dentro del hospital.
 
-class HistoriaClinica(Serializador):
+class HistoriaClinica:
     #Inicializador.
     def __init__(self, paciente: Paciente):
         self.paciente = paciente

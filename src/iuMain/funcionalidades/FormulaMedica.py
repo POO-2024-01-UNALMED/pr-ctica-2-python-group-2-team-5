@@ -9,27 +9,27 @@ class FormulaMedica:
         self.hospital = hospital
         self.sc = None  # Simulación de entrada (esto debería manejarse mejor en un entorno real)
 
-    def formula_medica(self):
-        paciente = self.select_patient()
+    def formulaMedica(self):
+        paciente = self.selectPatient()
         if not paciente:
             return
 
-        enfermedad_tratar = self.select_disease(paciente)
-        if not enfermedad_tratar:
+        enfermedadTratar = self.selectDisease(paciente)
+        if not enfermedadTratar:
             return
 
-        doctor_escogido = self.select_doctor(paciente, enfermedad_tratar)
-        if not doctor_escogido:
+        doctorEscogido = self.selectDoctor(paciente, enfermedadTratar)
+        if not doctorEscogido:
             return
 
-        formula_paciente = self.create_formula(paciente, doctor_escogido, enfermedad_tratar)
-        if formula_paciente:
-            paciente.historia_clinica.agregar_formula(formula_paciente)
-            print(formula_paciente)
+        formulaPaciente = self.createFormula(paciente, doctorEscogido, enfermedadTratar)
+        if formulaPaciente:
+            paciente.historiaClinica.agregarFormula(formulaPaciente)
+            print(formulaPaciente)
 
-    def select_patient(self):
+    def selectPatient(self):
         cedula = input("Ingrese la cédula del paciente: ")
-        paciente = self.hospital.buscar_paciente(int(cedula))
+        paciente = self.hospital.buscarPaciente(int(cedula))
         if not paciente:
             while True:
                 opcion = input("El paciente no está registrado.\n¿Desea registrarlo?\n1. Sí\n2. No\nSeleccione una opción: ")
@@ -43,71 +43,71 @@ class FormulaMedica:
                     print("Opción Inválida")
         return paciente
 
-    def select_disease(self, paciente):
-        if not paciente.historia_clinica.enfermedades:
+    def selectDisease(self, paciente):
+        if not paciente.historiaClinica.enfermedades:
             print("No hay enfermedades registradas, por favor diríjase a la sección de registrar enfermedades.")
             return None
         while True:
             print("¿Qué enfermedad deseas tratar?")
-            for i, enfermedad in enumerate(paciente.historia_clinica.enfermedades):
+            for i, enfermedad in enumerate(paciente.historiaClinica.enfermedades):
                 print(f"{i + 1}. {enfermedad}")
-            opc_enf = input()
-            if opc_enf.isdigit() and 0 < int(opc_enf) <= len(paciente.historia_clinica.enfermedades):
-                return paciente.historia_clinica.enfermedades[int(opc_enf) - 1]
+            opcEnf = input()
+            if opcEnf.isdigit() and 0 < int(opcEnf) <= len(paciente.historiaClinica.enfermedades):
+                return paciente.historiaClinica.enfermedades[int(opcEnf) - 1]
             else:
                 print("Opción Inválida")
 
-    def select_doctor(self, paciente, enfermedad_tratar):
-        doctores_cita = paciente.historia_clinica.buscar_cita_doc(enfermedad_tratar.especialidad, self.hospital)
-        if not doctores_cita:
+    def selectDoctor(self, paciente, enfermedadTratar):
+        doctoresCita = paciente.historiaClinica.buscarCitaDoc(enfermedadTratar.especialidad, self.hospital)
+        if not doctoresCita:
             print("Ahora no contamos con doctores para tratar esta enfermedad. Lo sentimos mucho.")
             return None
         while True:
-            print(f"Los doctores que lo han atendido y están disponibles para formular {enfermedad_tratar.nombre} {enfermedad_tratar.tipologia} son:")
-            for i, doctor in enumerate(doctores_cita):
+            print(f"Los doctores que lo han atendido y están disponibles para formular {enfermedadTratar.nombre} {enfermedadTratar.tipologia} son:")
+            for i, doctor in enumerate(doctoresCita):
                 print(f"{i + 1}. {doctor.nombre}")
-            opc_doc = input()
-            if opc_doc.isdigit() and 0 < int(opc_doc) <= len(doctores_cita):
-                return doctores_cita[int(opc_doc) - 1]
+            opcDoc = input()
+            if opcDoc.isdigit() and 0 < int(opcDoc) <= len(doctoresCita):
+                return doctoresCita[int(opcDoc) - 1]
             else:
                 print("Opción inválida")
 
-    def create_formula(self, paciente, doctor, enfermedad_tratar):
-        list_medicamento = []
-        formula_paciente = Formula(paciente)
-        formula_paciente.doctor = doctor
+    def createFormula(self, paciente, doctor, enfermedadTratar):
+        listMedicamento = []
+        formulaPaciente = Formula(paciente)
+        formulaPaciente.doctor = doctor
 
         while True:
-            print(paciente.mensaje_doctor(doctor))
+            print(paciente.mensajeDoctor(doctor))
 
-            disponible_enf = paciente.med_enfermedad(enfermedad_tratar, self.hospital)
-            if not disponible_enf:
+            disponibleEnf = paciente.medEnfermedad(enfermedadTratar, self.hospital)
+            if not disponibleEnf:
                 print("No hay más medicamentos disponibles")
                 break
 
             while True:
-                for i, medicamento in enumerate(disponible_enf):
+                for i, medicamento in enumerate(disponibleEnf):
                     print(f"{i + 1}. {medicamento}, Cantidad: {medicamento.cantidad}, Precio: {medicamento.precio}")
-                opc_med = input()
-                if opc_med.isdigit() and 0 < int(opc_med) <= len(disponible_enf):
-                    medicamento_escogido = disponible_enf[int(opc_med) - 1]
-                    medicamento_escogido.eliminar_cantidad()
-                    list_medicamento.append(medicamento_escogido)
+                opcMed = input()
+                if opcMed.isdigit() and 0 < int(opcMed) <= len(disponibleEnf):
+                    medicamentoEscogido = disponibleEnf[int(opcMed) - 1]
+                    medicamentoEscogido.eliminarCantidad()
+                    listMedicamento.append(medicamentoEscogido)
                     break
                 else:
                     print("Opción inválida")
 
-            formula_paciente.lista_medicamentos = list_medicamento
-            print(f"Esta es tu lista actual de medicamentos: {list_medicamento}")
+            formulaPaciente.listaMedicamentos = listMedicamento
+            print(f"Esta es tu lista actual de medicamentos: {listMedicamento}")
 
-            for i, medicamento in enumerate(list_medicamento):
+            for i, medicamento in enumerate(listMedicamento):
                 print(f"{i + 1}. {medicamento}")
 
-            agregar_otro = input("¿Desea agregar otro medicamento? (s/n): ")
-            if agregar_otro.lower() != 's':
+            agregarOtro = input("¿Desea agregar otro medicamento? (s/n): ")
+            if agregarOtro.lower() != 's':
                 break
 
-        if not list_medicamento:
+        if not listMedicamento:
             return None
 
-        return formula_paciente
+        return formulaPaciente

@@ -1,9 +1,6 @@
 
-from baseDatos import Serializador
-
-
 #Clase enfermedad que lleva registro de las enfermedades que se tratanen el hospital
-class Enfermedad(Serializador):
+class Enfermedad:
     #Atributo de clase.
     enfermedadesRegistradas = []
 

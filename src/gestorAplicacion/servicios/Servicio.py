@@ -1,11 +1,10 @@
 #Importar lo necesario...
 from abc import ABC, abstractmethod
-from baseDatos import Serializador
 from gestorAplicacion.personas import Paciente
 from gestorAplicacion.administracionHospital import HistoriaClinica
 
 #Clase abstracta Servicio que sirve de referencia para los demás servicios en el hospital
-class Servicio(ABC, Serializador):
+class Servicio(ABC):
     #Atributo de clase.
     generadorID = 1000
 

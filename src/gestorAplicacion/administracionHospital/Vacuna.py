@@ -1,11 +1,11 @@
 
 from gestorAplicacion.servicios import CitaVacuna
 from gestorAplicacion.personas import Paciente
-from baseDatos import Serializador
+
 
 
 #Clase vacuna para llevar un registro de las vacunas que se ofrecen en el hospital.
-class Vacuna(Serializador):
+class Vacuna:
     def __init__(self, tipo, nombre, precio, tipoEps):
         self.tipo = tipo
         self.nombre = nombre
@@ -53,13 +53,13 @@ class Vacuna(Serializador):
         self.nombre = nombre
 
     def getPrecio(self):
-        return self._precio
+        return self.precio
 
     def setPrecio(self, precio):
         self.precio = precio
 
     def getTipoEps(self):
-        return self._tipoEps
+        return self.tipoEps
 
     def setTipoEps(self, tipoEps):
         self.tipoEps = tipoEps

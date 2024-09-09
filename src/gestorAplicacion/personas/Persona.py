@@ -1,8 +1,8 @@
 
-from baseDatos import Serializador
+
 
 #Clase persona como referencia para Doctor y Paciente
-class Persona(Serializador):
+class Persona:
     #Inicializador.
     def __init__(self, cedula, nombre, tipoEps):
         self.cedula = cedula

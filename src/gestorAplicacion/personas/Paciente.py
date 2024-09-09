@@ -10,11 +10,11 @@ class Paciente(Persona, Pago):
     # Constructor
     def __init__(self, cedula: int, nombre: str, tipoEps: str, categoriaHabitacion: CategoriaHabitacion):
         super().__init__(cedula, nombre, tipoEps)
-        self._historiaClinica: HistoriaClinica
-        self._categoriaHabitacion: CategoriaHabitacion = categoriaHabitacion
-        self._habitacionAsignada: Habitacion
+        self.historiaClinica: HistoriaClinica
+        self.categoriaHabitacion: CategoriaHabitacion = categoriaHabitacion
+        self.habitacionAsignada: Habitacion
 
-    def med_enfermedad(self, enfermedad: Enfermedad, hospital: Hospital):
+    def medEnfermedad(self, enfermedad: Enfermedad, hospital: Hospital):
         medicamentos = hospital.medicamentosDisponibles()
         medEnfermedades = [med for med in medicamentos if enfermedad.nombre == med.enfermedad.nombre and enfermedad.tipologia == med.enfermedad.tipologia]
         return medEnfermedades
@@ -28,7 +28,7 @@ class Paciente(Persona, Pago):
         self.historiaClinica.historialCitas.append(citaAsignada)
 
     def calcularPrecioFormula(self, formula: Formula):
-        precio = sum(med.precio * (0.8 if self.tipoEps == "Contributivo" else 0.7 if self.tipoEps == "Subsidiado" else 1) for med in formula.lista_medicamentos)
+        precio = sum(med.precio * (0.8 if self.tipoEps == "Contributivo" else 0.7 if self.tipoEps == "Subsidiado" else 1) for med in formula.listaMedicamentos)
         return precio * (1 + self.IVA)
 
     def calcularPrecioCita(self, citaAsignada: Cita):
@@ -43,7 +43,7 @@ class Paciente(Persona, Pago):
             "Particular": 10000
         }
         precioTotal = especialidadPrecios.get(citaAsignada.doctor.especialidad, 0)
-        precioTotal += epsPrecios.get(self.tipo_eps, 0)
+        precioTotal += epsPrecios.get(self.tipoEps, 0)
         return precioTotal * (1 + self.IVA)
 
     def calcularPrecioCitaVacuna(self, citaAsignada: CitaVacuna):

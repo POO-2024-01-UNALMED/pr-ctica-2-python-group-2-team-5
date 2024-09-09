@@ -12,8 +12,8 @@ class CitaVacuna(Cita):
 
     def validarPago(self, paciente, idServicio):
         for citaVacuna in paciente.historiaClinica.historialVacunas:
-            if citaVacuna.id_servicio == idServicio:
-                citaVacuna.estado_pago = True
+            if citaVacuna.idServicio == idServicio:
+                citaVacuna.estadoPago = True
 
     def descripcionServicio(self):
         return f"{self.idServicio} - Vacuna: {self.vacuna.nombre} ({self.fecha})"
