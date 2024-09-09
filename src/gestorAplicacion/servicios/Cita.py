@@ -1,5 +1,5 @@
-from src.gestorAplicacion import Doctor
-from src.gestorAplicacion.servicios import Servicio
+from gestorAplicacion.personas import Doctor, Paciente
+from gestorAplicacion.servicios import Servicio
 
 
 #Elaborado por Jeronimo
@@ -11,14 +11,30 @@ class Cita(Servicio):
         self.doctor = doctor
         self.fecha = fecha
 #metodos
-        def validar_pago(self, paciente, id_servicio):
-            for cita in paciente.historia_clinica.historial_citas:
-                if cita.id_servicio == id_servicio:
-                    cita.estado_pago = True
+        def validarPago(self, paciente, idServicio):
+            for cita in paciente.historiaClinica.historialCitas:
+                if cita.idServicio == idServicio:
+                    cita.estadoPago = True
 
-        def descripcion_servicio(self):
+        def descripcionServicio(self):
             return f"Cita con el Dr. {self.doctor.nombre} el {self.fecha}"
         
         def mensaje(self):
             return "del servicio cita médica"
+        
+
+#getters y setters
+
+    def getDoctor(self):
+        return self.doctor
+    
+    def setDoctor(self, doctor):
+        self.doctor = doctor
+
+    def getFecha(self):
+        return self.fecha
+    
+    def setFecha(self, fecha):
+        self.fecha = fecha
+
         

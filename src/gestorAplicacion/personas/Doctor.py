@@ -1,6 +1,7 @@
 from gestorAplicacion.servicios import Cita
+from gestorAplicacion.personas import Persona
 
-class Doctor:
+class Doctor(Persona):
     
     # Constructor
     def __init__(self, cedula: int, nombre: str, tipoEps: str, especialidad: str):

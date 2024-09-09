@@ -1,7 +1,7 @@
-from src.gestorAplicacion.servicios import Cita
-from src.gestorAplicacion.servicios import CitaVacuna
-from src.gestorAplicacion.servicios import Habitacion
-from src.gestorAplicacion.servicios import Formula
+from gestorAplicacion.servicios import Cita
+from gestorAplicacion.servicios import CitaVacuna
+from gestorAplicacion.servicios import Habitacion
+from gestorAplicacion.servicios import Formula
 
 #Elaborado por Jeronimo
 class Pago():

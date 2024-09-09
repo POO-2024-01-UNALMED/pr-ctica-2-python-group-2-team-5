@@ -11,23 +11,23 @@ class Persona(Serializador):
 
     #Método bienvenida.
     def bienvenida(self):
-        return "Bienvenid@, " + self._nombre
+        return "Bienvenid@, " + self.nombre
 
     #Setters y getters.
     def getCedula(self):
-        return self._cedula
+        return self.cedula
 
     def setCedula(self, cedula):
-        self._cedula = cedula
+        self.cedula = cedula
 
     def getNombre(self):
-        return self._nombre
+        return self.nombre
 
     def setNombre(self, nombre):
-        self._nombre = nombre
+        self.nombre = nombre
 
     def getTipoEps(self):
-        return self._tipoEps
+        return self.tipoEps
 
     def setTipoEps(self, tipoEps):
-        self._tipoEps = tipoEps
+        self.tipoEps = tipoEps

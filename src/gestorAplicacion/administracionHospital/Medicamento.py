@@ -1,8 +1,8 @@
-#importar Serializable no se como es en python
+from baseDatos import Serializador
 
 #Elaborado por Jeronimo
 
-class Medicamento:
+class Medicamento(Serializador):
 #inicializador y atributos
     def __init__(self, nombre, enfermedad, descripcion, cantidad, precio):
         self.nombre = nombre
