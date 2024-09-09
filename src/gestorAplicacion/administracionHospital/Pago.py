@@ -10,15 +10,11 @@ class Pago():
     IVA = 0.21
 
     #metodos calcular precio
-    def calcular_precio(self, Formula):
+    def calcularPrecio(self, Formula):
         pass
-    def calcular_precio(self, Cita):
+    def calcularPrecio(self, Cita):
         pass
-    def calcular_precio(self, Cita_Vacuna):
+    def calcularPrecio(self, CitaVacuna):
         pass
-    def calcular_precio(self, Habitacion):
+    def calcularPrecio(self, Habitacion):
         pass
-
-
-
-

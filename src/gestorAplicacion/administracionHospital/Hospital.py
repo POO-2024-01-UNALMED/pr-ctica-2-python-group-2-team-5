@@ -9,24 +9,24 @@ class Hospital:
     #Inicializador.
     def __init__(self):
         #Deserializador aqui.
-        self._listaDoctores = []
-        self._listaPacientes = []
-        self._listaMedicamentos = []
-        self._listaVacunas = []
+        self.listaDoctores = []
+        self.listaPacientes = []
+        self.listaMedicamentos = []
+        self.listaVacunas = []
 
     #Métodos.
 
     #Buscar doctores por especialidad.
     def buscarTipoDoctor(self, especialidad):
         doctoresDisponibles = []
-        for i in range(1, len(self._listaDoctores)):
-            if self._listaDoctores[i - 1].getEspecialidad() == especialidad:
-                doctoresDisponibles.append(self._listaDoctores[i - 1])
+        for i in range(1, len(self.listaDoctores)):
+            if self.listaDoctores[i - 1].getEspecialidad() == especialidad:
+                doctoresDisponibles.append(self.listaDoctores[i - 1])
         return doctoresDisponibles
 
     #Buscar paciente con su número de cedula.
     def buscarPaciente(self, cedula):
-        for paciente in self._listaPacientes:
+        for paciente in self.listaPacientes:
             if paciente.getCedula() == cedula:
                 return paciente
         return None

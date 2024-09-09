@@ -8,46 +8,46 @@ class Enfermedad:
 
     #Inicializador.
     def __init__(self, especialidad, nombre, tipologia):
-        self._especialidad = especialidad
-        self._nombre = nombre
-        self._tipologia = tipologia
-        self._enfermos = 1
+        self.especialidad = especialidad
+        self.nombre = nombre
+        self.tipologia = tipologia
+        self.enfermos = 1
         Enfermedad.enfermedadesRegistradas.append(self)
 
     #Métodos.
 
     #Método para contar los enfermos de determinada enfermedad.
     def nuevoEnfermo(self):
-        self._enfermos += 1
+        self.enfermos += 1
 
     #Método __str__().
     def __str__(self):
-        return self._nombre + " " + self._tipologia + " Especialidad que la trata: " + self._especialidad
+        return self.nombre + " " + self.tipologia + " Especialidad que la trata: " + self.especialidad
 
     #Setters y getters.
     def getEspecialidad(self):
-        return self._especialidad
+        return self.especialidad
 
     def setEspecialidad(self, especialidad):
-        self._especialidad = especialidad
+        self.especialidad = especialidad
 
     def getNombre(self):
-        return self._nombre
+        return self.nombre
 
     def setNombre(self, nombre):
-        self._nombre = nombre
+        self.nombre = nombre
 
     def getTipologia(self):
-        return self._tipologia
+        return self.tipologia
 
     def setTipologia(self, tipologia):
-        self._tipologia = tipologia
+        self.tipologia = tipologia
 
     def getEnfermos(self):
-        return self._enfermos
+        return self.enfermos
 
     def setEnfermos(self, enfermos):
-        self._enfermos = enfermos
+        self.enfermos = enfermos
 
     @classmethod
     def getEnfermedadesRegistradas(cls):

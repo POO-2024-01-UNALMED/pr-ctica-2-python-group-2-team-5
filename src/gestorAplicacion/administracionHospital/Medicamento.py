@@ -13,38 +13,38 @@ class Medicamento:
 
     #metodos
 
-    def eliminar_cantidad(self):
+    def eliminarCantidad(self):
         self.cantidad -= 1
 
     #setters y getters
-    def set_nombre(self, nombre):
+    def setNombre(self, nombre):
         self.nombre = nombre
     
-    def get_nombre(self):
+    def getNombre(self):
         return self.nombre
     
-    def set_enfermedad(self, enfermedad):
+    def setEnfermedad(self, enfermedad):
         self.enfermedad = enfermedad
 
-    def get_enfermedad(self):
+    def getEnfermedad(self):
         return self.enfermedad
     
-    def set_descripcion(self, descripcion):
+    def setDescripcion(self, descripcion):
         self.descripcion = descripcion
 
-    def get_descripcion(self):
+    def getDescripcion(self):
         return self.descripcion
     
-    def set_cantidad(self, cantidad):
+    def setCantidad(self, cantidad):
         self.cantidad = cantidad
 
-    def get_cantidad(self):
+    def getCantidad(self):
         return self.cantidad
     
-    def set_precio(self, precio):
+    def setPrecio(self, precio):
         self.precio = precio
 
-    def get_precio(self):
+    def getPrecio(self):
         return self.precio
     
     #str
