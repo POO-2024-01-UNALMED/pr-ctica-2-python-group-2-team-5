@@ -8,7 +8,7 @@ from gestorAplicacion.personas import Paciente
 #Clase Habitacion, que permite la revisión de disponibilidad de habitaciones y separación por categorías
 class Habitacion(Servicio):
     #Inicializador.
-    def __init__(self, numero, categoria, ocupada, dias, paciente):
+    def __init__(self, numero, categoria, ocupada, paciente, dias):
         super().__init__(paciente)
         self.numero = numero
         self.categoria = categoria
