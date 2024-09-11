@@ -1,5 +1,10 @@
 
 from gestorAplicacion.administracionHospital import *
+from gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
+from gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
+from gestorAplicacion.administracionHospital.HistoriaClinica import HistoriaClinica
+from gestorAplicacion.administracionHospital.Hospital import Hospital
+from gestorAplicacion.administracionHospital.Pago import Pago
 from gestorAplicacion.servicios import *
 from gestorAplicacion.personas import Persona
 

@@ -1,5 +1,4 @@
-#Importar las clases necesarias...
-from Hospital import Hospital
+from gestorAplicacion.administracionHospital.Hospital import Hospital
 from src.gestorAplicacion.personas import Paciente, Doctor
 from gestorAplicacion.servicios import Cita, CitaVacuna,Formula
 

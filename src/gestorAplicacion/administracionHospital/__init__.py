@@ -1,1 +1,0 @@
-from administracionHospital import CategoriaHabitacion, Enfermedad, HistoriaClinica, Hospital, Medicamento, Pago, Vacuna

@@ -29,7 +29,7 @@ class gestionHospital:
 
             if opcion == 1:
                 while True:
-                    VerMedicamentos.ver_medicamentos(hospital)
+                    gestionHospital.verMedicamentos(hospital)
                     opcion_med = leerEntero()
 
                     if opcion_med <= 0 or opcion_med > len(lista_medicamentos):
@@ -180,4 +180,60 @@ class gestionHospital:
 
 
             print("La habitacion que desea destruir no existe")
+    @staticmethod
+    def verHabitacion(hospital):
+        print("Ingrese el numero de la habitacion que desea ver: ")
+        categoria = str(input("'CAMILLA' , 'INDIVIDUAL' , 'DOBLE' , 'OBSERVACION' , 'UCI' , 'UCC'"))
+        if categoria == "CAMILLA":
+            hEscogida = CategoriaHabitacion.CAMILLA
+        elif categoria == "INDIVIDUAL":
+            hEscogida = CategoriaHabitacion.INDIVIDUAL
+        elif categoria == "DOBLE":
+            hEscogida = CategoriaHabitacion.DOBLE
+        elif categoria == "OBSERVACION":
+            hEscogida = CategoriaHabitacion.OBSERVACION
+        elif categoria == "UCI":
+            hEscogida = CategoriaHabitacion.UCI
+        elif categoria == "UCC":
+            hEscogida = CategoriaHabitacion.UCC
+        else:
+            print("opcion no valida")
+            return
+        for habitacion in hospital.habitaciones:
+            ocupada = "Libre"
+            if habitacion.isOcupada():
+                ocupada = "Ocupada"
+            print("Numero ID  de la habitacion: "+ habitacion.getNumero() + " Tipo de habitacion: " + habitacion.getCategoria() + " Estado: " + ocupada)
 
+
+    @staticmethod
+    def verMedicamentos(hospital):
+        listaMedicamentos = hospital.getListaMedicamentos()
+        print("Este es el inventario de los medicamentos del hospital: ")
+        for i in range(len(listaMedicamentos)):
+            print(f"{i + 1}. {listaMedicamentos[i]}" + "Cantidad: " + listaMedicamentos[i].get_cantidad() + " Precio: " + str(listaMedicamentos[i].get_precio()))
+
+    @staticmethod
+    def verPersonasRegistradas(hospital):
+        listaDoctores = hospital.getListaDoctores()
+        listaPacientes = hospital.getListaPacientes()
+        print("Doctores: ")
+        for i, doc in enumerate(listaDoctores):
+            print(f"{i + 1}. {doc}")
+        print("Paciente: ")
+        for i, doc in enumerate(listaPacientes):
+            print(f"{i + 1}. {doc}")
+
+    @staticmethod
+    def verVacunas(hospital):
+        for vacuna in hospital.getListaVacunas():
+            print("\n Vacuna: " + vacuna.getNombre())
+            print("\nTipo: " + vacuna.getTipo())
+            print("\nPrecio: " + vacuna.getPrecio())
+            for fecha in vacuna.getTipoEps():
+                print("\nFecha: " + fecha)
+
+            print("Agenda de la vacuna: ")
+
+            for agenda in vacuna.getAgenda():
+                print(agenda)
