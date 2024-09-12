@@ -1,5 +1,5 @@
 from gestorAplicacion.administracionHospital.Hospital import Hospital
-from src.gestorAplicacion.personas import Paciente, Doctor
+from gestorAplicacion.personas import Paciente
 from gestorAplicacion.servicios import Cita, CitaVacuna,Formula
 
 
