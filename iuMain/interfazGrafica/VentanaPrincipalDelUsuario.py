@@ -12,19 +12,13 @@ ventanaPrincipalDelUsuario.geometry("600x500")
 ################## ZONA O ##################
 
 titulo = Label(ventanaPrincipalDelUsuario, text="Hospital Andino", font=("Arial", 16))
-titulo.grid(row=0, column=0, columnspan=4, padx=10, pady=10)
+titulo.grid(row=0, column=0, columnspan=1, pady=10)
 
 ################## ZONA 1 ##################
 
 #Frame para los menus 
 menuFrame = Frame(ventanaPrincipalDelUsuario, bg="white", bd=2, relief="ridge")
-menuFrame.grid(row=1, column=0, columnspan=4, sticky="nsew")
-
-menuFrame.grid_propagate(False)
-menuFrame.config(height=400)    
-menuFrame.config(width=580)  
-
-
+menuFrame.grid(row=1, column=0, columnspan=4, padx=10, pady=10)
 
 
 
@@ -41,7 +35,7 @@ class FieldFrame(Frame):
 
         # Crear los títulos de las columnas
         Label(self, text=self.tituloCriterios, font=("Arial", 10), bg="white").grid(row=0, column=0, padx=10, pady=5, sticky="w")
-        Label(self, text=self.tituloValores, font=("Arial", 10), bg="white").grid(row=0, column=1, padx=10, pady=5, sticky="w")
+        Label(self, text=self.tituloValores, font=("Arial", 10), bg="white").grid(row=0, column=1, padx=10, pady=5, sticky="e")
 
         # Crear etiquetas y campos de entrada para cada criterio
         self.entries = {}  # Diccionario para almacenar las entradas
@@ -112,7 +106,7 @@ def asignarCita():
 
 #menu Archivo
 menuArchivo = Menubutton(menuFrame, text="Archivo")
-menuArchivo.grid(row=0, column=0, sticky="ew")
+menuArchivo.grid(row=0, column=0, sticky="w", padx=5)
 
 archivoMenu = Menu(menuArchivo, tearoff=0)
 archivoMenu.add_command(label="Aplicación", command=aplicacion)
@@ -121,7 +115,7 @@ menuArchivo.config(menu=archivoMenu)
 
 #menu Procesos y consultas 
 menuProcesosConsultas = Menubutton(menuFrame, text="Procesos y Consultas")
-menuProcesosConsultas.grid(row=0, column=1, sticky="ew")
+menuProcesosConsultas.grid(row=0, column=1,)
 
 procesosMenu = Menu(menuProcesosConsultas, tearoff=0)
 procesosMenu.add_command(label="1. Agendar Citas", command=asignarCita)
@@ -133,7 +127,7 @@ menuProcesosConsultas.config(menu=procesosMenu)
 
 #menu Ayuda
 menuAyuda = Menubutton(menuFrame, text="Ayuda")
-menuAyuda.grid(row=0, column=2, sticky="ew")
+menuAyuda.grid(row=0, column=2, )
 
 ayudaMenu = Menu(menuAyuda, tearoff=0)
 ayudaMenu.add_command(label="Acerca de", command= acercaDe)
@@ -142,23 +136,23 @@ menuAyuda.config(menu=ayudaMenu)
 
 ################## ZONA 2 ##################
 
-
-formularioFrame= Frame(menuFrame, bg="white", bd=2, relief="ridge")
-formularioFrame.grid(row=2, column=0, columnspan=4, padx=10, pady=10, sticky="nsew")
-
 tituloProceso = Label(menuFrame, text="Nombre del Proceso o Consulta", font=("Arial", 14), bg="white")
-tituloProceso.grid(row=1, column=0, columnspan=2, padx=10,pady=5, sticky="n")
+tituloProceso.grid(row=1, column=0, columnspan=4, padx=10, pady=10, sticky="nsew")
 
 descripcionProceso= Label(menuFrame, text="Descripción del detalle del proceso o la consulta", font=("Arial", 10), bg="white")
-descripcionProceso.grid(row=2, column=0, columnspan=2, padx=10,pady=5, sticky="n")
+descripcionProceso.grid(row=2, column=0, columnspan=4, padx=10, pady=10, sticky="nsew")
+
+formularioFrame= Frame(menuFrame, bg="white", bd=2, relief="ridge")
+formularioFrame.grid(row=3, column=0, columnspan=4, padx=10, pady=10, sticky="ew")
+
 
 fieldFrame = FieldFrame(formularioFrame, "Criterios", ["Nombre", "Fecha", "Doctor"], "Valores")
-fieldFrame.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
+fieldFrame.grid(row=4, column=0, columnspan=4, padx=10, pady=10, sticky="nsew")
 
-botonAceptar = Button(formularioFrame, text="Aceptar" """ejecutar funcionalidad""")
-botonBorrar = Button(formularioFrame, text="Borrar" """Limpiar formulario""")
-botonAceptar.grid(row=3, column=0, pady=10)
-botonBorrar.grid(row=3, column=1, pady=10)
+botonAceptar = Button(formularioFrame, text="Aceptar")
+botonBorrar = Button(formularioFrame, text="Borrar")
+botonAceptar.grid(row=5, column=0, padx=50, pady=10, sticky="w")
+botonBorrar.grid(row=5, column=1, padx=50, pady=10, sticky="e")
 
 
 ventanaPrincipalDelUsuario.mainloop()
