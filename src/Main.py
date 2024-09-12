@@ -1,4 +1,6 @@
 from gestorAplicacion.administracionHospital.Hospital import Hospital
+from iuMain.funcionalidades.MenuFuncionalidades import MenuFuncionalidades
+
 
 def mostrarMenuInicial(hospital)
     while True:
@@ -9,8 +11,10 @@ def mostrarMenuInicial(hospital)
 
         opcionSeleccionada = int(input("Seleccione una opcion: "))
         if opcionSeleccionada == 1:
-            MenuFuncionalidades.
+            MenuFuncionalidades.menuFuncionalidades(hospital)
 
+        elif opcionSeleccionada == 2:
+            MenuGes
 
 
 
