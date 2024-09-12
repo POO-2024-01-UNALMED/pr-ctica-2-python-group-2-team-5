@@ -1,7 +1,4 @@
-from gestorAplicacion.administracionHospital.Hospital import Hospital
-from gestorAplicacion.personas.Paciente import Paciente
-
-
+from src.gestorAplicacion.personas.Paciente import Paciente
 
 
 class GestionPaciente:
@@ -35,7 +32,7 @@ class GestionPaciente:
             print("La EPS ingresada no es correcta")
             return
 
-        paciente = Paciente(cedula, nombre, eps)
+        paciente = Paciente(cedula, nombre, eps, categoriaHabitacion = None)
         hospital.getListaPacientes().append(paciente)
 
         print("El paciente ha sido registrado con Éxito, recuerde que la Historia Clínica se encuentra VACIA")
@@ -84,7 +81,7 @@ class GestionPaciente:
         for vacuna in paciente.getHistoriaClinica().getHistoriaVacunas():
             print(vacuna.getVacuna.getNombre())
 
-
+    def 
 
 
 
