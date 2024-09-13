@@ -1,4 +1,5 @@
 from tkinter import *  # ---> Importamos todo por ahora.
+from PIL import Image, ImageTk
 
 # Primeras pruebas interfaz gráfica python.
 
@@ -18,12 +19,26 @@ def descripcionSistema():
     global mensajeBienvenida
     mensajeBienvenida.config(text = "Puede pedir citas, generar fórmulas y reservar habitaciones...")
 
-#Evento para cambiar el texto en las hojas de vida, Frame P5.
+# Evento para cambiar el texto en las hojas de vida, Frame P5.
 
 def mostrarHV(event):
+    # Para mostrar las hojas de vida.
+
     global hojasDeVida, indice, descripcionDesarrollador
     descripcionDesarrollador.config(text = hojasDeVida[indice])
     indice = (indice + 1) % len(hojasDeVida)
+
+    # Para cambiar las imagenes del frameP6.
+
+    global img1, indiceImgs, labelImg1, labelImg2, labelImg3, labelImg4, listaImgs, nDimension, img1Tk
+    img1 = Image.open(listaImgs[indiceImgs])
+    nDimension = img1.resize((120, 160))
+    img1Tk = ImageTk.PhotoImage(nDimension)
+    labelImg1.config(image = img1Tk)
+    labelImg2.config(image = img1Tk)
+    labelImg3.config(image = img1Tk)
+    labelImg4.config(image = img1Tk)
+    indiceImgs = (indiceImgs + 1) % len(listaImgs)
 
 # --------------------------------------------------
 
@@ -59,13 +74,14 @@ frameP3.pack(fill = "both", padx = 10, pady = (10, 5))
 
 # Mensaje de bienvenida en el Frame 3.
 
-mensajeBienvenida = Label(frameP3, text = "Bienvenido al Sistema de Información Hospitalario!", wraplength = 250, font = ("Arial", 20))
+mensajeBienvenida = Label(frameP3, text = "Bienvenido al Sistema de Información Hospitalario!", wraplength = 250, font = ("Arial", 15))
 mensajeBienvenida.pack(expand = True, fill = "both")
 
 # Frame P4.
 
-frameP4 = Frame(frameP1, bg = "white")
-frameP4.pack(expand = True, fill = "both", padx = 10, pady = (5, 10))
+frameP4 = Frame(frameP1, bg = "white", height = 440)
+frameP4.pack_propagate(False)
+frameP4.pack(fill = "both", padx = 10, pady = (5, 10))
 
 # Frame P5.
 
@@ -90,8 +106,34 @@ descripcionDesarrollador.bind("<Button-1>", mostrarHV)
 
 # Frame P6.
 
-frameP6 = Frame(frameP2, bg = "white")
-frameP6.pack(expand = True, fill = "both", padx = 10, pady = (5, 10))
+frameP6 = Frame(frameP2, bg = "white", height = 440)
+frameP6.grid_propagate(False)
+frameP6.pack(fill = "both", padx = 10, pady = (5, 10))
+
+# Cargar la imagen para ubicar en el Frame P6.
+
+img1 = Image.open("imagenes/img1.jpg")
+nDimension = img1.resize((120, 160))
+img1Tk = ImageTk.PhotoImage(nDimension)
+
+# Lista imagenes para mostrar en el Frame P6.
+
+listaImgs = ["imagenes/img2.jpg", "imagenes/img3.jpg", "imagenes/img4.jpg", "imagenes/img5.jpg", "imagenes/img6.jpg", "imagenes/img7.jpg", "imagenes/img8.jpg"]
+indiceImgs = 0
+
+# Label para ubicar la imagem.
+
+labelImg1 = Label(frameP6, image = img1Tk, background = "blue")
+labelImg1.grid(row = 0, column = 0, padx = (5, 2), pady = (5, 2))
+
+labelImg2 = Label(frameP6, image = img1Tk, background = "blue")
+labelImg2.grid(row = 0, column = 1, padx = (2, 5), pady = (5, 2))
+
+labelImg3 = Label(frameP6, image = img1Tk, background = "blue")
+labelImg3.grid(row = 1, column = 0, padx = (5, 2), pady = (2, 5))
+
+labelImg4 = Label(frameP6, image = img1Tk, background = "blue")
+labelImg4.grid(row = 1, column = 1, padx = (2, 5), pady = (2, 5))
 
 # Método mainloop.
 
