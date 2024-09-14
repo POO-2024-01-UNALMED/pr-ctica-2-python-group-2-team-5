@@ -32,21 +32,21 @@ class HistoriaClinica:
         self.listaFormulas.append(formulaPaciente)
 
 
-    def enfermedades(self):
+    def getEnfermedades(self):
         return self.enfermedades
 
 
-    def getEnfermedades(self, value):
+    def setEnfermedades(self, value):
         self.enfermedades = value
 
 
-    def lista_formulas(self):
+    def getListaFormulas(self):
         return self.listaFormulas
 
 
-    def historial_citas(self):
+    def getHistorialCitas(self):
         return self.historialCitas
 
 
-    def historial_vacunas(self):
+    def getHistorialVacunas(self):
         return self.historialVacunas

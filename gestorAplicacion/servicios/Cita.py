@@ -11,7 +11,7 @@ class Cita(Servicio):
         self.fecha = fecha
 #metodos
         def validar_pago(self, paciente, id_servicio):
-            for cita in paciente.historia_clinica.historial_citas:
+            for cita in paciente.historia_clinica.getHistorialCitas:
                 if cita.id_servicio == id_servicio:
                     cita.estado_pago = True
 

@@ -44,16 +44,16 @@ class FormulaMedica:
         return paciente
 
     def selectDisease(self, paciente):
-        if not paciente.historiaClinica.getEnfermedades:
+        if not paciente.historiaClinica.setEnfermedades:
             print("No hay enfermedades registradas, por favor diríjase a la sección de registrar enfermedades.")
             return None
         while True:
             print("¿Qué enfermedad deseas tratar?")
-            for i, enfermedad in enumerate(paciente.historiaClinica.getEnfermedades):
+            for i, enfermedad in enumerate(paciente.historiaClinica.setEnfermedades):
                 print(f"{i + 1}. {enfermedad}")
             opcEnf = input()
-            if opcEnf.isdigit() and 0 < int(opcEnf) <= len(paciente.historiaClinica.getEnfermedades):
-                return paciente.historiaClinica.getEnfermedades[int(opcEnf) - 1]
+            if opcEnf.isdigit() and 0 < int(opcEnf) <= len(paciente.historiaClinica.setEnfermedades):
+                return paciente.historiaClinica.setEnfermedades[int(opcEnf) - 1]
             else:
                 print("Opción Inválida")
 

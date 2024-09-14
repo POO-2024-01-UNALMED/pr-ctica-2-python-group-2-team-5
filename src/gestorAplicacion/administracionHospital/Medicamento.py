@@ -11,11 +11,17 @@ class Medicamento:
         self.precio = precio
 
     #metodos
-
     def eliminarCantidad(self):
         self.cantidad -= 1
 
-    #setters y getters
+        # Muestra la informacion del medicamento sin la cantidad
+    def mostrar_info(self):
+        return f"Nombre: {self.nombre} | Trata la enfermedad: {self.enfermedad} | Descripcion: {self.descripcion} | Precio: {self.precio}"
+
+    def __str__(self):
+        return f"Nombre: {self.nombre} | Trata la enfermedad: {self.enfermedad} | Descripcion: {self.descripcion} | Precio: {self.precio} | Cantidad: {self.cantidad}"
+
+#setters y getters
     def setNombre(self, nombre):
         self.nombre = nombre
     
@@ -45,8 +51,3 @@ class Medicamento:
 
     def getPrecio(self):
         return self.precio
-    
-    #str
-    def __str__(self):
-
-        return f'Nombre: {self.nombre}\nEnfermedad: {self.enfermedad.nombre} {self.enfermedad.tipologia}\n Descripcion: {self.descripcion}'
