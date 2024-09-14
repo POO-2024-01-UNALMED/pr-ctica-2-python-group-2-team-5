@@ -11,7 +11,7 @@ ventanaInicio.geometry("600x600+400+40")
 
 #Cambiar el icono.
 
-ventanaInicio.wm_iconbitmap("imagenes/hospital-building.ico")
+#ventanaInicio.wm_iconbitmap("imagenes/hospital-building.ico")
 
 # ------------ EVENTOS (PRUEBAS) -------------------
 
