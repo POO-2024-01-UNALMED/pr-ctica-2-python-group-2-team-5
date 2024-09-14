@@ -19,26 +19,47 @@ def descripcionSistema():
     global mensajeBienvenida
     mensajeBienvenida.config(text = "Puede pedir citas, generar fórmulas y reservar habitaciones...")
 
+# Método para cargar las imagenes.
+
+def cargarImagen(ruta, tamaño = (120, 160)):
+    img1 = Image.open(ruta)
+    img1 = img1.resize(tamaño)
+    return ImageTk.PhotoImage(img1)
+
+def cargarImagenP4(ruta):
+    img1 = Image.open(ruta)
+    img1 = img1.resize(tamaño)
+    return ImageTk.PhotoImage(img1)
+
 # Evento para cambiar el texto en las hojas de vida, Frame P5.
 
 def mostrarHV(event):
     # Para mostrar las hojas de vida.
 
-    global hojasDeVida, indice, descripcionDesarrollador
-    descripcionDesarrollador.config(text = hojasDeVida[indice])
+    global hojasDeVida, indice, hvDesarrolladores
+    hvDesarrolladores.config(text = hojasDeVida[indice])
     indice = (indice + 1) % len(hojasDeVida)
 
     # Para cambiar las imagenes del frameP6.
 
-    global img1, indiceImgs, labelImg1, labelImg2, labelImg3, labelImg4, listaImgs, nDimension, img1Tk
-    img1 = Image.open(listaImgs[indiceImgs])
-    nDimension = img1.resize((120, 160))
-    img1Tk = ImageTk.PhotoImage(nDimension)
-    labelImg1.config(image = img1Tk)
-    labelImg2.config(image = img1Tk)
-    labelImg3.config(image = img1Tk)
-    labelImg4.config(image = img1Tk)
+    global indiceImgs, labelImg1, labelImg2, labelImg3, labelImg4, listaImgs
+    # Cambiar las imágenes de cada label independientemente
+    labelImg1.config(image=listaImgs[indiceImgs][0])
+    labelImg2.config(image=listaImgs[indiceImgs][1])
+    labelImg3.config(image=listaImgs[indiceImgs][2])
+    labelImg4.config(image=listaImgs[indiceImgs][3])
+
+    # Avanzar al siguiente conjunto de imágenes
     indiceImgs = (indiceImgs + 1) % len(listaImgs)
+
+def imagenesP4(event):
+    global imgsFunc, labelImgsFunc, indiceFunc
+    img1 = Image.open(imgsFunc[indiceFunc])
+    #img1 = img1.resize()
+    imgTk = ImageTk.PhotoImage(img1)
+    labelImgsFunc.config(image = imgTk)
+
+    print("Cambiando imgs")
 
 # --------------------------------------------------
 
@@ -83,6 +104,22 @@ frameP4 = Frame(frameP1, bg = "white", height = 440)
 frameP4.pack_propagate(False)
 frameP4.pack(fill = "both", padx = 10, pady = (5, 10))
 
+# Imagenes para ubicar en el Label del FrameP4.
+
+imgsFunc = ["imagenes/fun1.jpg",
+            "imagenes/fun2.jpg",
+            "imagenes/fun3.jpg",
+            "imagenes/fun4.jpg",
+            "imagenes/fun5.jpg"]
+
+indiceFunc = 0
+
+# Label para ubicar las imagenes relacionadas al sistema de hospital.
+
+labelImgsFunc = Label(frameP4, bg = "green")
+labelImgsFunc.pack(expand = True, fill = "both", padx = 5, pady = 5)
+labelImgsFunc.bind("<Enter>", imagenesP4)
+
 # Frame P5.
 
 frameP5 = Frame(frameP2, bg = "white", height = 200)
@@ -100,9 +137,9 @@ hojasDeVida = [
 ]
 indice = 0
 
-descripcionDesarrollador = Label(frameP5, text = "Click!", justify = "left")
-descripcionDesarrollador.pack(expand = True,fill = "both")
-descripcionDesarrollador.bind("<Button-1>", mostrarHV)
+hvDesarrolladores = Label(frameP5, text = "Click!", justify = "left")
+hvDesarrolladores.pack(expand = True,fill = "both")
+hvDesarrolladores.bind("<Button-1>", mostrarHV)
 
 # Frame P6.
 
@@ -118,7 +155,11 @@ img1Tk = ImageTk.PhotoImage(nDimension)
 
 # Lista imagenes para mostrar en el Frame P6.
 
-listaImgs = ["imagenes/img2.jpg", "imagenes/img3.jpg", "imagenes/img4.jpg", "imagenes/img5.jpg", "imagenes/img6.jpg", "imagenes/img7.jpg", "imagenes/img8.jpg"]
+listaImgs = [
+    [cargarImagen("imagenes/img2.jpg"), cargarImagen("imagenes/img3.jpg"), cargarImagen("imagenes/img4.jpg"), cargarImagen("imagenes/img5.jpg")],
+    [cargarImagen("imagenes/img6.jpg"), cargarImagen("imagenes/img7.jpg"), cargarImagen("imagenes/img8.jpg"), cargarImagen("imagenes/img1.jpg")]
+]
+
 indiceImgs = 0
 
 # Label para ubicar la imagem.
