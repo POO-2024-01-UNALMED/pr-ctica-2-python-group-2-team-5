@@ -13,7 +13,7 @@ ventanaInicio.geometry("600x600+400+40")
 
 #ventanaInicio.wm_iconbitmap("imagenes/hospital-building.ico")
 
-# ------------ EVENTOS (PRUEBAS) -------------------
+# ------------ EVENTOS -------------------
 
 # Eventos del menú, muestra la descripción del programa al dar click en descripcion sistema.
 
