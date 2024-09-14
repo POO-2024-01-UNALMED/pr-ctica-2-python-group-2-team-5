@@ -18,8 +18,8 @@ class HistoriaClinica:
     #Métodos.
 
     #Buscar doctores por especialidad.
-    def buscarCitaDoc(self, especialidad): #Hospital como parámetro?
-        doctoresDisp = Hospital.buscarTipoDoctor(especialidad)
+    def buscarCitaDoc(self, especialidad, hospital): #Hospital como parámetro?
+        doctoresDisp = hospital.buscarTipoDoctor(especialidad)
         docCita = []
         for doc in doctoresDisp:
             for cita in self.historialCitas:
@@ -31,30 +31,22 @@ class HistoriaClinica:
     def agregarFormula(self, formulaPaciente):
         self.listaFormulas.append(formulaPaciente)
 
-    #Setters y getters.
-    def getPaciente(self):
-        return self.paciente
 
-    def getHistorialCitas(self):
-        return self.historialCitas
-
-    def setHistorialCitas(self, historialCitas):
-        self.historialCitas = historialCitas
-
-    def getListaFormulas(self):
-        return self.listaFormulas
-
-    def setListaFormulas(self, listaFormulas):
-        self.listaFormulas = listaFormulas
-
-    def getHistorialVacunas(self):
-        return self.historialVacunas
-
-    def setHistorialVacunas(self, historialVacunas):
-        self.historialVacunas = historialVacunas
-
-    def getEnfermedades(self):
+    def enfermedades(self):
         return self.enfermedades
 
-    def setEnfermedades(self, enfermedades):
-        self.enfermedades = enfermedades
+
+    def getEnfermedades(self, value):
+        self.enfermedades = value
+
+
+    def lista_formulas(self):
+        return self.listaFormulas
+
+
+    def historial_citas(self):
+        return self.historialCitas
+
+
+    def historial_vacunas(self):
+        return self.historialVacunas

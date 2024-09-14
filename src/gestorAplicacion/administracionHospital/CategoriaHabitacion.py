@@ -8,3 +8,9 @@ class CategoriaHabitacion(Enum):
     OBSERVACION = 500000
     UCI = 1300000
     UCC = 1500000
+
+    def __init__(self, valor):
+        self.valor = valor
+
+    def getValor(self):
+        return self.valor
