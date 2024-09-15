@@ -1,12 +1,13 @@
-
-from gestorAplicacion.administracionHospital import *
-from gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
-from gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
-from gestorAplicacion.administracionHospital.HistoriaClinica import HistoriaClinica
-from gestorAplicacion.administracionHospital.Hospital import Hospital
-from gestorAplicacion.administracionHospital.Pago import Pago
-from gestorAplicacion.servicios import *
-from gestorAplicacion.personas import Persona
+from gestorAplicacion.servicios.Cita import Cita
+from src.gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
+from src.gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
+from src.gestorAplicacion.administracionHospital.HistoriaClinica import HistoriaClinica
+from src.gestorAplicacion.administracionHospital.Hospital import Hospital
+from src.gestorAplicacion.administracionHospital.Pago import Pago
+from src.gestorAplicacion.personas.Persona import Persona
+from src.gestorAplicacion.servicios.CitaVacuna import CitaVacuna
+from src.gestorAplicacion.servicios.Formula import Formula
+from src.gestorAplicacion.servicios.Habitacion import Habitacion
 
 
 class Paciente(Persona, Pago):
