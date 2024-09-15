@@ -2,9 +2,9 @@ from gestorAplicacion.administracionHospital.Hospital import Hospital
 from gestorAplicacion.personas.Doctor import Doctor
 
 
-class gestionDoctores:
 
-    @staticmethod
+
+
     def registrar_doctor(hospital):
         print("Por favor introduce la información del doctor para su registro")
         nombre = input("Ingrese el nombre del doctor: ")
@@ -21,7 +21,7 @@ class gestionDoctores:
         hospital.doctores.append(doctor)
         print(doctor)
 
-    @staticmethod
+
     def agregar_cita(hospital):
         cedula = int(input("Ingrese la cédula del doctor: "))
         doctor = hospital.buscar_doctor(cedula)

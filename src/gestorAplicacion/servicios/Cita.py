@@ -6,7 +6,7 @@ from src.gestorAplicacion.servicios.Servicio import Servicio
 class Cita(Servicio):
     #inicializador y atributos
     def __init__(self, paciente, doctor, fecha):
-        super().__init__(paciente)
+        super.__init__(paciente)
         self.doctor = doctor
         self.fecha = fecha
 #metodos
