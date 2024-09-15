@@ -1,5 +1,5 @@
-from gestorAplicacion.personas import Doctor
-from gestorAplicacion.servicios import Servicio
+from src.gestorAplicacion.servicios.Servicio import Servicio
+
 
 #Elaborado por Jeronimo
 

@@ -1,11 +1,8 @@
 from gestorAplicacion.servicios.Cita import Cita
 from src.gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
 from src.gestorAplicacion.administracionHospital.HistoriaClinica import HistoriaClinica
-from src.gestorAplicacion.administracionHospital.Hospital import Hospital
 from src.gestorAplicacion.administracionHospital.Pago import Pago
 from src.gestorAplicacion.personas.Persona import Persona
-from src.gestorAplicacion.servicios.CitaVacuna import CitaVacuna
-from src.gestorAplicacion.servicios.Formula import Formula
 from src.gestorAplicacion.servicios.Habitacion import Habitacion
 
 
@@ -32,28 +29,36 @@ class Paciente(Persona, Pago):
 
     def buscarDoctorEps(self, especialidad , hospital):
         doctoresPorEspecialidad = hospital.buscarTipoDoctor(especialidad)
-        doctoresDisponibles = [doctor for doctor in doctoresPorEspecialidad if doctor.tipoEps == self.tipoEps]
-        return doctoresDisponibles
+        doctoresDisponibles = []
 
-    def actualizarHistorialCitas(self, citaAsignada: Cita):
+        for doctor in doctoresPorEspecialidad:
+            if  doctor.tipoEps == self.tipoEps:
+                doctoresDisponibles.append(doctor)
+        if len(doctoresDisponibles) != 0:
+            return doctoresDisponibles
+        else:
+            pass # Todo: Hacer las excepciones aca
+
+    def buscarVacunaEps(self, tipo, hospital):
+        vacunasPorTipo = hospital.buscarTipoVacuna(tipo)
+        vacunasDisponibles = []
+
+        for vacuna in vacunasPorTipo:
+            for eps in vacuna.tipoEps:
+                if eps == self.tipoEps:
+                    vacunasDisponibles.append(vacuna)
+        return vacunasDisponibles
+
+
+    def actualizarHistorialCitas(self, citaAsignada):
         self.historiaClinica.historialCitas.append(citaAsignada)
 
-    def buscarVacunaPorEps(self, tipo: str, hospital: Hospital):
-        vacunasPorTipo = hospital.buscarTipoVacuna(tipo)
-        vacunasDisponibles = [vacuna for vacuna in vacunasPorTipo if self.tipoEps in vacuna.tipoEps]
-        return vacunasDisponibles
 
     def mensajeDoctor(self, doctor: Persona):
         return f"{doctor.bienvenida()}\nPor favor selecciona los medicamentos que vas a formularle a: {self.nombre}"
 
-    def actualizarHistorialVacunas(self, citaAsignada: CitaVacuna):
+    def actualizarHistorialVacunas(self, citaAsignada):
         self.historiaClinica.historialVacunas.append(citaAsignada)
-
-
-
-
-
-        
     def __str__(self):
         return f"---------------------------\nNombre: {self.nombre}\nCédula: {self.cedula}\nTipo de EPS: {self.tipoEps}\n---------------------------"
 
@@ -75,7 +80,7 @@ class Paciente(Persona, Pago):
         return self.categoriaHabitacion
     
     def getHabitacion(self):
-        return self.habitacion
+        return self.habitacionAsignada
     
     def setCategoriaHabitacion(self, habitacion: CategoriaHabitacion):
         self.categoriaHabitacion = habitacion

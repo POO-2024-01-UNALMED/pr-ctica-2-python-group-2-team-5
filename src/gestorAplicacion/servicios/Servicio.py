@@ -1,7 +1,5 @@
-#Importar lo necesario...
 from abc import ABC, abstractmethod
-from gestorAplicacion.personas import Paciente
-from gestorAplicacion.administracionHospital import HistoriaClinica
+
 
 #Clase abstracta Servicio que sirve de referencia para los demás servicios en el hospital
 class Servicio(ABC):
@@ -10,10 +8,11 @@ class Servicio(ABC):
 
     #Inicializador.
     def __init__(self, paciente):
+        self.idServicio = Servicio.generadorID
+        Servicio.generadorID += 1
         self.paciente = paciente
-        self.idServicio = Servicio.generadorID + 1
         self.estadoPago = False
-
+        
     #Métodos.
 
     #Métodos abstractos a implementar por las subclases.

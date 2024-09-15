@@ -7,7 +7,7 @@ class CitaVacuna(Cita):
     #Atributos e inicializador
 
     def __init__(self, fecha, paciente, vacuna):
-        super().__init__(None, fecha, paciente)# El primer argumento de super() se omite al no ser necesario
+        super().__init__(None, None, None)
         self.vacuna = vacuna
 
     def validarPago(self, paciente, idServicio):

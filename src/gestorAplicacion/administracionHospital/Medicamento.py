@@ -3,7 +3,7 @@
 
 class Medicamento:
 #inicializador y atributos
-    def __init__(self, nombre, enfermedad, descripcion, cantidad, precio):
+    def __init__(self, nombre, descripcion, enfermedad, cantidad, precio):
         self.nombre = nombre
         self.enfermedad = enfermedad
         self.descripcion = descripcion
