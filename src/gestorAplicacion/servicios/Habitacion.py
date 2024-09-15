@@ -1,4 +1,4 @@
-from symbol import return_stmt
+
 
 from src.gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
 from src.gestorAplicacion.administracionHospital.Hospital import Hospital
@@ -7,6 +7,7 @@ from src.gestorAplicacion.servicios.Servicio import Servicio
 
 #Clase Habitacion, que permite la revisión de disponibilidad de habitaciones y separación por categorías
 class Habitacion(Servicio):
+
     #Inicializador.
     def __init__(self, numero, categoria, ocupada, paciente, dias):
         super().__init__(paciente)

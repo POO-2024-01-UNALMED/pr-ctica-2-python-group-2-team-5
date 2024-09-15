@@ -9,7 +9,7 @@ from gestorAplicacion.servicios import Cita, CitaVacuna,Formula
 class HistoriaClinica:
     #Inicializador.
     def __init__(self, paciente: Paciente):
-        self.paciente = paciente
+        self.PACIENTE = paciente
         self.historialCitas = []
         self.listaFormulas = []
         self.historialVacunas = []

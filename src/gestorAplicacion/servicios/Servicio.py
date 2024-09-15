@@ -8,7 +8,7 @@ class Servicio(ABC):
 
     #Inicializador.
     def __init__(self, paciente):
-        self.idServicio = Servicio.generadorID
+        self.IDSERVICIO = Servicio.generadorID
         Servicio.generadorID += 1
         self.paciente = paciente
         self.estadoPago = False
@@ -51,7 +51,7 @@ class Servicio(ABC):
         self.paciente = paciente
 
     def getIdServicio(self):
-        return self.idServicio
+        return self.IDSERVICIO
 
     def isEstadoPago(self):
         return self.estadoPago

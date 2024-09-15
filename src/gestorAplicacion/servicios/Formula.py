@@ -3,6 +3,7 @@ from src.gestorAplicacion.servicios.Servicio import Servicio
 
 #Clase Formula, permite recetanle los medicamentos necesarios a los pácientes según sus enfermedades a tratar.
 class Formula(Servicio):
+
     #Inicializador.
     def __init__(self,paciente):
         super().__init__(paciente)

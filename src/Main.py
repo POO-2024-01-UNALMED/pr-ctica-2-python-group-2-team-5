@@ -18,10 +18,6 @@ def mostrarMenuInicial(hospital):
             MenuGestion.menuGestion(hospital)
 
 
-
-
-
-
 if __name__ == '__main__':
     hospital = Hospital()
     mostrarMenuInicial(hospital)

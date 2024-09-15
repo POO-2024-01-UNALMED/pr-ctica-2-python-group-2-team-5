@@ -81,7 +81,7 @@ class GestionPaciente:
         for vacuna in paciente.getHistoriaClinica().getHistoriaVacunas():
             print(vacuna.getVacuna.getNombre())
 
-    def 
+
 
 
 

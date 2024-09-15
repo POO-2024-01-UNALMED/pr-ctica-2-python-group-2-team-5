@@ -14,3 +14,4 @@ class CategoriaHabitacion(Enum):
 
     def getValor(self):
         return self.valor
+

@@ -1,4 +1,4 @@
-#Clase Hospital que lleva el registro general de servicios y personas.
+# Clase Hospital que lleva el registro general de servicios y personas.
 from src.baseDatos.Serializador import Serializador
 
 

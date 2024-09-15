@@ -13,7 +13,7 @@ class Paciente(Persona, Pago):
     def __init__(self, cedula, nombre, tipoEps):
         super().__init__(cedula, nombre, tipoEps)
         self.habitacionAsignada = None
-        self.historiaClinica = HistoriaClinica(self)
+        self.HISTORIACLINICA = HistoriaClinica(self)
 
 
 
@@ -61,13 +61,6 @@ class Paciente(Persona, Pago):
         self.historiaClinica.historialVacunas.append(citaAsignada)
     def __str__(self):
         return f"---------------------------\nNombre: {self.nombre}\nCédula: {self.cedula}\nTipo de EPS: {self.tipoEps}\n---------------------------"
-
-
-
-
-
-
-
 
     def despedida(self, citaAsignada: Cita):
         return f"¡Adiós {self.nombre}! {citaAsignada.mensaje()}"
