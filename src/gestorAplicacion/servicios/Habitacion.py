@@ -83,3 +83,9 @@ class Habitacion(Servicio):
 
     def setDias(self, dias):
         self.dias = dias
+
+    def getPaciente(self):
+        return self.paciente
+
+    def setPaciente(self, paciente):
+        self.paciente = paciente

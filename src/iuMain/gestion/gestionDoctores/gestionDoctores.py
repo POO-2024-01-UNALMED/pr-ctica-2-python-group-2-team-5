@@ -1,17 +1,64 @@
+from tkinter import messagebox
+import tkinter as tk
+
+
 from gestorAplicacion.administracionHospital.Hospital import Hospital
 from gestorAplicacion.personas.Doctor import Doctor
 
+def imprimirTitulo(frame):
 
-class gestionDoctores:
+    for item in frame.winfo_children():
+        item.destroy()
 
-    @staticmethod
-    def registrar_doctor(hospital):
-        print("Por favor introduce la información del doctor para su registro")
-        nombre = input("Ingrese el nombre del doctor: ")
-        id = int(input("Ingrese el número de cédula: "))
-        if hospital.buscar_doctor(id) is not None:
-            print("Este doctor ya esta registrado")
-            return
+    titulo = tk.label(frame, text="Agregar Cita", bg = "White", font = ("Helvetica", 20, "bold"))
+    titulo.pack(pady = 20)
+
+def agregarCita(hospital, frame):
+    def verCitaDoctor(doctor):
+
+        imprimirTitulo(frame)
+
+
+        infoDoctor = tk.label(frame, text= f"Citas en la agenda de {doctor.nombre} - CC {doctor.cedula}", bg = "White", font = ("Helvetica", 12, "bold"))
+        infoDoctor.pack(pady = 10)
+
+        agendaText = tk.Text(frame, bg = "white" , font = ("Helvetica", 14))
+        agendaText.pack(fill = tk.BOTH, expand = True)
+
+
+        for cita in doctor.agendaDoctor:
+            fecha = cita.fecha
+
+            textoAgenda = f"Fecha: {fecha} \n \n"
+
+            agendaText.insert(tk.END, textoAgenda)
+
+
+        agendaText.config(padx = 30)
+        agendaText.config(highlightbackground="#4D5BE4", highlightthickness=5)
+        agendaText.config(state="disabled")
+
+
+        botonRegresar = tk.Button(frame, text="Regresar", command= lambda: implementacionDefault(frame))
+        botonRegresar.pack()
+
+    def agregarFechaCita(doctor):
+        def confirmarCita():
+            respuesta = tk.messagebox.askyesno("Confirmar cita", "¿Esta seguro de agregar esta cita?")
+            if respuesta:
+                fecha = str(fp2.)
+
+
+
+
+
+def registrar_doctor(hospital):
+    print("Por favor introduce la información del doctor para su registro")
+    nombre = input("Ingrese el nombre del doctor: ")
+    id = int(input("Ingrese el número de cédula: "))
+    if hospital.buscar_doctor(id) is not None:
+        print("Este doctor ya esta registrado")
+        return
 
         eps = input("Ingrese su tipo de EPS 'Subsidiado','Contributivo' o 'Particular': ")
         especialidad = input("Ingrese su especialidad 'General', 'Odontologia' o 'Oftalmologia': ")
@@ -21,7 +68,7 @@ class gestionDoctores:
         hospital.doctores.append(doctor)
         print(doctor)
 
-    @staticmethod
+
     def agregar_cita(hospital):
         cedula = int(input("Ingrese la cédula del doctor: "))
         doctor = hospital.buscar_doctor(cedula)
