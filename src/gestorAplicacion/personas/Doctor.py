@@ -1,38 +1,42 @@
-from gestorAplicacion.servicios import Cita
-from gestorAplicacion.personas.Persona import Persona
+from gestorAplicacion.servicios.Cita import Cita
+from src.gestorAplicacion.personas.Persona import Persona
+
 
 class Doctor(Persona):
     
     # Constructor
-    def __init__(self, cedula: int, nombre: str, tipoEps: str, especialidad: str):
+    def __init__(self, cedula, nombre, tipoEps, especialidad):
         super().__init__(cedula, nombre, tipoEps)
-        self.cedula = cedula
-        self.nombre = nombre
-        self.tipoEps = tipoEps
         self.especialidad = especialidad
         self.agendaDoctor = [
             Cita(self, "3 de Noviembre, 8:00 am", None),
-            Cita(self, "4 de Noviembre, 3:00 pm", None),
-            Cita(self, "5 de Noviembre, 10:00 am", None)
+            Cita(self, "4 de Noviembre, 10:00 am", None),
+            Cita(self, "5 de Noviembre, 12:00 m", None),
+            Cita(self, "5 de Noviembre, 3:00 pm", None)
         ]
 
     # Muestra la agenda disponible de un doctor (citas que no tienen paciente asignado)
     def mostrarAgendaDisponible(self):
-        agendaDisponible = [cita for cita in self.agendaDoctor if cita.paciente is None]
-        return agendaDisponible
+        agendaDisponible = []
+
+        for cita in self.getAgendaDoctor():
+            if cita.paciente is None:
+                agendaDisponible.append(cita)
+        if len(agendaDisponible) != 0:
+            return agendaDisponible
+        else:
+            pass # Todo: Hacer la excepcion aca
+
 
     # Metodo que asigna el paciente a una determinada cita de un doctor
-    def actualizarAgenda(self, pacienteAsignado, numeroCita: int, agendaDisponible):
-        if numeroCita <= 0 or numeroCita > len(agendaDisponible):
-            return None  # por si se equivocan y escriben un numero demasiado grande
-        citaAsignada = None
-        for cita in self.agendaDoctor:
+    def actualizarAgenda(self, pacienteAsignado, numeroCita, agendaDisponible):
+        citaSeleccionada = None
+
+        for cita in self.getAgendaDoctor():
             if cita.fecha == agendaDisponible[numeroCita - 1].fecha:
                 cita.paciente = pacienteAsignado
-                citaAsignada = cita
-                break  
-
-        return citaAsignada
+                citaSeleccionada = cita
+            return citaSeleccionada
 
     # Metodo para dar la bienvenida
     def bienvenida(self):
@@ -54,4 +58,5 @@ class Doctor(Persona):
 
     def setAgendaDoctor(self, agenda):
         self.agendaDoctor = agenda
+
 

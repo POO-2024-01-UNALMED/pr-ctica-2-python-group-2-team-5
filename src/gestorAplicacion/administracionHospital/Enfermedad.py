@@ -5,7 +5,7 @@ class Enfermedad:
     enfermedadesRegistradas = []
 
     #Inicializador.
-    def __init__(self, especialidad, nombre, tipologia):
+    def __init__(self, nombre, tipologia, especialidad):
         self.especialidad = especialidad
         self.nombre = nombre
         self.tipologia = tipologia

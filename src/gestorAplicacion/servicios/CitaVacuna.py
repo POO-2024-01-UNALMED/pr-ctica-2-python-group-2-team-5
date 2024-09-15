@@ -1,12 +1,12 @@
-from gestorAplicacion.administracionHospital import Vacuna
-from gestorAplicacion.personas import Paciente
-from gestorAplicacion import Cita
+from gestorAplicacion.servicios.Cita import Cita
+
+
 #Elaborado por Jerónimo
 
 class CitaVacuna(Cita):
     #Atributos e inicializador
 
-    def __init__(self, fecha: str, paciente, vacuna):
+    def __init__(self, fecha, paciente, vacuna):
         super().__init__(None, fecha, paciente)# El primer argumento de super() se omite al no ser necesario
         self.vacuna = vacuna
 
@@ -14,12 +14,10 @@ class CitaVacuna(Cita):
         for citaVacuna in paciente.historiaClinica.historialVacunas:
             if citaVacuna.idServicio == idServicio:
                 citaVacuna.estadoPago = True
+                break
 
     def descripcionServicio(self):
         return f"{self.idServicio} - Vacuna: {self.vacuna.nombre} ({self.fecha})"
-    
-    def mensaje(self):
-        return "del servicio de vacunas"
 
 
     #setters y getters
