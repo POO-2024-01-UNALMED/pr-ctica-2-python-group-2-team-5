@@ -25,22 +25,23 @@ class Servicio(ABC):
         pass
 
     #Método para realizar una busqueda de los servicios sin pagar por el paciente.
+
     @classmethod
     def obtenerServiciosSinPagar(cls, paciente):
-        historiaClinicaPaciente = paciente.getHistoriaClinica()
-        listaServicios = []
+        historiaClinicaPaciente = paciente.historiaClinica
+        listaServiciosSinPagar = []
 
-        listaServicios.extend(historiaClinicaPaciente.getHistorialCitas())
-        listaServicios.extend(historiaClinicaPaciente.getListaFormulas())
+        listaServiciosSinPagar.extend(historiaClinicaPaciente.historialCitas)
+        listaServiciosSinPagar.extend(historiaClinicaPaciente.listaFormulas)
         if paciente.getHabitacionAsignada() != None:
-            listaServicios.append(paciente.getHabitacionAsignada())
-        listaServicios.extend(historiaClinicaPaciente.getHistorialVacunas())
+            listaServiciosSinPagar.append(paciente.habitacionAsignada)
+        listaServiciosSinPagar.extend(historiaClinicaPaciente.historialVacunas)
 
-        for servicio in listaServicios:
-            if servicio.isEstadoPago():
-                listaServicios.remove(servicio)
+        for servicio in listaServiciosSinPagar:
+            if servicio.isEstadoPago() == True:
+                listaServiciosSinPagar.remove(servicio)
 
-        return listaServicios
+        return listaServiciosSinPagar
 
     #Setters y getters
     def getPaciente(self):

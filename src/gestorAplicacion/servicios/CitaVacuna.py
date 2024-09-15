@@ -5,9 +5,8 @@ from gestorAplicacion.servicios.Cita import Cita
 
 class CitaVacuna(Cita):
     #Atributos e inicializador
-
-    def __init__(self, fecha, paciente, vacuna):
-        super().__init__(None, None, None)
+    def  __init__(self, fecha, paciente, vacuna):
+        super().__init__(paciente, None , fecha)
         self.vacuna = vacuna
 
     def validarPago(self, paciente, idServicio):

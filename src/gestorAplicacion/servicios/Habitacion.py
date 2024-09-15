@@ -1,8 +1,8 @@
+from symbol import return_stmt
 
-from gestorAplicacion.servicios import Servicio
-from gestorAplicacion.administracionHospital import CategoriaHabitacion, Hospital
-from gestorAplicacion.personas import Paciente
-
+from src.gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
+from src.gestorAplicacion.administracionHospital.Hospital import Hospital
+from src.gestorAplicacion.servicios.Servicio import Servicio
 
 
 #Clase Habitacion, que permite la revisión de disponibilidad de habitaciones y separación por categorías
@@ -36,9 +36,19 @@ class Habitacion(Servicio):
 
     #Método para asignar la categoría de la haitación a reservar.
     @classmethod
-    def BuscarOtraCategoria(cls, categoria): #Terminar método
+    def BuscarOtraCategoria(cls, categoria):
         if categoria == "UCC":
-            return CategoriaHabitacion.UCC
+            return CategoriaHabitacion.UCI
+        elif categoria == "UCI":
+            return CategoriaHabitacion.OBSERVACION
+        elif categoria == "OBSERVACION":
+            return CategoriaHabitacion.DOBLE
+        elif categoria == "DOBLE":
+            return CategoriaHabitacion.INDIVIDUAL
+        elif categoria == "INDIVIDUAL":
+            return CategoriaHabitacion.CAMILLA
+        else:
+            return None
 
     #Métodos implementados de la clase Servicio.
     def validarPago(self, paciente, idServicio):

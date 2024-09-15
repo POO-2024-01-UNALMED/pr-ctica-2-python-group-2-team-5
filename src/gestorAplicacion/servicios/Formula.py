@@ -1,20 +1,14 @@
-from gestorAplicacion.personas import Paciente, Doctor
-from gestorAplicacion.administracionHospital import Medicamento
-from gestorAplicacion.servicios import Servicio
+from src.gestorAplicacion.servicios.Servicio import Servicio
 
 
 #Clase Formula, permite recetanle los medicamentos necesarios a los pácientes según sus enfermedades a tratar.
 class Formula(Servicio):
     #Inicializador.
-    def __init__(self, listaMedicamentos, doctor, paciente):
+    def __init__(self,paciente):
         super().__init__(paciente)
-        self.listaMedicamentos = listaMedicamentos
-        self.doctor = doctor
-        
+        self.listaMedicamentos = []
+        self.doctor = None
 
-    #Sobrecarga de constructor. Terminar
-    #def __int__(self):
-    #    pass
 
     #Métodos.
 
@@ -23,6 +17,7 @@ class Formula(Servicio):
         for formula in paciente.getHistoriaClinica().getListaFormulas():
             if formula.getIdServicio() == idServicio:
                 formula.setEstadoPago(True)
+                break
 
     def descripcionServicio(self):
         return f"{self.idServicio} - Fórmula prescrita por: {self.doctor.getNombre()}"
