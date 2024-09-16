@@ -1,14 +1,57 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
-from PIL._tkinter_finder import tk
-
 from src.iuMain.funcionalidades import AgendarCita, AsignarHabitacion, FormulaMedica, Vacunacion, Facturacion
 from src.iuMain.gestion.gestionHospital import verDoctores, verPacientes, verMedicamentos, verVacunas, destruirHabitacion, agregarMedicamentos, construirHabitacion
 from src.iuMain.gestion.gestionDoctores import *
 from src.iuMain.gestion.gestionPacientes import *
 from src.iuMain.gestion.gestionVacunas import *
 
+def cambiarContenido(opcion, Hospital, frame_implementacion):
+    #limpiar el frame
+    for widget in frame_implementacion.winfo_children():
+        widget.destroy()
+    
+    #Opciones del menu
+    opciones = { 
+        "Cita": AgendarCita.agendar_citas,
+        "Habitacion": AsignarHabitacion.AsignarHabitacion,
+        "Vacuna": Vacunacion.Vacunacion,
+        "Facturacion": Facturacion.Facturacion,
+        "Formula Medica": FormulaMedica.FormulaMedica,
+
+        #gestion hospital
+        "Ver Doctores": verDoctores.verDoctores,
+        "Ver Pacientes": verPacientes.verPacientes,
+        "Ver Medicamentos": verMedicamentos.verMedicamentos,
+        "Ver Vacunas": verVacunas.verVacunas,
+        "Destruir Habitacion": destruirHabitacion.destruirHabitacion,
+        "Agregar Medicamentos": agregarMedicamentos.agregarMedicamento,
+        "Construir Habitacion": construirHabitacion.construirHabitacion,
+
+        
+        #gestion vacunas
+        #"Agregar Vacuna": agregarVacuna.agregar_vacuna,
+        #"Eliminar Vacuna": eliminarVacuna.eliminar_vacuna,
+        #"Ver Vacuna": verVacunas.verVacunas,
+        #"Agregar Cita Vacuna": agregarCitaVacuna.agregarCitaVacuna,
+
+        #gestion Doctores
+        #"Agregar Doctor": agregarDoctor.agregarDoctor,
+        #"Eliminar Doctor": eliminarDoctor.eliminarDoctor,
+        #"Ver Doctor": verDoctores.ver_doctores,
+        #"Agregar Cita Doctor": agregarCitaDoctor.agregarCitaDoctor,
+
+        #gestion pacientes
+        #"Agregar Paciente": agregarPaciente.agregarPaciente,
+        #"Eliminar Paciente": eliminarPaciente.eliminarPaciente,
+        #"registrar Enfermedad": registrarEnfermedad.registrarEnmfermedad,
+    
+    }
+
+    #cambiar el contenido del frame
+    if opcion in opciones:
+        opciones[opcion](Hospital, frame_implementacion)
 
 def implementacionDefault(frame_implementacion):
     # Limpia el frame
@@ -31,40 +74,15 @@ def implementacionDefault(frame_implementacion):
     Seleccione una opcion para continuar
     """
 
-    label_inicial = tk.Label(frame_implementacion, text=texto_inicial, bg="white", font=("Helvetica", 14, "bold"))
+    label_inicial = Label(frame_implementacion, text=texto_inicial, bg="white", font=("Helvetica", 14, "bold"))
     label_inicial.pack()
-    label_inicial.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+    label_inicial.place(relx=0.5, rely=0.5, anchor=CENTER)
 
-
-
-def cambiarContenido(opcion, Hospital, frame_implementacion):
-    #limpiar el frame
-    for widget in frame_implementacion.winfo_children():
-        widget.destroy()
-    
-    #Opciones del menu
-    opciones = { "cita": AgendarCita.agendar_citas, "habitacion": AsignarHabitacion.AsignarHabiatcion}
+                
 
 # Ventana Principal
 
 def abrirVentanaPrincipal(Hospital):
-    global ventanaPrincipalDelUsuario
-    ventanaPrincipalDelUsuario = Toplevel()
-    ventanaPrincipalDelUsuario.title("Ventana Principal del Usuario")
-    ventanaPrincipalDelUsuario.geometry("600x500+400+90")
-
-    ################## ZONA O ##################
-
-
-    titulo = Label(ventanaPrincipalDelUsuario, text="HOSPITAL ANDINO", font=("Arial", 16))
-    titulo.pack(padx = 10, pady = 10)
-
-    ################## ZONA 1 ##################
-
-    #Frame para los menus
-    menuFrame = Frame(ventanaPrincipalDelUsuario, bd=2, relief="ridge")
-    menuFrame.pack(padx=10, pady=10)
-
 
     class FieldFrame(Frame):
         def __init__(self, parent, tituloCriterios, criterios, tituloValores, valores=None, habilitado=None):
@@ -120,49 +138,29 @@ def abrirVentanaPrincipal(Hospital):
 
 
 
-    def salir():
-        pass
-
-
-
     #Método para mostrar los nombres de los autores de la aplicación.
     def acercaDe():
         messagebox.showinfo("Acerca de la aplicación.", "Los autores de la aplicación son:\nJeronimo Zapata.\nJuan Pablo Vergara.\nHernando Montes.\nManuel Mera.\nSamuel Ramírez.")
 
-    #Eventos menu Procesos y Consultas
-    def actualizarFormulario():
-        pass
-
-    def asignarCita():
-        pass
 
 
-    def implementacionDefault(frame_implementacion):
-        # Limpia el frame
-        for widget in frame_implementacion.winfo_children():
-            widget.destroy()
 
-        # Ejecuta la implementacion por defecto
-        texto_inicial = """
-        Te encuentras en la ventana principal de la aplicación
-    
-        Tienes varias opciones:
-    
-        Archivo > Aplicacion: Muestra una descripcion de la aplicación
-        Archivo > Salir: Regresa a la ventana inicial
-    
-        Procesos y consultas: Acá estan todos los servicios que permite gestionar la aplicación
-    
-        Ayuda > Acerca de: Muestra los creadores de la aplicación
-    
-        Seleccione una opcion para continuar
-        """
+    global ventanaPrincipalDelUsuario
+    ventanaPrincipalDelUsuario = Toplevel()
+    ventanaPrincipalDelUsuario.title("Ventana Principal del Usuario")
+    ventanaPrincipalDelUsuario.geometry("600x500+400+90")
 
-        label_inicial = Label(frame_implementacion, text=texto_inicial, bg="white", font=("Helvetica", 14, "bold"))
-        label_inicial.pack()
-        label_inicial.place(relx=0.5, rely=0.5, anchor=CENTER)
+    ################## ZONA O ##################
 
 
+    titulo = Label(ventanaPrincipalDelUsuario, text="HOSPITAL ANDINO", font=("Arial", 16))
+    titulo.pack(padx = 10, pady = 10)
+
+    ################## ZONA 1 ##################
+
+    #Frame para los menus
+    menuFrame = Frame(ventanaPrincipalDelUsuario, bd=2, relief="ridge")
+    menuFrame.pack(padx=10, pady=10)
 
 
     # Frame adicional para la zona 1.
@@ -187,7 +185,7 @@ def abrirVentanaPrincipal(Hospital):
     menuProcesosConsultas.pack(side = "left", padx = (0, 2))
 
     procesosMenu = Menu(menuProcesosConsultas, tearoff=0)
-    procesosMenu.add_command(label="1. Agendar Citas", command=asignarCita)
+    procesosMenu.add_command(label="1. Agendar Citas", command=lambda: cambiarContenido("cita", Hospital, frame_implementacion))
     procesosMenu.add_command(label="2. Fórmula Médica")
     procesosMenu.add_command(label="3. Asignar Habitación")
     procesosMenu.add_command(label="4. Vacunación")
@@ -234,6 +232,12 @@ def abrirVentanaPrincipal(Hospital):
     botonBorrar = Button(frameBotones, text="Borrar")
     botonAceptar.pack(padx = 10, pady = 10, side = "left")
     botonBorrar.pack(padx = 10, pady = 10, side = "left")
+
+    frame_implementacion = Frame(ventanaPrincipalDelUsuario)
+    frame_implementacion.pack(side = "bottom", fill = "both", expand = True)
+    frame_implementacion.configure(bg= "white")
+
+    implementacionDefault(frame_implementacion)
 
 
 
