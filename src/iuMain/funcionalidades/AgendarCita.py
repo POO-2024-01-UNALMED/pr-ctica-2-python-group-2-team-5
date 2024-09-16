@@ -1,205 +1,205 @@
-from PIL._tkinter_finder import tk
+from tkinter import *
+from tkinter import ttk, messagebox
+from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio, SinDoctores, SinAgenda
+#from src.iuMain.gestion.FieldFrame import FieldFrame
 
-
-def imprimir_titulo(frame):
-    # Limpia el frame
+# Mostrar el titulo de la funcionalidad.
+def mostarTitulo(frame):
+    # Limpiar el Frame.
     for item in frame.winfo_children():
         item.destroy()
 
-    # Imprime el titulo
-    titulo = tk.Label(frame, text="Agendar citas", bg="white", font=("Helvetica", 16, "bold"))
-    titulo.pack(pady=20)
-    
-def agendar_citas(hospital, frame):
+        # Imprime el titulo
+        titulo = Label(frame, text="Agendar citas", bg="white", font=("Arial", 16))
+        titulo.pack(padx = 10, pady=10)
 
-    # Cuando se confirma la cita, se muestra el historial de todas las citas del paciente
-    def mostrar_historial_citas(paciente):
-        imprimir_titulo(frame)
-        info_historial = tk.Label(frame, text=f"Historial de citas de {paciente.nombre} - CC: {paciente.cedula}",
-                                  bg="white",font=("Helvetica", 12))
-        info_historial.pack(pady=10)
+def agendarCitas(hospital, frame):
 
-        historial_citas_text = tk.Text(frame, bg="white", font=("Helvetica", 14))
-        historial_citas_text.pack(fill=tk.BOTH, expand=True)
+    #Mostrar historial citas.
+    def mostrarHistorialCitas(paciente):
+        mostarTitulo(frame)
+        informacionHistorial = Label(frame, text=f"Historial de citas de {paciente.nombre} - CC: {paciente.cedula}", bg="white",font=("Helvetica", 12))
+        informacionHistorial.pack(pady=10)
 
-        for cita in paciente.historia_clinica.historial_citas:
+        textHistorialCitas = Text(frame, bg="white", font=("Arial", 14))
+        textHistorialCitas.pack(fill="both", expand=True)
 
-            tipo_de_cita = cita.doctor.especialidad
-            nombre_doctor = cita.doctor.nombre
+        for cita in paciente.HISTORIACLINICA.historialCitas:
+            tipoCita = cita.doctor.especialidad
+            nombreDoctor = cita.doctor.nombre
             fecha = cita.fecha
 
-            texto_cita = f"Tipo de cita: {tipo_de_cita}\nDoctor: {nombre_doctor}\nFecha: {fecha}\n\n"
+            textCita = f"Tipo de cita: {tipoCita}\nDoctor: {nombreDoctor}\nFecha: {fecha}\n"
+            textHistorialCitas.insert("end", textCita)
 
-            historial_citas_text.insert(tk.END, texto_cita)
+        textHistorialCitas.config(padx = 30, state = "disabled")
 
-        historial_citas_text.config(padx=30)
-        historial_citas_text.config(highlightthickness=5, highlightbackground="#4D5BE4")
-        historial_citas_text.config(state="disabled")
+        # Boton para regresar a la ventana principal.
 
-        # Boton para regresar a la ventana principal
+        # Lo importamos acá para evitar una referencia circular.
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
-        # Se importa aca para evitar una referencia circular
-        from src.ui_main.ventana_principal import implementacion_default
+        botonRegresar = Button(frame, text = "Regresar", command = lambda: implementacionDefault(frame))
+        botonRegresar.pack()
 
-        boton_regresar = tk.Button(frame, text="Regresar", command=lambda: implementacion_default(frame))
-        boton_regresar.pack()
-
-    # Aca se ingresan todos los datos necesarios para agendar una cita
-    def agendamiento_de_la_cita(paciente):
-
-        # Se pide confirmar la cita y se actualiza la agenda del doctor y el historial del paciente
-        def confirmar_cita():
-            eleccion = combo_elegir_cita.get()
+    # Ingresar datos para agendar una cita.
+    def ingresarDatos(paciente):
+        # Se le pregunta si desea confirmar la cita.
+        def confirmarCita():
+            eleccion = cboxElegirCita.get()
 
             if eleccion:
-                respuesta = tk.messagebox.askyesno("Confirmar cita", "¿Estas seguro de agendar esta cita?")
-                if respuesta:
-                    for doctor in paciente.buscar_doctor_por_eps(combo_tipo_cita.get(), hospital):
-                        if doctor.nombre == combo_elegir_doctor.get():
-                            cita_agendada = doctor.actualizar_agenda(paciente,combo_elegir_cita.current()+1,doctor.mostrar_agenda_disponible())
-                            paciente.actualizar_historial_citas(cita_agendada)
-                    messagebox.showinfo("Cita agendada", "La cita se ha agendado exitosamente")
-                    mostrar_historial_citas(paciente)
+                resultado = messagebox.askyesno("Confirmar cita", "¿Está seguro de que desea agendar esta cita?")
+                if resultado:
+                    for doctor in paciente.buscarDoctorEps(cboxTipoCita.get(), hospital):
+                        if doctor.nombre == cboxElegirDoctor.get():
+                            citaAgendada = doctor.actualizarAgenda(paciente, cboxElegirCita.current() + 1, doctor.mostrarAgendaDisponible())
+                            paciente.actualizarHistorialCitas(citaAgendada)
+                    messagebox.showinfo("Cita agendada!", "La cita se agendó exitosamente!")
+                    mostrarHistorialCitas(paciente)
                 else:
-                    messagebox.showinfo("Cita cancelada", "La cita ha sido cancelada")
-                    # Se importa aca para evitar una referencia circular
-                    from src.ui_main.ventana_principal import implementacion_default
-                    implementacion_default(frame)
-
+                    messagebox.showinfo("Cita cancelada!", "Usted ha decidido cancelar la cita")
+                    # Importamos de nuevo la presentacion de inicio (para evitar referencia circular la importamos acá)
+                    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+                    implementacionDefault(frame)
             else:
                 try:
                     raise CampoVacio()
-                except CampoVacio as e:
-                    e.enviar_mensaje()
+                except CampoVacio as c:
+                    c.enviarMensaje()
 
-        # Busca las citas en la agenda del doctor seleccionado que estan disponibles
-        def lista_citas():
-            lista_citas = []
+        def listarCitas():
+            listaCitas = []
             try:
-                for doctor in paciente.buscar_doctor_por_eps(combo_tipo_cita.get(), hospital):
-                    if doctor.nombre == combo_elegir_doctor.get():
-                        for cita in doctor.mostrar_agenda_disponible():
-                            lista_citas.append(cita.fecha)
-                return lista_citas
+                for doctor in paciente.buscarDoctorEps(cboxTipoCita.get(), hospital):
+                    if doctor.nombre == cboxElegirDoctor.get():
+                        for cita in doctor.mostrarAgendaDisponible():
+                            listaCitas.append(cita.fecha)
+                return listaCitas
 
-            except SinAgenda as e:
-                e.enviar_mensaje()
-                combo_elegir_cita['state'] = 'disabled'
+            except SinAgenda as s:
+                s.enviarMensaje()
+                cboxElegirCita['state'] = 'disabled'
 
-        # Se usa como evento para cuando se selecciona algo en el combobox del doctor
-        def habilitar_elegir_cita(event):
-            eleccion = combo_elegir_doctor.get()
-            combo_elegir_cita.set("")
+        def habilitarEleccionCita(event):
+            eleccion = cboxElegirDoctor.get()
+            cboxElegirCita.set("")
             if eleccion:
-                combo_elegir_cita['state'] = 'readonly'
-                combo_elegir_cita['values'] = lista_citas()
+                cboxElegirCita['state'] = 'readonly'
+                cboxElegirCita['values'] = listarCitas()
             else:
-                combo_elegir_cita['state'] = 'disabled'
+                cboxElegirCita['state'] = 'disabled'
 
         # Busca los doctores de la especialidad seleccionada y del tipo de eps del paciente
-        def lista_doctores():
-            lista_doctores = []
+        def listarDoctores():
+            listaDoctores = []
             try:
-                for doctor in paciente.buscar_doctor_por_eps(combo_tipo_cita.get(), hospital):
-                    lista_doctores.append(doctor.nombre)
-                return lista_doctores
-            except SinDoctores as e:
-                e.enviar_mensaje()
-                combo_elegir_doctor['state'] = 'disabled'
+                for doctor in paciente.buscarDoctorEps(cboxTipoCita.get(), hospital):
+                    listaDoctores.append(doctor.nombre)
+                return listaDoctores
+            except SinDoctores as s:
+                s.enviarMensaje()
+                cboxElegirDoctor['state'] = 'disabled'
 
-        # Se usa como evento para cuando se selecciona algo en el combobox del tipo de cita
-        def habilitar_elegir_doctor(event):
-            eleccion = combo_tipo_cita.get()
-            combo_elegir_doctor.set("")
-            combo_elegir_cita.set("")
-            combo_elegir_cita['state'] = 'disabled'
+        def habilitarElegirDoctor(event):
+            eleccion = cboxTipoCita.get()
+            cboxElegirDoctor.set("")
+            cboxElegirCita.set("")
+            cboxElegirCita['state'] = 'disabled'
             if eleccion:
-                combo_elegir_doctor['state'] = 'readonly'
-                combo_elegir_doctor['values'] = lista_doctores()
+                cboxElegirDoctor['state'] = 'readonly'
+                cboxElegirDoctor['values'] = listarDoctores()
             else:
-                combo_elegir_doctor['state'] = 'disabled'
+                cboxElegirDoctor['state'] = 'disabled'
 
-        imprimir_titulo(frame)
+        mostarTitulo(frame)
 
-        info_paciente = tk.Label(frame, text=f"{paciente.nombre} - CC: {paciente.cedula}", bg="white", font=("Helvetica", 12))
-        info_paciente.pack(pady=10)
+        infoPaciente = Label(frame, text=f"{paciente.nombre} - CC: {paciente.cedula}", bg="white", font=("Arial", 12))
+        infoPaciente.pack(pady=10)
 
-        frame1 = tk.Frame(frame, bg="white")
+        frame1 = Frame(frame, bg="white")
         frame1.pack()
 
-        # se crean los label y combobox necesarios para llenar la informacion para agendar la cita
-        tipo_cita = tk.Label(frame1, text="Seleccione el tipo de cita:", bg="white", font=("Helvetica", 10, "bold"))
-        tipo_cita.grid(row=0,column=0,padx=10,pady=10,sticky="w")
-        valor_defecto1 = tk.StringVar
-        combo_tipo_cita = ttk.Combobox(frame1, values=["General", "Odontologia", "Oftalmologia"], textvariable=valor_defecto1, state="readonly")
-        combo_tipo_cita.bind("<<ComboboxSelected>>", habilitar_elegir_doctor)
-        combo_tipo_cita.grid(row=0,column=1,padx=10,pady=10,sticky="w")
+        # Creamos los widgets que permitan llenar la información.
 
-        elegir_doctor = tk.Label(frame1, text="Seleccione el doctor de su preferencia:", bg="white", font=("Helvetica", 10, "bold"))
-        elegir_doctor.grid(row=1, column=0, padx=10, pady=10, sticky="w")
-        valor_defecto2 = tk.StringVar
-        combo_elegir_doctor = ttk.Combobox(frame1,textvariable=valor_defecto2,state="disabled")
-        combo_elegir_doctor.bind("<<ComboboxSelected>>", habilitar_elegir_cita)
-        combo_elegir_doctor.grid(row=1,column=1,padx=10,pady=10,sticky="w")
+        # Para elegir el tipo de cita.
+        tipoCita = Label(frame1, text="Seleccione el tipo de cita:", bg="white", font=("Arial", 10, "bold"))
+        tipoCita.grid(row=0,column=0,padx=10,pady=10,sticky="w")
 
-        elegir_cita = tk.Label(frame1, text="Seleccione una fecha para su cita:", bg="white", font=("Helvetica", 10, "bold"))
-        elegir_cita.grid(row=2, column=0, padx=10, pady=10, sticky="w")
-        valor_defecto3 = tk.StringVar
-        combo_elegir_cita = ttk.Combobox(frame1,textvariable=valor_defecto3,state="disabled")
-        combo_elegir_cita.grid(row=2,column=1,padx=10,pady=10,sticky="w")
+        valorPorDefecto1 = StringVar()
 
-        # Boton para aceptar e ir a la confirmacion de la cita
-        boton_aceptar = tk.Button(frame, text="Aceptar", command=confirmar_cita)
-        boton_aceptar.pack(pady=5)
+        cboxTipoCita = ttk.Combobox(frame1, values=["General", "Odontologia", "Oftalmologia"], textvariable=valorPorDefecto1, state="readonly")
+        cboxTipoCita.bind("<<ComboboxSelected>>", habilitarElegirDoctor)
+        cboxTipoCita.grid(row=0, column=1, padx=10, pady=10, sticky="w")
 
-        # Boton para regresar a la ventana principal
+        # Para elegir el doctor.
+        elegirDoctor = Label(frame1, text="Seleccione el doctor de su preferencia:", bg="white", font=("Helvetica", 10, "bold"))
+        elegirDoctor.grid(row=1, column=0, padx=10, pady=10, sticky="w")
 
-        # Se importa aca para evitar una referencia circular
-        from src.ui_main.ventana_principal import implementacion_default
+        valorPorDefecto2 = StringVar()
 
-        boton_regresar = tk.Button(frame, text="Regresar", command=lambda: implementacion_default(frame))
-        boton_regresar.pack(pady=5)
+        cboxElegirDoctor = ttk.Combobox(frame1, textvariable=valorPorDefecto2, state="disabled")
+        cboxElegirDoctor.bind("<<ComboboxSelected>>", habilitarEleccionCita)
+        cboxElegirDoctor.grid(row=1,column=1,padx=10,pady=10,sticky="w")
 
-    # Aca se verifica que el paciente exista y que no hubieron errores al ingresarlo
-    def buscar_paciente():
-        cedula = fp.getValue(1)
+        # Para elegir la cita en si.
+        elegirCita = Label(frame1, text="Seleccione una fecha para su cita:", bg="white", font=("Helvetica", 10, "bold"))
+        elegirCita.grid(row=2, column=0, padx=10, pady=10, sticky="w")
+
+        valorPorDefecto3 = StringVar()
+
+        cboxElegirCita = ttk.Combobox(frame1, textvariable=valorPorDefecto3, state="disabled")
+        cboxElegirCita.grid(row=2,column=1,padx=10,pady=10,sticky="w")
+
+        # Botón para continuar y preguntar por la confirmación de la cita.
+        botonContinuar = Button(frame, text="Continuar", command = confirmarCita)
+        botonContinuar.pack(pady=5)
+
+        # Botón para regresar a la presentación pincipal.
+        # Se importa aca para evitar una referencia circular.
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+
+        botonRegresar = Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
+        botonRegresar.pack(pady=5)
+    
+    # Se verifica que el paciente si exista en el sistema.
+    def buscarPaciente():
+        cedula = fieldPaciente.getValue(1)
 
         if len(cedula) != 0:
             try:
-                paciente = hospital.buscar_paciente(int(cedula))
+                paciente = hospital.buscarPaciente(int(cedula))
 
-                #Se llama la siguiente funcion
-                agendamiento_de_la_cita(paciente)
-            except DatosFalsos as e:
-                e.enviar_mensaje()
+                # Si el paciente existe, llamamos a la función que permite agendar citas.
+                ingresarDatos(paciente)
+            except DatosFalsos as d:
+                d.enviarMensaje()
             except ValueError:
-                TipoIncorrecto().enviar_mensaje()
+                TipoIncorrecto.enviarMensaje()
         else:
             try:
                 raise CampoVacio()
-            except CampoVacio as e:
-                e.enviar_mensaje()
+            except CampoVacio as c:
+                c.enviarMensaje()
 
-    imprimir_titulo(frame)
+    mostarTitulo(frame)
 
-    # Pide la cedula del paciente
-
-    titulo_ingreso_cedula = tk.Label(frame, text="Ingrese la cédula del paciente:", bg="white",font=("Helvetica", 10, "bold"))
-    titulo_ingreso_cedula.pack()
+    # Pide la cedula del paciente.
+    ingresoCedula = Label(frame, text="Ingrese la cédula del paciente:", bg="white",font=("Helvetica", 10, "bold"))
+    ingresoCedula.pack()
 
     criterios = ["Cédula"]
-    fp = FieldFrame(frame, "", criterios, "", None, None)
-    fp.pack()
 
-    # Boton para buscar el paciente
-    boton_buscar_paciente = tk.Button(frame, text="Buscar", command=buscar_paciente)
-    boton_buscar_paciente.pack(pady=10)
+    fieldPaciente = FieldFrame(frame, "", criterios, "", None, None)
+    fieldPaciente.pack()
 
-    # Boton para regresar a la ventana principal
+    # Botón para buscar paciente
+    botonBuscarPaciente = Button(frame, text="Buscar", command=buscarPaciente())
+    botonBuscarPaciente.pack(pady=10)
 
-    # Se importa aca para evitar una referencia circular
-    from src.ui_main.ventana_principal import implementacion_default
+    # Botón para regresar a la presentación pincipal.
+    # Se importa aca para evitar una referencia circular.
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
-    boton_regresar = tk.Button(frame, text="Regresar",
-                               command=lambda: implementacion_default(frame))
-    boton_regresar.pack()
+    botonRegresar = Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
+    botonRegresar.pack(pady=5)
