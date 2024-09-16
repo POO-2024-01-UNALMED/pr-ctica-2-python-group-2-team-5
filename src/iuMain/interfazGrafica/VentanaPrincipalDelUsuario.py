@@ -133,6 +133,9 @@ def abrirVentanaPrincipal():
 
     archivoMenu = Menu(menuArchivo, tearoff=0)
     archivoMenu.add_command(label="Aplicación", command = infoAplicacion)
+
+    from src.iuMain.interfazGrafica.ventanaInicio import abrirVentanaInicio
+
     archivoMenu.add_command(label="Salir") # ---> command = salir
     menuArchivo.config(menu=archivoMenu)
 

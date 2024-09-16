@@ -1,7 +1,6 @@
 from tkinter import *  # ---> Importamos todo por ahora.
 from PIL import Image, ImageTk
-import VentanaPrincipalDelUsuario
-
+from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import abrirVentanaPrincipal
 # Primeras pruebas interfaz gráfica python.
 
 # Variables de apoyo
