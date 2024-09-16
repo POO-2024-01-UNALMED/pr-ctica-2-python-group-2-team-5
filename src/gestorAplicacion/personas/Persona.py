@@ -1,6 +1,3 @@
-
-
-
 #Clase persona como referencia para Doctor y Paciente
 class Persona:
     #Inicializador.

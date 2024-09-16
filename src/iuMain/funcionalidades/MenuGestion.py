@@ -1,5 +1,5 @@
-from iuMain.gestion.gestionPacientes.MenuPacientes import MenuPacientes
-from iuMain.gestion.gestionPacientes.gestionPaciente import GestionPaciente
+from src.iuMain.gestion.gestionPacientes.MenuPacientes import MenuPacientes
+from src.iuMain.gestion.gestionPacientes.GestionPaciente import GestionPaciente
 
 
 class MenuGestion:
