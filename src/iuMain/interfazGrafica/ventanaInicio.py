@@ -86,11 +86,11 @@ def abrirVentanaInicio():
 
     # Imagenes para ubicar en el Label del FrameP4
     global imgsFunc, btnImgsFunc, indiceFunc
-    imgsFunc = [cargarImagenP4("imagenes/fun1.jpg"),
-                cargarImagenP4("imagenes/fun2.jpg"),
-                cargarImagenP4("imagenes/fun3.jpg"),
-                cargarImagenP4("imagenes/fun4.jpg"),
-                cargarImagenP4("imagenes/fun5.jpg")]
+    imgsFunc = [cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun1.jpg"),
+                cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun2.jpg"),
+                cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun3.jpg"),
+                cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun4.jpg"),
+                cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun5.jpg")]
     indiceFunc = 0
     btnImgsFunc = Button(frameP4, text="Pase el mouse por aquí para ver las imagenes relacionadas al sistema, o de click izquierdo para abrir la ventana principal!", command = abrirVentPrincipal, wraplength=250, justify="left", font=("Arial", 12))
     btnImgsFunc.pack(expand=True, fill="both", padx=5, pady=5)
@@ -122,14 +122,14 @@ def abrirVentanaInicio():
 
     # Cargar imagenes y mantener referencias globales
     global img1Tk, img2Tk, img3Tk, img4Tk, listaImgs, indiceImgs
-    img1Tk = cargarImagen("imagenes/img2.jpg")
-    img2Tk = cargarImagen("imagenes/img2.jpg")
-    img3Tk = cargarImagen("imagenes/img3.jpg")
-    img4Tk = cargarImagen("imagenes/img4.jpg")
+    img1Tk = cargarImagen("src/iuMain/interfazGrafica/imagenes/img2.jpg")
+    img2Tk = cargarImagen("src/iuMain/interfazGrafica/imagenes/img2.jpg")
+    img3Tk = cargarImagen("src/iuMain/interfazGrafica/imagenes/img3.jpg")
+    img4Tk = cargarImagen("src/iuMain/interfazGrafica/imagenes/img4.jpg")
 
     listaImgs = [
-        [cargarImagen("imagenes/img2.jpg"), cargarImagen("imagenes/img3.jpg"), cargarImagen("imagenes/img4.jpg"), cargarImagen("imagenes/img5.jpg")],
-        [cargarImagen("imagenes/img2.jpg"), cargarImagen("imagenes/img7.jpg"), cargarImagen("imagenes/img8.jpg"), cargarImagen("imagenes/img1.jpg")]
+        [cargarImagen("src/iuMain/interfazGrafica/imagenes/img2.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img3.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img4.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img5.jpg")],
+        [cargarImagen("src/iuMain/interfazGrafica/imagenes/img2.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img7.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img8.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img1.jpg")]
     ]
 
     indiceImgs = 0
