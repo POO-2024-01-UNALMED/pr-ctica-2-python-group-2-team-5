@@ -5,7 +5,7 @@ import tkinter as tk
 import frame
 
 from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
-from manejoDeErrores.ErroresAplicacion import TipoIncorrecto, CampoVacio
+from manejoDeErrores.ErroresAplicacion import TipoIncorrecto, CampoVacio, DatosFalsos
 
 
 def imprimirTitulo(frame):
@@ -102,47 +102,47 @@ def administrarPaciente(hospital, frame):
 
 
 
-def administracion_paciente(paciente):
+    def administracionPaciente(paciente):
         imprimirTitulo(frame)
-        info_doctor = tk.Label(frame, text=f"Informacion del paciente", bg="white", font=("Helvetica", 12))
-        info_doctor.pack(pady=10)
+        infoDoctor = tk.Label(frame, text=f"Informacion del paciente", bg="white", font=("Helvetica", 12))
+        infoDoctor.pack(pady=10)
 
         criterios = ["Cedula", "Nombre", "Tipo de eps"]
 
-        fp = FieldFrame(frame, "Criterio", criterios, "Valor", [paciente.cedula, paciente.nombre, paciente.tipo_eps],[False, False, False, False])
+        fp = FieldFrame(frame, "Criterio", criterios, "Valor", [paciente.cedula, paciente.nombre, paciente.tipoEps],[False, False, False, False])
         fp.pack()
 
-        boton_editar = tk.Button(frame, text="Editar", command=lambda: habilitar_entrys(fp, paciente, boton_editar, boton_borrar))
-        boton_editar.pack(pady=10)
-        boton_borrar = tk.Button(frame, text="Borrar", command=lambda: borrar(paciente))
-        boton_borrar.pack(pady=10)
+        botonEditar = tk.Button(frame, text="Editar", command=lambda: habilitarEntrys(fp, paciente, botonEditar, botonBorrar))
+        botonEditar.pack(pady=10)
+        botonBorrar = tk.Button(frame, text="Borrar", command=lambda: borrar(paciente))
+        botonBorrar.pack(pady=10)
 
 
-    def buscar_paciente():
+    def buscarPaciente():
         cedula = fp.getValue(1)
         if len(cedula) != 0:
             try:
-                paciente = hospital.buscar_paciente(int(cedula))
-                administracion_paciente(paciente)
+                paciente = hospital.buscarPaciente(int(cedula))
+                administracionPaciente(paciente)
             except DatosFalsos as e:
                 e.enviar_mensaje()
             except ValueError:
-                TipoIncorrecto().enviar_mensaje()
+                TipoIncorrecto().enviarMensaje()
         else:
             try:
                 raise CampoVacio()
             except CampoVacio as e:
-                e.enviar_mensaje()
+                e.enviarMensaje()
     imprimirTitulo(frame)
 
     # Pide la cedula del paciente
-    label_ingreso_cedula = tk.Label(frame, text="Ingrese la cédula del paciente:", bg="white",
+    labelIngresoCedula = tk.Label(frame, text="Ingrese la cédula del paciente:", bg="white",
                                     font=("Helvetica", 10, "bold"))
-    label_ingreso_cedula.pack()
+    labelIngresoCedula.pack()
 
     criterios = ["Cédula"]
     fp = FieldFrame(frame, "", criterios, "", None, None)
     fp.pack()
 
-    boton_buscar_paciente = tk.Button(frame, text="Buscar", command=buscar_paciente)
-    boton_buscar_paciente.pack()
+    botonBuscarPaciente = tk.Button(frame, text="Buscar", command=buscarPaciente)
+    botonBuscarPaciente.pack()
