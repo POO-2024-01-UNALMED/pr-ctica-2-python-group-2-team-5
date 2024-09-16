@@ -1,10 +1,23 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
+from src.iuMain.funcionalidades import AgendarCita, AsignarHabitacion, FormulaMedica, Vacunacion, Facturacion
+from src.iuMain.gestion.gestionHospital import verDoctores, verPacientes, verMedicamentos, verVacunas, destruirHabitacion, agregarMedicamentos, construirHabitacion
+from src.iuMain.gestion.gestionDoctores import *
+from src.iuMain.gestion.gestionPacientes import *
+from src.iuMain.gestion.gestionVacunas import *
+
+def cambiarContenido(opcion, Hospital, frame_implementacion):
+    #limpiar el frame
+    for widget in frame_implementacion.winfo_children():
+        widget.destroy()
+    
+    #Opciones del menu
+    opciones = { "cita": AgendarCita.agendar_citas, "habitacion": AsignarHabitacion.AsignarHabiatcion}
 
 # Ventana Principal
 
-def abrirVentanaPrincipal():
+def abrirVentanaPrincipal(Hospital):
     global ventanaPrincipalDelUsuario
     ventanaPrincipalDelUsuario = Toplevel()
     ventanaPrincipalDelUsuario.title("Ventana Principal del Usuario")
@@ -134,9 +147,9 @@ def abrirVentanaPrincipal():
     archivoMenu = Menu(menuArchivo, tearoff=0)
     archivoMenu.add_command(label="Aplicación", command = infoAplicacion)
 
-    from src.iuMain.interfazGrafica.ventanaInicio import abrirVentanaInicio
+    from src.Main import abrirVentanaInicio
 
-    archivoMenu.add_command(label="Salir") # ---> command = salir
+    archivoMenu.add_command(label="Salir", command=lambda: [ventanaPrincipalDelUsuario.destroy(), abrirVentanaInicio(Hospital)]) # ---> command = salir
     menuArchivo.config(menu=archivoMenu)
 
     # menu Procesos y consultas
@@ -196,3 +209,4 @@ def abrirVentanaPrincipal():
 
 
     ventanaPrincipalDelUsuario.mainloop()
+
