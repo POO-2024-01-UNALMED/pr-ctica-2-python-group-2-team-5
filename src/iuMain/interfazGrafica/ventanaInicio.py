@@ -16,7 +16,7 @@ def abrirVentanaInicio():
         mensajeBienvenida.config(text="Con este programa podrá pedir citas, generar fórmulas médicas, reservar habitaciones, agendar citas de vacunación y realizar los pagos por los servicios recibidos, además de administrar de forma general todos los componentes que hacen parte del sistema hospitalario.", font=("Arial", 11))
 
     def quitarDescripcion(event):
-        mensajeBienvenida.config(text="Bienvenido al Sistema de Información Hospitalario!", font=("Arial", 15))
+        mensajeBienvenida.config(text="Bienvenido al Sistema de Información Hospitalario, HOSPITAL ANDINO!", font=("Arial", 15))
 
     def cargarImagen(ruta, tamano=(120, 160)):
         img = Image.open(ruta)
@@ -77,7 +77,7 @@ def abrirVentanaInicio():
     frameP3 = Frame(frameP1, bg="white", height=200)
     frameP3.pack_propagate(False)
     frameP3.pack(fill="both", padx=10, pady=(10, 5))
-    mensajeBienvenida = Label(frameP3, text="Bienvenido al Sistema de Información Hospitalario!", wraplength=250, font=("Arial", 15), justify="left")
+    mensajeBienvenida = Label(frameP3, text="Bienvenido al Sistema de Información Hospitalario, HOSPITAL ANDINO!", wraplength=250, font=("Arial", 15), justify="left")
     mensajeBienvenida.pack(expand=True, fill="both")
     mensajeBienvenida.bind("<Button-1>", quitarDescripcion)
 
@@ -88,11 +88,11 @@ def abrirVentanaInicio():
 
     # Imagenes para ubicar en el Label del FrameP4
     global imgsFunc, btnImgsFunc, indiceFunc
-    imgsFunc = [cargarImagenP4("imagenes/fun1.jpg"),
-                cargarImagenP4("imagenes/fun2.jpg"),
-                cargarImagenP4("imagenes/fun3.jpg"),
-                cargarImagenP4("imagenes/fun4.jpg"),
-                cargarImagenP4("imagenes/fun5.jpg")]
+    imgsFunc = [cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun1.jpg"),
+                cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun2.jpg"),
+                cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun3.jpg"),
+                cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun4.jpg"),
+                cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun5.jpg")]
     indiceFunc = 0
     btnImgsFunc = Button(frameP4, text="Pase el mouse por aquí para ver las imagenes relacionadas al sistema, o de click izquierdo para abrir la ventana principal!", command = abrirVentPrincipal, wraplength=250, justify="left", font=("Arial", 12))
     btnImgsFunc.pack(expand=True, fill="both", padx=5, pady=5)
@@ -107,10 +107,11 @@ def abrirVentanaInicio():
     global hojasDeVida, indice
     hojasDeVida = [
         "Hojas de Vida de los Desarrolladores",
-        "Nombre: Nombre1\nEdad: Edad1\nVive en: Lugar1\nEstudia: Ingeniería de Sistemas\nEn: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: correoinst@unal.edu.co",
-        "Nombre: Nombre2\nEdad: Edad2\nVive en: Lugar2\nEstudia: Ingeniería de Sistemas\nEn: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: correoinst@unal.edu.co",
-        "Nombre: Nombre3\nEdad: Edad3\nVive en: Lugar3\nEstudia: Ingeniería de Sistemas\nEn: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: correoinst@unal.edu.co",
-        "Nombre: Nombre4\nEdad: Edad4\nVive en: Lugar4\nEstudia: Ingeniería de Sistemas\nEn: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: correoinst@unal.edu.co"
+        "Nombre: Juan Pablo Jimenez Vergara\nCarrera: Ingeniería de Sistemas\nInstitución: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: juanjimenezve@unal.edu.co",
+        "Nombre: Jerónimo Zapata Quiroz\nCarrera: Ingeniería de Sistemas\nInstitución: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: jzapataq@unal.edu.co",
+        "Nombre: Hernando Montes Gonzales\nCarrera: Ingeniería de Sistemas\nInstitución: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: hmontesg@unal.edu.co",
+        "Nombre: Manuel Mera Mera\nCarrera: Ingeniería de Sistemas\nInstitución: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: mmeram@unal.edu.co",
+        "Nombre: Samuel Ramirez Muñoz\nCarrera: Ingeniería de Sistemas\nInstitución: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: sramirezmu@unal.edu.co"
     ]
     indice = 0
     hvDesarrolladores = Label(frameP5, text="Click aquí!", justify="left", font=("Arial", 11), wraplength=250)
@@ -124,14 +125,14 @@ def abrirVentanaInicio():
 
     # Cargar imagenes y mantener referencias globales
     global img1Tk, img2Tk, img3Tk, img4Tk, listaImgs, indiceImgs
-    img1Tk = cargarImagen("imagenes/img2.jpg")
-    img2Tk = cargarImagen("imagenes/img2.jpg")
-    img3Tk = cargarImagen("imagenes/img3.jpg")
-    img4Tk = cargarImagen("imagenes/img4.jpg")
+    img1Tk = cargarImagen("src/iuMain/interfazGrafica/imagenes/img2.jpg")
+    img2Tk = cargarImagen("src/iuMain/interfazGrafica/imagenes/img2.jpg")
+    img3Tk = cargarImagen("src/iuMain/interfazGrafica/imagenes/img3.jpg")
+    img4Tk = cargarImagen("src/iuMain/interfazGrafica/imagenes/img4.jpg")
 
     listaImgs = [
-        [cargarImagen("imagenes/img2.jpg"), cargarImagen("imagenes/img3.jpg"), cargarImagen("imagenes/img4.jpg"), cargarImagen("imagenes/img5.jpg")],
-        [cargarImagen("imagenes/img2.jpg"), cargarImagen("imagenes/img7.jpg"), cargarImagen("imagenes/img8.jpg"), cargarImagen("imagenes/img1.jpg")]
+        [cargarImagen("src/iuMain/interfazGrafica/imagenes/img2.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img3.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img4.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img5.jpg")],
+        [cargarImagen("src/iuMain/interfazGrafica/imagenes/img2.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img7.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img8.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img1.jpg")]
     ]
 
     indiceImgs = 0

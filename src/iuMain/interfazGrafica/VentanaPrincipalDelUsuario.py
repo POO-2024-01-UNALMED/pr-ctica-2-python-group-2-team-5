@@ -77,8 +77,7 @@ def abrirVentanaPrincipal(ventanaInicio):
 
     # Método para mostrar los nombres de los autores de la aplicación.
     def acercaDe():
-        messagebox.showinfo("Acerca de la aplicación.",
-                            "Los autores de la aplicación son:\nJeronimo Zapata.\nJuan Pablo Vergara.\nHernando Montes.\nManuel Mera.\nSamuel Ramírez.")
+        messagebox.showinfo("Acerca de la aplicación.","Los autores de la aplicación son:\nJeronimo Zapata.\nJuan Pablo Vergara.\nHernando Montes.\nManuel Mera.\nSamuel Ramírez.")
 
     # Eventos menu Procesos y Consultas
     def actualizarFormulario():
