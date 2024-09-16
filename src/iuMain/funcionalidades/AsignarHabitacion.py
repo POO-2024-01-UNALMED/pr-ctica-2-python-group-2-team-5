@@ -2,7 +2,7 @@ from src.gestorAplicacion.administracionHospital import CategoriaHabitacion, Hos
 from src.gestorAplicacion.personas import Paciente
 from src.gestorAplicacion.servicios import Habitacion
 
-class AsignarHabiatcion:
+class AsignarHabitacion:
 
     @staticmethod
     def disponibilidadHabitacion(habitaciones, paciente):

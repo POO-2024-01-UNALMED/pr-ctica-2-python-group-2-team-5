@@ -1,5 +1,5 @@
-from src.gestorAplicacion.administracionHospital.Hospital import Hospital
-from src.iuMain.interfazGrafica.ventanaInicio import abrirVentanaInicio
+from gestorAplicacion.administracionHospital.Hospital import Hospital
+from iuMain.interfazGrafica.ventanaInicio import abrirVentanaInicio
 
 if __name__ == '__main__':
     hospitalAndino = Hospital()

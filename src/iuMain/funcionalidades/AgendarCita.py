@@ -9,6 +9,7 @@ def imprimir_titulo(frame):
     # Imprime el titulo
     titulo = tk.Label(frame, text="Agendar citas", bg="white", font=("Helvetica", 16, "bold"))
     titulo.pack(pady=20)
+    
 def agendar_citas(hospital, frame):
 
     # Cuando se confirma la cita, se muestra el historial de todas las citas del paciente
