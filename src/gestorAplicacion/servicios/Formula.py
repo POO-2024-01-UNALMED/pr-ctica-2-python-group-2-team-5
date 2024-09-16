@@ -5,7 +5,7 @@ from src.gestorAplicacion.servicios.Servicio import Servicio
 class Formula(Servicio):
 
     #Inicializador.
-    def __init__(self,paciente):
+    def __init__(self, paciente):
         super().__init__(paciente)
         self.listaMedicamentos = []
         self.doctor = None
@@ -21,7 +21,7 @@ class Formula(Servicio):
                 break
 
     def descripcionServicio(self):
-        return f"{self.idServicio} - Fórmula prescrita por: {self.doctor.getNombre()}"
+        return f"{self.IDSERVICIO} - Fórmula prescrita por: {self.doctor.getNombre()}"
 
     def __str__(self):
         return f"Hola {self.paciente.getNombre}\nEstos son tus medicamentos formulados:\n{self.listaMedicamentos}"

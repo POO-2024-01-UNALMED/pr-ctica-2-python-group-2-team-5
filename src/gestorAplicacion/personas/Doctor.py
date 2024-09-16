@@ -9,10 +9,10 @@ class Doctor(Persona):
         super().__init__(cedula, nombre, tipoEps)
         self.especialidad = especialidad
         self.agendaDoctor = [
-            Cita(self, "3 de Noviembre, 8:00 am", None),
-            Cita(self, "4 de Noviembre, 10:00 am", None),
-            Cita(self, "5 de Noviembre, 12:00 m", None),
-            Cita(self, "5 de Noviembre, 3:00 pm", None)
+            Cita(self, None, "3 de Noviembre, 8:00 am"),
+            Cita(self, None, "4 de Noviembre, 10:00 am"),
+            Cita(self, None, "5 de Noviembre, 12:00 m"),
+            Cita(self, None, "5 de Noviembre, 3:00 pm")
         ]
 
     # Muestra la agenda disponible de un doctor (citas que no tienen paciente asignado)

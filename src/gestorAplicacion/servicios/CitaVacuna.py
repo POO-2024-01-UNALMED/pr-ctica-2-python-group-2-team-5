@@ -12,12 +12,12 @@ class CitaVacuna(Cita):
 
 
     def descripcionServicio(self):
-        return f"{self.idServicio} - Vacuna: {self.vacuna.nombre} ({self.fecha})"
+        return f"{self.IDSERVICIO} - Vacuna: {self.vacuna.nombre} ({self.fecha})"
 
 
     def validarPago(self, paciente, idServicio):
-        for citaVacuna in paciente.historiaClinica.historialVacunas:
-            if citaVacuna.idServicio == idServicio:
+        for citaVacuna in paciente.HISTORIACLINICA.historialVacunas:
+            if citaVacuna.IDSERVICIO == idServicio:
                 citaVacuna.estadoPago = True
                 break
     #setters y getters

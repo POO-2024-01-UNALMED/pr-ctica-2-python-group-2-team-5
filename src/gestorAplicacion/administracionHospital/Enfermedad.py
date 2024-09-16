@@ -1,4 +1,4 @@
-#Clase enfermedad que lleva registro de las enfermedades que se tratanen el hospital
+#Clase enfermedad que lleva registro de las enfermedades que se tratan en el hospital
 class Enfermedad:
     #Atributo de clase.
     enfermedadesRegistradas = []

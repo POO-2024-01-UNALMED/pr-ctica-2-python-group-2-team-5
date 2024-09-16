@@ -5,7 +5,6 @@ from src.gestorAplicacion.administracionHospital.Pago import Pago
 from src.gestorAplicacion.personas.Persona import Persona
 from src.gestorAplicacion.servicios.Habitacion import Habitacion
 
-
 class Paciente(Persona, Pago):
 
 
@@ -32,7 +31,7 @@ class Paciente(Persona, Pago):
         doctoresDisponibles = []
 
         for doctor in doctoresPorEspecialidad:
-            if  doctor.tipoEps == self.tipoEps:
+            if doctor.tipoEps == self.tipoEps:
                 doctoresDisponibles.append(doctor)
         if len(doctoresDisponibles) != 0:
             return doctoresDisponibles
@@ -51,14 +50,14 @@ class Paciente(Persona, Pago):
 
 
     def actualizarHistorialCitas(self, citaAsignada):
-        self.historiaClinica.historialCitas.append(citaAsignada)
+        self.HISTORIACLINICA.historialCitas.append(citaAsignada)
 
 
     def mensajeDoctor(self, doctor: Persona):
         return f"{doctor.bienvenida()}\nPor favor selecciona los medicamentos que vas a formularle a: {self.nombre}"
 
     def actualizarHistorialVacunas(self, citaAsignada):
-        self.historiaClinica.historialVacunas.append(citaAsignada)
+        self.HISTORIACLINICA.historialVacunas.append(citaAsignada)
     def __str__(self):
         return f"---------------------------\nNombre: {self.nombre}\nCédula: {self.cedula}\nTipo de EPS: {self.tipoEps}\n---------------------------"
 
@@ -67,7 +66,7 @@ class Paciente(Persona, Pago):
 
 
     def getHistoriaClinica(self):
-        return self.historiaClinica
+        return self.HISTORIACLINICA
     
     def getCategoriaHabitacion(self):
         return self.categoriaHabitacion

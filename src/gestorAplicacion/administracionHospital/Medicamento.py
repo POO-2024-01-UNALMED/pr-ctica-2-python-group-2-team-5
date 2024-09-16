@@ -13,7 +13,7 @@ class Medicamento:
     def eliminarCantidad(self):
         self.cantidad -= 1
 
-        # Muestra la informacion del medicamento sin la cantidad
+    # Muestra la informacion del medicamento sin la cantidad
     def mostrar_info(self):
         return f"Nombre: {self.nombre} | Trata la enfermedad: {self.enfermedad} | Descripcion: {self.descripcion} | Precio: {self.precio}"
 

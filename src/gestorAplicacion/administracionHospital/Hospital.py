@@ -27,7 +27,7 @@ class Hospital:
     #Buscar paciente con su número de cedula.
     def buscarPaciente(self, cedula):
         for paciente in self.listaPacientes:
-            if paciente.cedula() == cedula:
+            if paciente.getCedula() == cedula:
                 return paciente
         return None # todo: Hacer el manejo de excepciones aca
 

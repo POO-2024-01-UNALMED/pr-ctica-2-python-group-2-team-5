@@ -27,17 +27,17 @@ class Servicio(ABC):
 
     @classmethod
     def obtenerServiciosSinPagar(cls, paciente):
-        historiaClinicaPaciente = paciente.historiaClinica
+        historiaClinicaPaciente = paciente.HISTORIACLINICA
         listaServiciosSinPagar = []
 
         listaServiciosSinPagar.extend(historiaClinicaPaciente.historialCitas)
         listaServiciosSinPagar.extend(historiaClinicaPaciente.listaFormulas)
-        if paciente.getHabitacionAsignada() != None:
+        if paciente.getHabitacionAsignada() is not None:
             listaServiciosSinPagar.append(paciente.habitacionAsignada)
         listaServiciosSinPagar.extend(historiaClinicaPaciente.historialVacunas)
 
         for servicio in listaServiciosSinPagar:
-            if servicio.isEstadoPago() == True:
+            if servicio.isEstadoPago():
                 listaServiciosSinPagar.remove(servicio)
 
         return listaServiciosSinPagar

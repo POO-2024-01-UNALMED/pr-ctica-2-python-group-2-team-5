@@ -8,12 +8,12 @@ class Vacuna:
         self.nombre = nombre
         self.precio = precio
         self.tipoEps = tipoEps
-        self.agenda = [self.agenda.append(CitaVacuna("23 de Septiembre de 2024. Hora 7:45 am", None, self)),
-        self.agenda.append(CitaVacuna("26 de Septiembre de 2024. Hora 11:20 am", None, self)),
-        self.agenda.append(CitaVacuna("27 de Septiembre de 2024. Hora 8:45 am", None, self)),
-        self.agenda.append(CitaVacuna("28 de Septiembre de 2024. Hora 3:45 pm", None, self)),
-        self.agenda.append(CitaVacuna("29 de Septiembre de 2024. Hora 12:30 pm", None, self)),
-        self.agenda.append(CitaVacuna("30 de Septiembre de 2024. Hora 10:00 am", None, self))
+        self.agenda = [CitaVacuna("23 de Septiembre de 2024. Hora 7:45 am", None, self),
+        CitaVacuna("26 de Septiembre de 2024. Hora 11:20 am", None, self),
+        CitaVacuna("27 de Septiembre de 2024. Hora 8:45 am", None, self),
+        CitaVacuna("28 de Septiembre de 2024. Hora 3:45 pm", None, self),
+        CitaVacuna("29 de Septiembre de 2024. Hora 12:30 pm", None, self),
+        CitaVacuna("30 de Septiembre de 2024. Hora 10:00 am", None, self)
         ]
     #Métodos.
 

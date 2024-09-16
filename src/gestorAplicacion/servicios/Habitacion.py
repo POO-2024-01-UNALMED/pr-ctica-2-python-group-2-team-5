@@ -29,22 +29,24 @@ class Habitacion(Servicio):
                 habitacionesDisponibles.append(habitacion)
 
         if len(habitacionesDisponibles) == 0:
-            return None
+            return None # ---> TODO: Excepcion aquí
         
         return habitacionesDisponibles
 
     #Método para asignar la categoría de la haitación a reservar.
     @classmethod
     def BuscarOtraCategoria(cls, categoria):
-        if categoria == "UCC":
+        if categoria == CategoriaHabitacion.UCI:
             return CategoriaHabitacion.UCI
-        elif categoria == "UCI":
+        elif categoria == CategoriaHabitacion.UCC:
+            return  CategoriaHabitacion.UCC
+        elif categoria == CategoriaHabitacion.OBSERVACION:
             return CategoriaHabitacion.OBSERVACION
-        elif categoria == "OBSERVACION":
+        elif categoria == CategoriaHabitacion.DOBLE:
             return CategoriaHabitacion.DOBLE
-        elif categoria == "DOBLE":
+        elif categoria == CategoriaHabitacion.INDIVIDUAL:
             return CategoriaHabitacion.INDIVIDUAL
-        elif categoria == "INDIVIDUAL":
+        elif categoria == CategoriaHabitacion.CAMILLA:
             return CategoriaHabitacion.CAMILLA
         else:
             return None
@@ -55,7 +57,7 @@ class Habitacion(Servicio):
             paciente.getHabitacionAsignada.setEstadoPago(True)
 
     def descripcionServicio(self):
-        return f"{self.idServicio} - Habitación {self.numero} ocupada {self.dias} dias."
+        return f"{self.IDSERVICIO} - Habitación {self.numero} ocupada {self.dias} dias."
 
     #Setters y getters.
     def getNumero(self):
