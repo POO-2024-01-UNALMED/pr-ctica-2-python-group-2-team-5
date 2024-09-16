@@ -7,7 +7,7 @@ from src.gestorAplicacion.servicios import Cita, CitaVacuna,Formula
 class HistoriaClinica:
     #Inicializador.
     def __init__(self, paciente: Paciente):
-        self.PACIENTE = paciente
+        self.paciente = paciente
         self.historialCitas = []
         self.listaFormulas = []
         self.historialVacunas = []
