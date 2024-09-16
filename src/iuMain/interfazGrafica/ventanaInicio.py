@@ -2,7 +2,8 @@ from tkinter import *
 from PIL import Image, ImageTk
 import VentanaPrincipalDelUsuario
 
-def abrirVentanaInicio():
+
+def abrirVentanaInicio(Hospital):
     # Ventana de inicio
     ventanaInicio = Tk()
     ventanaInicio.title("Ventana de Inicio")

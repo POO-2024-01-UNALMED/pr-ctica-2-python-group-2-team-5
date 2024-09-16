@@ -1,15 +1,78 @@
 from tkinter import *
 from tkinter import messagebox
 
+
+from iuMain.funcionalidades import AgendarCita,AsignarHabitacion,Vacunacion,Facturacion,FormulaMedica
+from iuMain.gestion.gestionHospital import verPacientes,verMedicamentos,verDoctores,verVacunas,agregarMedicamentos,construirHabitacion,destruirHabitacion
+
+def cambiarContenido(opcion, hospital, frame_implementacion):
+
+    #limpiar frame
+    for widget in frame_implementacion.winfo_children():
+        widget.destroy()
+
+    # Cambios con funcionalidades
+    opciones={
+        "agendarCita": AgendarCita.agendar_citas,
+        "asignarHabitacion": AsignarHabitacion.AsignarHabitacion,
+        "vacunacion": Vacunacion.Vacunacion,
+        "pago": Facturacion.Facturacion,
+        "formulaMedica": FormulaMedica.FormulaMedica,
+
+        #Gestion Hospital
+        "verPacientes": verPacientes.verPacientes,
+        "verDoctores": verDoctores.verDoctores,
+        "verMedicamentos": verMedicamentos.verMedicamentos,
+        "verVacunas": verVacunas.verVacunas,
+        "agregarMedicamentos": agregarMedicamentos.agregarMedicamento,
+        "construirHabitacion": construirHabitacion.construirHabitacion,
+        "destruirHabitacion": destruirHabitacion.destruirHabitacion,
+
+        
+        
+
+
+    }
+
+    if opcion in opciones:
+        opciones[opcion](hospital, frame_implementacion)
+
+def implementacionDefault(frame_implementacion):
+        # Limpia el frame
+        for widget in frame_implementacion.winfo_children():
+            widget.destroy()
+
+        # Ejecuta la implementacion por defecto
+        texto_inicial = """
+            Te encuentras en la ventana principal de la aplicación
+
+            Tienes varias opciones:
+
+            Archivo > Aplicacion: Muestra una descripcion de la aplicación
+            Archivo > Salir: Regresa a la ventana inicial
+
+            Procesos y consultas: Acá estan todos los servicios que permite gestionar la aplicación
+
+            Ayuda > Acerca de: Muestra los creadores de la aplicación
+
+            Seleccione una opcion para continuar
+            """
+
+        label_inicial = Label(frame_implementacion, text=texto_inicial, bg="white", font=("Helvetica", 14, "bold"))
+        label_inicial.pack()
+        label_inicial.place(relx=0.5, rely=0.5, anchor=CENTER)
+
+
 # Ventana principal.
-def abrirVentanaPrincipal(ventanaInicio):
+def abrirVentanaPrincipal(ventanaInicio, Hospital):
+
     ventanaPrincipalDelUsuario = Toplevel()
     ventanaPrincipalDelUsuario.title("Ventana Principal del Usuario")
     ventanaPrincipalDelUsuario.geometry("600x500+400+90")
 
     ################## ZONA O ##################
 
-    titulo = Label(ventanaPrincipalDelUsuario, text="HOSPITAL ANDINO", font=("Arial", 16))
+    titulo = Label(ventanaPrincipalDelUsuario, text="HOSPITAL ANDINO", font=("Verdana", 16))
     titulo.pack(padx=10, pady=10)
 
     ################## ZONA 1 ##################
@@ -79,38 +142,7 @@ def abrirVentanaPrincipal(ventanaInicio):
     def acercaDe():
         messagebox.showinfo("Acerca de la aplicación.","Los autores de la aplicación son:\nJeronimo Zapata.\nJuan Pablo Vergara.\nHernando Montes.\nManuel Mera.\nSamuel Ramírez.")
 
-    # Eventos menu Procesos y Consultas
-    def actualizarFormulario():
-        pass
-
-    def asignarCita():
-        pass
-
-    def implementacionDefault(frame_implementacion):
-        # Limpia el frame
-        for widget in frame_implementacion.winfo_children():
-            widget.destroy()
-
-        # Ejecuta la implementacion por defecto
-        texto_inicial = """
-            Te encuentras en la ventana principal de la aplicación
-
-            Tienes varias opciones:
-
-            Archivo > Aplicacion: Muestra una descripcion de la aplicación
-            Archivo > Salir: Regresa a la ventana inicial
-
-            Procesos y consultas: Acá estan todos los servicios que permite gestionar la aplicación
-
-            Ayuda > Acerca de: Muestra los creadores de la aplicación
-
-            Seleccione una opcion para continuar
-            """
-
-        label_inicial = Label(frame_implementacion, text=texto_inicial, bg="white", font=("Helvetica", 14, "bold"))
-        label_inicial.pack()
-        label_inicial.place(relx=0.5, rely=0.5, anchor=CENTER)
-
+    
     # Frame adicional para la zona 1.
 
     framezona1 = Frame(menuFrame)
@@ -131,11 +163,16 @@ def abrirVentanaPrincipal(ventanaInicio):
     menuProcesosConsultas.pack(side="left", padx=(0, 2))
 
     procesosMenu = Menu(menuProcesosConsultas, tearoff=0)
-    procesosMenu.add_command(label="1. Agendar Citas", command=asignarCita)
-    procesosMenu.add_command(label="2. Fórmula Médica")
-    procesosMenu.add_command(label="3. Asignar Habitación")
-    procesosMenu.add_command(label="4. Vacunación")
-    procesosMenu.add_command(label="5. Facturación")
+    procesosMenu.add_command(label="1. Agendar Citas", command=lambda: cambiarContenido("agendarCita", Hospital, frame_implementacion))
+    procesosMenu.add_command(label="2. Fórmula Médica", command=lambda: cambiarContenido("formualMedica", Hospital, frame_implementacion) )
+    procesosMenu.add_command(label="3. Asignar Habitación", command=lambda: cambiarContenido("asignarHabitacion", Hospital, frame_implementacion))
+    procesosMenu.add_command(label="4. Vacunación", command=lambda: cambiarContenido("vacunacion", Hospital, frame_implementacion))
+    procesosMenu.add_command(label="5. Facturación", command=lambda: cambiarContenido("pago", Hospital, frame_implementacion))
+
+    procesosMenu.add_separator()
+
+
+
     menuProcesosConsultas.config(menu=procesosMenu)
 
     # menu Ayuda
@@ -177,6 +214,14 @@ def abrirVentanaPrincipal(ventanaInicio):
     botonBorrar = Button(frameBotones, text="Borrar")
     botonAceptar.pack(padx=10, pady=10, side="left")
     botonBorrar.pack(padx=10, pady=10, side="left")
+
+    frame_implementacion = Frame(ventanaPrincipalDelUsuario)
+    frame_implementacion.pack(fill="both", expand=True)
+    frame_implementacion.configure(bg="white")
+
+    implementacionDefault(
+        frame_implementacion
+    )
 
     ventanaPrincipalDelUsuario.mainloop()
 

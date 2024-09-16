@@ -1,3 +1,4 @@
+
 from src.gestorAplicacion.administracionHospital import CategoriaHabitacion, Hospital
 from src.gestorAplicacion.personas import Paciente
 from src.gestorAplicacion.servicios import Habitacion
