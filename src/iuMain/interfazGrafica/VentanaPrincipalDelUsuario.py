@@ -1,27 +1,27 @@
 from tkinter import *
-from tkinter import ttk
+from tkinter import messagebox
 
 from PIL._tkinter_finder import tk
 
 ################# HAY QUE IMPORTAR VENTANAINICIO ########################
-#from ventanaInicio import ventanaInicio
+#from src.iuMain.interfazGrafica.ventanaInicio import *
 
 # Ventana Principal
 ventanaPrincipalDelUsuario = Tk()
 ventanaPrincipalDelUsuario.title("Ventana Principal del Usuario")
-ventanaPrincipalDelUsuario.geometry("600x500")
+ventanaPrincipalDelUsuario.geometry("600x500+400+90")
 
 ################## ZONA O ##################
 
-titulo = Label(ventanaPrincipalDelUsuario, text="Hospital Andino", font=("Arial", 16))
-titulo.grid(row=0, column=0, columnspan=1, pady=10)
+
+titulo = Label(ventanaPrincipalDelUsuario, text="HOSPITAL ANDINO", font=("Arial", 16))
+titulo.pack(padx = 10, pady = 10)
 
 ################## ZONA 1 ##################
 
 #Frame para los menus 
-menuFrame = Frame(ventanaPrincipalDelUsuario, bg="white", bd=2, relief="ridge")
-menuFrame.grid(row=1, column=0, columnspan=4, padx=10, pady=10)
-
+menuFrame = Frame(ventanaPrincipalDelUsuario, bg="red", bd=2, relief="ridge")
+menuFrame.pack(padx=10, pady=10)
 
 
 from tkinter import *
@@ -73,12 +73,10 @@ class FieldFrame(Frame):
 
 #Eventos menu Archivo
 
-def aplicacion():
-    ventanaInfo = Toplevel(ventanaPrincipalDelUsuario)
-    ventanaInfo.title("Información de la Aplicación")
-    ventanaInfo.geometry("400x200")
-    labelInfo = Label(ventanaInfo, text="Esta aplicación es un sistema de gestión para el Hospital Andino.")
-    labelInfo.pack()
+# Método para mostrar la info. básica de la aplicación al presionar el menú Archivo.
+# Configurar el mensaje para que sea más apropiado.
+def infoAplicacion():
+    messagebox.showinfo("Información básica de la Aplicación","Con esta aplicación puedes gestionar tus tramites hospitalarios.")
 
 """
 ########## ESTO NO DA (que vuelva a ventanaInicial) ########### 
@@ -88,12 +86,9 @@ def salir():
 
 """
 
+#Método para mostrar los nombres de los autores de la aplicación.
 def acercaDe():
-    ventanaAcercaDe = Toplevel(ventanaPrincipalDelUsuario)
-    ventanaAcercaDe.title("Acerca de")
-    ventanaAcercaDe.geometry("300x200")
-    labelAcercaDe = Label(ventanaAcercaDe, text="Autores:\nJerónimo\n...")
-    labelAcercaDe.pack()
+    messagebox.showinfo("Acerca de la aplicación.", "Los autores de la aplicación son:\nJeronimo Zapata.\nJuan Pablo Vergara.\nHernando Montes.\nManuel Mera.\nSamuel Ramírez.")
 
 #Eventos menu Procesos y Consultas
 def actualizarFormulario():
@@ -128,19 +123,23 @@ def implementacionDefault(frame_implementacion):
     label_inicial.pack()
     label_inicial.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
+# Frame adicional para la zona 1.
+
+framezona1 = Frame(menuFrame, bg = "green")
+framezona1.pack(fill =  "x")
 
 #menu Archivo
-menuArchivo = Menubutton(menuFrame, text="Archivo")
-menuArchivo.grid(row=0, column=0, sticky="w", padx=5)
+menuArchivo = Menubutton(framezona1, text="Archivo")
+menuArchivo.pack(side = "left", padx = (0, 2))
 
 archivoMenu = Menu(menuArchivo, tearoff=0)
-archivoMenu.add_command(label="Aplicación", command=aplicacion)
-archivoMenu.add_command(label="Salir" """,command=salir""")
+archivoMenu.add_command(label="Aplicación", command = infoAplicacion)
+archivoMenu.add_command(label="Salir") # ---> command = salir
 menuArchivo.config(menu=archivoMenu)
 
 #menu Procesos y consultas 
-menuProcesosConsultas = Menubutton(menuFrame, text="Procesos y Consultas")
-menuProcesosConsultas.grid(row=0, column=1,)
+menuProcesosConsultas = Menubutton(framezona1, text="Procesos y Consultas")
+menuProcesosConsultas.pack(side = "left", padx = (0, 2))
 
 procesosMenu = Menu(menuProcesosConsultas, tearoff=0)
 procesosMenu.add_command(label="1. Agendar Citas", command=asignarCita)
@@ -151,8 +150,8 @@ procesosMenu.add_command(label="5. Facturación")
 menuProcesosConsultas.config(menu=procesosMenu)
 
 #menu Ayuda
-menuAyuda = Menubutton(menuFrame, text="Ayuda")
-menuAyuda.grid(row=0, column=2, )
+menuAyuda = Menubutton(framezona1, text="Ayuda")
+menuAyuda.pack(side = "left", padx = (0, 2))
 
 ayudaMenu = Menu(menuAyuda, tearoff=0)
 ayudaMenu.add_command(label="Acerca de", command= acercaDe)
@@ -161,23 +160,30 @@ menuAyuda.config(menu=ayudaMenu)
 
 ################## ZONA 2 ##################
 
-tituloProceso = Label(menuFrame, text="Nombre del Proceso o Consulta", font=("Arial", 14), bg="white")
-tituloProceso.grid(row=1, column=0, columnspan=4, padx=10, pady=10, sticky="nsew")
+# Frame adicional pára la zona 2.
 
-descripcionProceso= Label(menuFrame, text="Descripción del detalle del proceso o la consulta", font=("Arial", 10), bg="white")
-descripcionProceso.grid(row=2, column=0, columnspan=4, padx=10, pady=10, sticky="nsew")
+frameZona2 = Frame(menuFrame, bg = "blue")
+frameZona2.pack()
 
-formularioFrame= Frame(menuFrame, bg="white", bd=2, relief="ridge")
-formularioFrame.grid(row=3, column=0, columnspan=4, padx=10, pady=10, sticky="ew")
+tituloProceso = Label(frameZona2, text="Nombre del Proceso o Consulta", font=("Arial", 14), bg="white")
+tituloProceso.pack(padx = 10, pady = 10)
+
+descripcionProceso= Label(frameZona2, text="Descripción del detalle del proceso o la consulta", font=("Arial", 10), bg="white")
+descripcionProceso.pack(padx = 10, pady = 10)
+
+formularioFrame= Frame(frameZona2, bg="white", bd=2, relief="ridge")
+formularioFrame.pack(padx = 10, pady = 10)
 
 
 fieldFrame = FieldFrame(formularioFrame, "Criterios", ["Nombre", "Fecha", "Doctor"], "Valores")
-fieldFrame.grid(row=4, column=0, columnspan=4, padx=10, pady=10, sticky="nsew")
+fieldFrame.pack(padx = 10, pady = 10)
 
 botonAceptar = Button(formularioFrame, text="Aceptar")
 botonBorrar = Button(formularioFrame, text="Borrar")
-botonAceptar.grid(row=5, column=0, padx=50, pady=10, sticky="w")
-botonBorrar.grid(row=5, column=1, padx=50, pady=10, sticky="e")
+botonAceptar.pack(padx = 10, pady = 10)
+botonBorrar.pack(padx = 10, pady = 10)
+
+
 
 
 ventanaPrincipalDelUsuario.mainloop()
