@@ -1,5 +1,6 @@
 from tkinter import *  # ---> Importamos todo por ahora.
 from PIL import Image, ImageTk
+#from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import ventanaPrincipalDelUsuario
 
 # Primeras pruebas interfaz gráfica python.
 
@@ -24,6 +25,7 @@ def descripcionSistema():
 # Método para volver a mostrar el mensaje de bienvenida (Quitar la descripción).
 def quitarDescripcion(event):
     mensajeBienvenida.config(text = "Bienvenido al Sistema de Información Hospitalario!", font = ("Arial", 15))
+
 # Métodos para cargar las imagenes.
 
 # Para el FrameP6.
@@ -65,7 +67,9 @@ def mostrarHV(event):
 # Método para abrir la ventana al presionar en el botón del FrameP4.
 
 def abrirVentPrincipal():
-    pass
+    ventanaInicio.withdraw()
+    ventanaPrincipalDelUsuario.mainloop()
+
 
 # Método para cambiar las imagenes del FrameP4 al pasar el ratón.
 
