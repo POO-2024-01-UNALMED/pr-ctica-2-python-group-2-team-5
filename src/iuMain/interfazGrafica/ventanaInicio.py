@@ -130,7 +130,7 @@ indiceFunc = 0
 
 # Botón para ubicar las imagenes relacionadas al sistema de hospital.
 
-btnImgsFunc = Button(frameP4, bg = "green", command = abrirVentPrincipal)
+btnImgsFunc = Button(frameP4, text = "Pase el mouse por aquí para ver las imagenes relacionadas al sistema, o de click izquierdo para abrir la ventana principal!", command = abrirVentPrincipal, wraplength = 250, justify = "left", font = ("Arial", 12))
 btnImgsFunc.pack(expand = True, fill = "both", padx = 5, pady = 5)
 btnImgsFunc.bind("<Enter>", imagenesP4)
 
@@ -151,7 +151,7 @@ hojasDeVida = [
 ]
 indice = 0
 
-hvDesarrolladores = Label(frameP5, text = "Click!", justify = "left", font = ("Arial", 11), wraplength = 250)
+hvDesarrolladores = Label(frameP5, text = "Click aquí!", justify = "left", font = ("Arial", 11), wraplength = 250)
 hvDesarrolladores.pack(expand = True,fill = "both")
 hvDesarrolladores.bind("<Button-1>", mostrarHV)
 
