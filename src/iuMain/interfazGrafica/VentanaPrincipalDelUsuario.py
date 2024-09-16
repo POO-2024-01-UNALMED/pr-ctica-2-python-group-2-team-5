@@ -69,11 +69,11 @@ def abrirVentanaPrincipal(ventanaInicio):
     # Método para mostrar la info. básica de la aplicación al presionar el menú Archivo.
     # Configurar el mensaje para que sea más apropiado.
     def infoAplicacion():
-        messagebox.showinfo("Información básica de la Aplicación",
-                            "Con esta aplicación puedes gestionar tus tramites hospitalarios.")
+        messagebox.showinfo("Información básica de la Aplicación","Con esta aplicación puedes gestionar tus tramites hospitalarios.")
 
     def salir():
-        pass
+        ventanaInicio.deiconify()
+        ventanaPrincipalDelUsuario.destroy()
 
     # Método para mostrar los nombres de los autores de la aplicación.
     def acercaDe():
@@ -124,7 +124,7 @@ def abrirVentanaPrincipal(ventanaInicio):
     archivoMenu = Menu(menuArchivo, tearoff=0)
     archivoMenu.add_command(label="Aplicación", command=infoAplicacion)
 
-    archivoMenu.add_command(label="Salir")  # ---> command = salir
+    archivoMenu.add_command(label="Salir", command = salir)
     menuArchivo.config(menu=archivoMenu)
 
     # menu Procesos y consultas
