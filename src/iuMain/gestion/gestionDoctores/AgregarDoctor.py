@@ -2,8 +2,12 @@ from tkinter import messagebox
 
 import tkinter as tk
 
+from gestorAplicacion.personas.Doctor import Doctor
+from manejoDeErrores.ErroresAplicacion import DatoDuplicado, TipoIncorrecto, CampoVacio
+from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault, FieldFrame
 
-def imprimir_titulo(frame):
+
+def imprimirTitulo(frame):
     # Limpia el frame
     for item in frame.winfo_children():
         item.destroy()
@@ -12,10 +16,10 @@ def imprimir_titulo(frame):
     titulo = tk.Label(frame, text="Agregar doctor", bg="white", font=("Helvetica", 16, "bold"))
     titulo.pack(pady=20)
 
-def agregar_doctor(hospital, frame):
+def agregarDoctor(hospital, frame):
 
-    def ver_doctor(cedula, nombre, tipo_eps, especialidad):
-        imprimir_titulo(frame)
+    def verDoctor(cedula, nombre, tipo_eps, especialidad):
+        imprimirTitulo(frame)
 
         info_doctor = tk.Label(frame, text=f"Informacion del doctor registrado", bg="white", font=("Helvetica", 12))
         info_doctor.pack(pady=10)
@@ -43,85 +47,84 @@ def agregar_doctor(hospital, frame):
         label_especialidad_doctor = tk.Label(frame_doctor, text=especialidad, bg="white")
         label_especialidad_doctor.grid(row=3, column=1, padx=10, pady=5, sticky="w")
 
-        from src.ui_main.ventana_principal import implementacion_default
 
-        boton_regresar = tk.Button(frame, text="Regresar", command=lambda: implementacion_default(frame))
+
+        boton_regresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
         boton_regresar.pack()
 
-    def agregar_a_lista_doctores():
+    def agregarListaDoctores():
         cedula = fp.getValue(1)
         nombre = fp.getValue(2)
-        tipo_eps = fp.getValue(3)
+        tipoEps = fp.getValue(3)
         especialidad = fp.getValue(4)
 
         # Variable de control para verificar si hay errores
-        hay_errores = False
+        Errores = False
 
         if len(cedula) != 0:
             try:
                 cedula = int(fp.getValue(1))
-                if hospital.buscar_doctor(cedula) is not None:
-                    hay_errores = True
+                if hospital.buscarDoctor(cedula) is not None:
+                    Errores = True
                     try:
                         raise DatoDuplicado()
                     except DatoDuplicado as e:
-                        e.enviar_mensaje()
+                        e.enviarMensaje()
             except ValueError:
-                hay_errores = True
-                TipoIncorrecto("en el campo cedula").enviar_mensaje()
+                Errores = True
+                TipoIncorrecto("en el campo cedula").enviarMensaje()
 
         if len(nombre) != 0:
             try:
                 if nombre.isdigit():
-                    hay_errores = True
+                    Errores = True
                     raise ValueError
                 else:
                     nombre = str(fp.getValue(2))
             except ValueError:
-                hay_errores = True
-                TipoIncorrecto("en el campo nombre").enviar_mensaje()
+                Errores = True
+                TipoIncorrecto("en el campo nombre").enviarMensaje()
 
-        if len(tipo_eps) != 0:
+        if len(tipoEps) != 0:
             try:
-                if tipo_eps != "Subsidiado" and tipo_eps != "Contributivo" and tipo_eps != "Particular":
-                    hay_errores = True
+                if tipoEps != "Subsidiado" and tipoEps != "Contributivo" and tipoEps != "Particular":
+                    Errores = True
                     raise ValueError
                 else:
-                    tipo_eps = str(fp.getValue(3))
+                    tipoEps = str(fp.getValue(3))
             except ValueError:
-                hay_errores = True
-                TipoIncorrecto("en el campo tipo de eps").enviar_mensaje()
+                Errores = True
+                TipoIncorrecto("en el campo tipo de eps").enviarMensaje()
 
         if len(especialidad) != 0:
             try:
                 if especialidad != "General" and especialidad != "Odontologia" and especialidad != "Oftalmologia":
-                    hay_errores = True
+                    Errores = True
                     raise ValueError
                 else:
                     especialidad = str(fp.getValue(4))
             except ValueError:
-                hay_errores = True
-                TipoIncorrecto("en el campo especialidad").enviar_mensaje()
+                Errores = True
+                TipoIncorrecto("en el campo especialidad").enviarMensaje()
 
-        if not cedula or not nombre or not tipo_eps or not especialidad:
-            hay_errores = True
+        if not cedula or not nombre or not tipoEps or not especialidad:
+            Errores = True
             try:
                 raise CampoVacio()
             except CampoVacio as e:
-                e.enviar_mensaje()
+                e.enviarMensaje()
 
-        if not hay_errores:
+        if not Errores:
             respuesta = tk.messagebox.askyesno("Confirmacion del doctor", "¿Estás seguro de agregar este doctor?")
             if respuesta:
-                doctor = Doctor(cedula, nombre, tipo_eps, especialidad)
+                doctor = Doctor(cedula, nombre, tipoEps, especialidad)
                 hospital.lista_doctores.append(doctor)
                 messagebox.showinfo("Doctor agregado", "El doctor se ha agregado exitosamente")
-                ver_doctor(cedula, nombre, tipo_eps, especialidad)
+                verDoctor(cedula, nombre, tipoEps, especialidad)
             else:
                 messagebox.showinfo("Doctor no agregado", "No se ha agregado el doctor")
                 # Se importa acá para evitar una referencia circular
-                from src.ui_main.ventana_principal import implementacion_default
-                implementacion_default(frame)
+                implementacionDefault(frame)
 
 
     def borrar_campos():
@@ -129,7 +132,7 @@ def agregar_doctor(hospital, frame):
             entry.delete(0,tk.END)
 
 
-    imprimir_titulo(frame)
+    imprimirTitulo(frame)
 
     criterios = ["Cédula", "Nombre", "Tipo de eps (Subsidado, Contributivo o Particular)", "Especialidad (General, Oftalmologia u Odontologia)"]
     fp = FieldFrame(frame, "Criterio", criterios, "Valor", None, None)
@@ -138,8 +141,8 @@ def agregar_doctor(hospital, frame):
     botones_frame = tk.Frame(frame, bg="white")
     botones_frame.pack()
 
-    boton_guardar = tk.Button(botones_frame, text="Guardar", command=agregar_a_lista_doctores)
-    boton_guardar.grid(row=0, column=0, padx=10, pady=10, sticky="w")
+    botonGuardar = tk.Button(botones_frame, text="Guardar", command=agregarListaDoctores)
+    botonGuardar.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 
     boton_borrar = tk.Button(botones_frame, text="Borrar", command=borrar_campos)
     boton_borrar.grid(row=0, column=1, padx=10, pady=10, sticky="w")
@@ -147,7 +150,6 @@ def agregar_doctor(hospital, frame):
     # Funcionalidad para regresar a la ventana principal
 
     # Se importa aca para evitar una referencia circular
-    from src.ui_main.ventana_principal import implementacion_default
 
-    boton_regresar = tk.Button(frame, text="Regresar",command=lambda: implementacion_default(frame))
+    boton_regresar = tk.Button(frame, text="Regresar",command=lambda: implementacionDefault(frame))
     boton_regresar.pack()

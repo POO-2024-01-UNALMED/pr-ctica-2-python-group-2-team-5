@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import ttk
 
+from PIL._tkinter_finder import tk
+
 ################# HAY QUE IMPORTAR VENTANAINICIO ########################
 #from ventanaInicio import ventanaInicio
 
