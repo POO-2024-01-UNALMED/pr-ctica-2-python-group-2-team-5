@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import Image, ImageTk
+import VentanaPrincipalDelUsuario
 
 def abrirVentanaInicio():
     # Ventana de inicio
@@ -49,6 +50,10 @@ def abrirVentanaInicio():
         btnImgsFunc.image = imgsFunc[indiceFunc]  # Mantener referencia
         indiceFunc = (indiceFunc + 1) % len(imgsFunc)
 
+    def abrirVentPrincipal():
+        ventanaInicio.withdraw()
+        VentanaPrincipalDelUsuario.abrirVentanaPrincipal(ventanaInicio)
+
     # ------------------------------------------------------------
 
     # Barra de menú
@@ -87,7 +92,7 @@ def abrirVentanaInicio():
                 cargarImagenP4("imagenes/fun4.jpg"),
                 cargarImagenP4("imagenes/fun5.jpg")]
     indiceFunc = 0
-    btnImgsFunc = Button(frameP4, text="Pase el mouse por aquí para ver las imagenes relacionadas al sistema, o de click izquierdo para abrir la ventana principal!", wraplength=250, justify="left", font=("Arial", 12))
+    btnImgsFunc = Button(frameP4, text="Pase el mouse por aquí para ver las imagenes relacionadas al sistema, o de click izquierdo para abrir la ventana principal!", command = abrirVentPrincipal, wraplength=250, justify="left", font=("Arial", 12))
     btnImgsFunc.pack(expand=True, fill="both", padx=5, pady=5)
     btnImgsFunc.bind("<Enter>", imagenesP4)
 
