@@ -1,5 +1,5 @@
-from gestorAplicacion.administracionHospital.Vacuna import Vacuna
-from gestorAplicacion.servicios.CitaVacuna import Cita_Vacuna
+from src.gestorAplicacion.administracionHospital.Vacuna import Vacuna
+from src.gestorAplicacion.servicios.CitaVacuna import CitaVacuna
 
 
 class gestionVacunas:

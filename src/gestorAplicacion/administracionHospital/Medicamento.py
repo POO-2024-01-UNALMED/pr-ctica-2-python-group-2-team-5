@@ -1,4 +1,3 @@
-
 #Elaborado por Jeronimo
 
 class Medicamento:

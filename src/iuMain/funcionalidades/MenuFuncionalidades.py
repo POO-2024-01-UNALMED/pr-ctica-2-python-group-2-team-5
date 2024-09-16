@@ -1,9 +1,9 @@
-from baseDatos.Serializador import Serializador
-from iuMain.funcionalidades.AgendarCita import AgendarCita
-from iuMain.funcionalidades.AsignarHabitacion import AsignarHabiatcion
-from iuMain.funcionalidades.Facturacion import Facturacion
-from iuMain.funcionalidades.FormulaMedica import FormulaMedica
-from iuMain.funcionalidades.Vacunacion import Vacunacion
+from src.baseDatos.Serializador import Serializador
+from src.iuMain.funcionalidades.AgendarCita import AgendarCita
+from src.iuMain.funcionalidades.AsignarHabitacion import AsignarHabiatcion
+from src.iuMain.funcionalidades.Facturacion import Facturacion
+from src.iuMain.funcionalidades.FormulaMedica import FormulaMedica
+from src.iuMain.funcionalidades.Vacunacion import Vacunacion
 
 
 class MenuFuncionalidades:

@@ -1,5 +1,3 @@
-
-
 from src.gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
 from src.gestorAplicacion.administracionHospital.Hospital import Hospital
 from src.gestorAplicacion.servicios.Servicio import Servicio

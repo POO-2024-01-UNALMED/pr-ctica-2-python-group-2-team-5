@@ -1,5 +1,5 @@
-from iuMain.gestion.gestionVacunas.gestionVacunas import gestionVacunas
-from baseDatos.Serializador import Serializador
+from src.iuMain.gestion.gestionVacunas.gestionVacunas import gestionVacunas
+from src.baseDatos.Serializador import Serializador
 
 def menu_gestion_vacunas(hospital):
     while True:

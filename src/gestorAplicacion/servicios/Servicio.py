@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 
-
 #Clase abstracta Servicio que sirve de referencia para los demás servicios en el hospital
 class Servicio(ABC):
     #Atributo de clase.

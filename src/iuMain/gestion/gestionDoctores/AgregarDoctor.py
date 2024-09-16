@@ -2,8 +2,8 @@ from tkinter import messagebox
 
 import tkinter as tk
 
-from gestorAplicacion.personas.Doctor import Doctor
-from manejoDeErrores.ErroresAplicacion import DatoDuplicado, TipoIncorrecto, CampoVacio
+from src.gestorAplicacion.personas.Doctor import Doctor
+from src.manejoDeErrores.ErroresAplicacion import DatoDuplicado, TipoIncorrecto, CampoVacio
 from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault, FieldFrame
 
 

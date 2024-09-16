@@ -1,4 +1,3 @@
-
 #Clase enfermedad que lleva registro de las enfermedades que se tratanen el hospital
 class Enfermedad:
     #Atributo de clase.

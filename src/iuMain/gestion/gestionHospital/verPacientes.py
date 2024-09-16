@@ -1,6 +1,6 @@
 import tkinter as tk
 
-from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
 
 def imprimirTitulo(frame_implementacion):

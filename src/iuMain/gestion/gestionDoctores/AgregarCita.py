@@ -1,11 +1,11 @@
 from tkinter import messagebox
 import tkinter as tk
 
-from gestorAplicacion.administracionHospital.Hospital import Hospital
-from gestorAplicacion.personas.Doctor import Doctor
-from gestorAplicacion.servicios.Cita import Cita
-from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import fieldFrame, FieldFrame, implementacionDefault
-from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
+from src.gestorAplicacion.administracionHospital.Hospital import Hospital
+from src.gestorAplicacion.personas.Doctor import Doctor
+from src.gestorAplicacion.servicios.Cita import Cita
+from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import fieldFrame, FieldFrame, implementacionDefault
+from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
 
 
 def imprimirTitulo(frame):

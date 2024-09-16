@@ -2,10 +2,10 @@ from tkinter import messagebox
 
 import tkinter as tk
 
-from gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
-from gestorAplicacion.servicios.Habitacion import Habitacion
-from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault, FieldFrame
-from manejoDeErrores.ErroresAplicacion import DatoDuplicado
+from src.gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
+from src.gestorAplicacion.servicios.Habitacion import Habitacion
+from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault, FieldFrame
+from src.manejoDeErrores.ErroresAplicacion import DatoDuplicado
 
 
 def imprimirTitulo(frame):

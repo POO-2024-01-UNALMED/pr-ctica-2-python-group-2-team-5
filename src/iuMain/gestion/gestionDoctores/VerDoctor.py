@@ -1,7 +1,7 @@
 import tkinter as tk
 
-from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import FieldFrame
-from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
+from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import FieldFrame
+from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
 from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
 

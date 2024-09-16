@@ -3,10 +3,10 @@ from tkinter import messagebox, ttk
 
 import tkinter as tk
 
-from gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
-from gestorAplicacion.administracionHospital.Medicamento import Medicamento
-from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault, FieldFrame
-from manejoDeErrores.ErroresAplicacion import TipoIncorrecto, DatoDuplicado, CampoVacio
+from src.gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
+from src.gestorAplicacion.administracionHospital.Medicamento import Medicamento
+from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault, FieldFrame
+from src.manejoDeErrores.ErroresAplicacion import TipoIncorrecto, DatoDuplicado, CampoVacio
 
 
 def imprimirTitulo(frame):

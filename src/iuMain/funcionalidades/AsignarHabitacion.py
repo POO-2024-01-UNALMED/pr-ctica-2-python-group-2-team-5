@@ -1,6 +1,6 @@
-from gestorAplicacion.administracionHospital import CategoriaHabitacion, Hospital
-from gestorAplicacion.personas import Paciente
-from gestorAplicacion.servicios import Habitacion
+from src.gestorAplicacion.administracionHospital import CategoriaHabitacion, Hospital
+from src.gestorAplicacion.personas import Paciente
+from src.gestorAplicacion.servicios import Habitacion
 
 class AsignarHabiatcion:
 

@@ -1,4 +1,4 @@
-from gestorAplicacion.servicios.Cita import Cita
+from src.gestorAplicacion.servicios.Cita import Cita
 from src.gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
 from src.gestorAplicacion.administracionHospital.HistoriaClinica import HistoriaClinica
 from src.gestorAplicacion.administracionHospital.Pago import Pago

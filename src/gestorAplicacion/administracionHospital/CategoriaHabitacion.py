@@ -1,4 +1,3 @@
-#Importar lo necesario...
 from enum import Enum
 
 class CategoriaHabitacion(Enum):

@@ -1,7 +1,7 @@
 #Importar lo necesario...
-from gestorAplicacion.administracionHospital import Hospital
-from gestorAplicacion.servicios import *
-from gestorAplicacion.personas import Paciente
+from src.gestorAplicacion.administracionHospital import Hospital
+from src.gestorAplicacion.servicios import *
+from src.gestorAplicacion.personas import Paciente
 
 
 class Facturacion:

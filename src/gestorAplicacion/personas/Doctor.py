@@ -1,4 +1,4 @@
-from gestorAplicacion.servicios.Cita import Cita
+from src.gestorAplicacion.servicios.Cita import Cita
 from src.gestorAplicacion.personas.Persona import Persona
 
 
