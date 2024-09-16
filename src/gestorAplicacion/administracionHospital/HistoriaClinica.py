@@ -29,6 +29,8 @@ class HistoriaClinica:
     def agregarFormula(self, formulaPaciente):
         self.listaFormulas.append(formulaPaciente)
 
+    def agregarEnfermedades(self, enfermedad):
+        self.enfermedades.append(enfermedad)
 
     def getEnfermedades(self):
         return self.enfermedades
