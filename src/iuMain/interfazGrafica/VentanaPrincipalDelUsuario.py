@@ -4,11 +4,12 @@ from PIL import Image, ImageTk
 
 # Ventana Principal
 ventanaPrincipalDelUsuario = Tk()
-ventanaPrincipalDelUsuario.title("Ventana Principal del Usuario")
-ventanaPrincipalDelUsuario.geometry("600x500+400+90")
 
-def abrirVentanaPrincipal():
-
+def abrirVentanaPrincipal(ventanaInicio):
+    global ventanaPrincipalDelUsuario
+    ventanaPrincipalDelUsuario = Toplevel()
+    ventanaPrincipalDelUsuario.title("Ventana Principal del Usuario")
+    ventanaPrincipalDelUsuario.geometry("600x500+400+90")
 
     ################## ZONA O ##################
 
@@ -193,5 +194,3 @@ def abrirVentanaPrincipal():
 
 
     ventanaPrincipalDelUsuario.mainloop()
-
-abrirVentanaPrincipal()

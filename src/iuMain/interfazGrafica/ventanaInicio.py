@@ -67,8 +67,7 @@ def mostrarHV(event):
 # Método para abrir la ventana al presionar en el botón del FrameP4.
 
 def abrirVentPrincipal():
-    ventanaInicio.withdraw()
-    ventanaPrincipalDelUsuario.mainloop()
+    pass
 
 
 # Método para cambiar las imagenes del FrameP4 al pasar el ratón.
@@ -167,9 +166,10 @@ frameP6.pack(fill = "both", padx = 10, pady = (5, 10))
 
 # Cargar la imagen para ubicar en el Frame P6.
 
-img1 = Image.open("imagenes/img1.jpg")
-nDimension = img1.resize((120, 160))
-img1Tk = ImageTk.PhotoImage(nDimension)
+img1Tk = cargarImagen("imagenes/img1.jpg")
+img2Tk = cargarImagen("imagenes/img2.jpg")
+img3Tk = cargarImagen("imagenes/img3.jpg")
+img4Tk = cargarImagen("imagenes/img4.jpg")
 
 # Lista imagenes para mostrar en el Frame P6.
 
@@ -185,13 +185,13 @@ indiceImgs = 0
 labelImg1 = Label(frameP6, image = img1Tk, background = "blue")
 labelImg1.grid(row = 0, column = 0, padx = (6, 2), pady = (8, 2))
 
-labelImg2 = Label(frameP6, image = img1Tk, background = "blue")
+labelImg2 = Label(frameP6, image = img2Tk, background = "blue")
 labelImg2.grid(row = 0, column = 1, padx = (3, 5), pady = (8, 2))
 
-labelImg3 = Label(frameP6, image = img1Tk, background = "blue")
+labelImg3 = Label(frameP6, image = img3Tk, background = "blue")
 labelImg3.grid(row = 1, column = 0, padx = (6, 2), pady = (5, 5))
 
-labelImg4 = Label(frameP6, image = img1Tk, background = "blue")
+labelImg4 = Label(frameP6, image = img4Tk, background = "blue")
 labelImg4.grid(row = 1, column = 1, padx = (3, 5), pady = (5, 5))
 
 # -------------------------- Método mainloop ----------------------------------
