@@ -1,4 +1,3 @@
-from VentanaPrincipalDelUsuario import abrirVentanaPrincipal
 from src.iuMain.interfazGrafica.ventanaInicio import abrirVentanaInicio
 
 if __name__ == "__main__":
