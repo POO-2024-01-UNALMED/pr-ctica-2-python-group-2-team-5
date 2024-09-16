@@ -1,11 +1,41 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
+from PIL._tkinter_finder import tk
+
 from src.iuMain.funcionalidades import AgendarCita, AsignarHabitacion, FormulaMedica, Vacunacion, Facturacion
 from src.iuMain.gestion.gestionHospital import verDoctores, verPacientes, verMedicamentos, verVacunas, destruirHabitacion, agregarMedicamentos, construirHabitacion
 from src.iuMain.gestion.gestionDoctores import *
 from src.iuMain.gestion.gestionPacientes import *
 from src.iuMain.gestion.gestionVacunas import *
+
+
+def implementacionDefault(frame_implementacion):
+    # Limpia el frame
+    for widget in frame_implementacion.winfo_children():
+        widget.destroy()
+
+    # Ejecuta la implementacion por defecto
+    texto_inicial = """
+    Te encuentras en la ventana principal de la aplicación
+
+    Tienes varias opciones:
+
+    Archivo > Aplicacion: Muestra una descripcion de la aplicación
+    Archivo > Salir: Regresa a la ventana inicial
+
+    Procesos y consultas: Acá estan todos los servicios que permite gestionar la aplicación
+
+    Ayuda > Acerca de: Muestra los creadores de la aplicación
+
+    Seleccione una opcion para continuar
+    """
+
+    label_inicial = tk.Label(frame_implementacion, text=texto_inicial, bg="white", font=("Helvetica", 14, "bold"))
+    label_inicial.pack()
+    label_inicial.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+
 
 def cambiarContenido(opcion, Hospital, frame_implementacion):
     #limpiar el frame
