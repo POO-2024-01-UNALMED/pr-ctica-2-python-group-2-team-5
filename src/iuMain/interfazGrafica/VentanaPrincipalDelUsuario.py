@@ -1,8 +1,10 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
+
 from src.iuMain.funcionalidades import AgendarCita, AsignarHabitacion, FormulaMedica, Vacunacion, Facturacion
-from src.iuMain.gestion.gestionHospital import verDoctores, verPacientes, verMedicamentos, verVacunas, destruirHabitacion, agregarMedicamentos, construirHabitacion
+from src.iuMain.gestion.gestionHospital import verDoctores, verPacientes, verMedicamentos, \
+    verVacunas, destruirHabitacion, agregarMedicamentos, construirHabitacion
 from src.iuMain.gestion.gestionDoctores import *
 from src.iuMain.gestion.gestionPacientes import *
 from src.iuMain.gestion.gestionVacunas import *

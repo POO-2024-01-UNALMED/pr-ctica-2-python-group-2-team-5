@@ -12,7 +12,7 @@ class Paciente(Persona, Pago):
     def __init__(self, cedula, nombre, tipoEps):
         super().__init__(cedula, nombre, tipoEps)
         self.habitacionAsignada = None
-        self.HISTORIACLINICA = HistoriaClinica(self)
+        self.historiaClinica = HistoriaClinica(self)
 
 
 
@@ -50,14 +50,14 @@ class Paciente(Persona, Pago):
 
 
     def actualizarHistorialCitas(self, citaAsignada):
-        self.HISTORIACLINICA.historialCitas.append(citaAsignada)
+        self.historiaClinica.historialCitas.append(citaAsignada)
 
 
     def mensajeDoctor(self, doctor: Persona):
         return f"{doctor.bienvenida()}\nPor favor selecciona los medicamentos que vas a formularle a: {self.nombre}"
 
     def actualizarHistorialVacunas(self, citaAsignada):
-        self.HISTORIACLINICA.historialVacunas.append(citaAsignada)
+        self.historiaClinica.historialVacunas.append(citaAsignada)
     def __str__(self):
         return f"---------------------------\nNombre: {self.nombre}\nCédula: {self.cedula}\nTipo de EPS: {self.tipoEps}\n---------------------------"
 
@@ -66,7 +66,7 @@ class Paciente(Persona, Pago):
 
 
     def getHistoriaClinica(self):
-        return self.HISTORIACLINICA
+        return self.historiaClinica
     
     def getCategoriaHabitacion(self):
         return self.categoriaHabitacion
