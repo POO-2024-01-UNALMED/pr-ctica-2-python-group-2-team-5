@@ -3,9 +3,8 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 
 # Ventana Principal
-ventanaPrincipalDelUsuario = Tk()
 
-def abrirVentanaPrincipal(ventanaInicio):
+def abrirVentanaPrincipal():
     global ventanaPrincipalDelUsuario
     ventanaPrincipalDelUsuario = Toplevel()
     ventanaPrincipalDelUsuario.title("Ventana Principal del Usuario")
