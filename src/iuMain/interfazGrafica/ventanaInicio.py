@@ -123,11 +123,11 @@ frameP4.pack(fill = "both", padx = 10, pady = (5, 10))
 
 # Imagenes para ubicar en el Label del FrameP4
 
-imgsFunc = [cargarImagenP4("imagenes/fun1.jpg"),
-            cargarImagenP4("imagenes/fun2.jpg"),
-            cargarImagenP4("imagenes/fun3.jpg"),
-            cargarImagenP4("imagenes/fun4.jpg"),
-            cargarImagenP4("imagenes/fun5.jpg")]
+imgsFunc = [cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun1.jpg"),
+            cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun2.jpg"),
+            cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun3.jpg"),
+            cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun4.jpg"),
+            cargarImagenP4("src/iuMain/interfazGrafica/imagenes/fun5.jpg")]
 
 indiceFunc = 0
 
@@ -166,16 +166,16 @@ frameP6.pack(fill = "both", padx = 10, pady = (5, 10))
 
 # Cargar la imagen para ubicar en el Frame P6.
 
-img1Tk = cargarImagen("imagenes/img1.jpg")
-img2Tk = cargarImagen("imagenes/img2.jpg")
-img3Tk = cargarImagen("imagenes/img3.jpg")
-img4Tk = cargarImagen("imagenes/img4.jpg")
+img1Tk = cargarImagen("src/iuMain/interfazGrafica/imagenes/img1.jpg")
+img2Tk = cargarImagen("src/iuMain/interfazGrafica/imagenes/img2.jpg")
+img3Tk = cargarImagen("src/iuMain/interfazGrafica/imagenes/img3.jpg")
+img4Tk = cargarImagen("src/iuMain/interfazGrafica/imagenes/img4.jpg")
 
 # Lista imagenes para mostrar en el Frame P6.
 
 listaImgs = [
-    [cargarImagen("imagenes/img2.jpg"), cargarImagen("imagenes/img3.jpg"), cargarImagen("imagenes/img4.jpg"), cargarImagen("imagenes/img5.jpg")],
-    [cargarImagen("imagenes/img6.jpg"), cargarImagen("imagenes/img7.jpg"), cargarImagen("imagenes/img8.jpg"), cargarImagen("imagenes/img1.jpg")]
+    [cargarImagen("src/iuMain/interfazGrafica/imagenes/img2.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img3.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img4.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img5.jpg")],
+    [cargarImagen("src/iuMain/interfazGrafica/imagenes/img6.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img7.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img8.jpg"), cargarImagen("src/iuMain/interfazGrafica/imagenes/img1.jpg")]
 ]
 
 indiceImgs = 0
