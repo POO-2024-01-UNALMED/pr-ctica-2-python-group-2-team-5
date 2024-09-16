@@ -1,6 +1,10 @@
 #Importar lo necesario...
 from src.gestorAplicacion.administracionHospital import Hospital
-from src.gestorAplicacion.servicios import *
+from src.gestorAplicacion.servicios.Servicio import Servicio
+from src.gestorAplicacion.servicios.Cita import Cita
+from src.gestorAplicacion.servicios.CitaVacuna import CitaVacuna
+from src.gestorAplicacion.servicios.Formula import Formula
+from src.gestorAplicacion.servicios.Habitacion import Habitacion
 from src.gestorAplicacion.personas import Paciente
 
 

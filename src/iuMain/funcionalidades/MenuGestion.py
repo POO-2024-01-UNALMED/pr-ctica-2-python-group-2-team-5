@@ -1,7 +1,5 @@
 from src.iuMain.gestion.gestionPacientes.MenuPacientes import MenuPacientes
 from src.iuMain.gestion.gestionPacientes.GestionPaciente import GestionPaciente
-
-
 class MenuGestion:
     @staticmethod
     def menuGestion(hospital):
