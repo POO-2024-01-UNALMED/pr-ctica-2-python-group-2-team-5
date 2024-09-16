@@ -14,7 +14,7 @@ def abrirVentanaInicio():
         mensajeBienvenida.config(text="Con este programa podrá pedir citas, generar fórmulas médicas, reservar habitaciones, agendar citas de vacunación y realizar los pagos por los servicios recibidos, además de administrar de forma general todos los componentes que hacen parte del sistema hospitalario.", font=("Arial", 11))
 
     def quitarDescripcion(event):
-        mensajeBienvenida.config(text="Bienvenido al Sistema de Información Hospitalario!", font=("Arial", 15))
+        mensajeBienvenida.config(text="Bienvenido al Sistema de Información Hospitalario, HOSPITAL ANDINO!", font=("Arial", 15))
 
     def cargarImagen(ruta, tamano=(120, 160)):
         img = Image.open(ruta)
@@ -75,7 +75,7 @@ def abrirVentanaInicio():
     frameP3 = Frame(frameP1, bg="white", height=200)
     frameP3.pack_propagate(False)
     frameP3.pack(fill="both", padx=10, pady=(10, 5))
-    mensajeBienvenida = Label(frameP3, text="Bienvenido al Sistema de Información Hospitalario!", wraplength=250, font=("Arial", 15), justify="left")
+    mensajeBienvenida = Label(frameP3, text="Bienvenido al Sistema de Información Hospitalario, HOSPITAL ANDINO!", wraplength=250, font=("Arial", 15), justify="left")
     mensajeBienvenida.pack(expand=True, fill="both")
     mensajeBienvenida.bind("<Button-1>", quitarDescripcion)
 
@@ -105,10 +105,11 @@ def abrirVentanaInicio():
     global hojasDeVida, indice
     hojasDeVida = [
         "Hojas de Vida de los Desarrolladores",
-        "Nombre: Nombre1\nEdad: Edad1\nVive en: Lugar1\nEstudia: Ingeniería de Sistemas\nEn: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: correoinst@unal.edu.co",
-        "Nombre: Nombre2\nEdad: Edad2\nVive en: Lugar2\nEstudia: Ingeniería de Sistemas\nEn: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: correoinst@unal.edu.co",
-        "Nombre: Nombre3\nEdad: Edad3\nVive en: Lugar3\nEstudia: Ingeniería de Sistemas\nEn: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: correoinst@unal.edu.co",
-        "Nombre: Nombre4\nEdad: Edad4\nVive en: Lugar4\nEstudia: Ingeniería de Sistemas\nEn: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: correoinst@unal.edu.co"
+        "Nombre: Juan Pablo Jimenez Vergara\nCarrera: Ingeniería de Sistemas\nInstitución: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: juanjimenezve@unal.edu.co",
+        "Nombre: Jerónimo Zapata Quiroz\nCarrera: Ingeniería de Sistemas\nInstitución: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: jzapataq@unal.edu.co",
+        "Nombre: Hernando Montes Gonzales\nCarrera: Ingeniería de Sistemas\nInstitución: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: hmontesg@unal.edu.co",
+        "Nombre: Manuel Mera Mera\nCarrera: Ingeniería de Sistemas\nInstitución: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: mmeram@unal.edu.co",
+        "Nombre: Samuel Ramirez Muñoz\nCarrera: Ingeniería de Sistemas\nInstitución: Universidad Nacional de Colombia\nSede: Medellin\nCorreo: sramirezmu@unal.edu.co"
     ]
     indice = 0
     hvDesarrolladores = Label(frameP5, text="Click aquí!", justify="left", font=("Arial", 11), wraplength=250)
