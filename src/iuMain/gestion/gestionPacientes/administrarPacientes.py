@@ -2,8 +2,6 @@ from tkinter import messagebox
 
 import tkinter as tk
 
-import frame
-
 from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 from manejoDeErrores.ErroresAplicacion import TipoIncorrecto, CampoVacio, DatosFalsos
 
