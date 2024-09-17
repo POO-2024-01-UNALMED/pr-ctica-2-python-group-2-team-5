@@ -96,7 +96,7 @@ def ventana_principal(hospital):
      
 
     ventana = tk.Tk()
-    ventana.title("MedPlus - Sistema de gestion hospitalaria")
+    ventana.title("Hospital Andino- Sistema de gestion hospitalaria")
     ventana.geometry("1280x720")
     ventana.protocol("WM_DELETE_WINDOW", hospital.serializar())
     
