@@ -62,7 +62,6 @@ def implementacionDefault(frame_implementacion):
         label_inicial.pack()
         label_inicial.place(relx=0.5, rely=0.5, anchor=CENTER)
 
-
 # Presentacion antes de la ventana principal.
 
 def implementacionDefault(frame_implementacion):
