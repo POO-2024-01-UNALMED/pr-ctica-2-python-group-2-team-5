@@ -97,7 +97,7 @@ def ventana_principal(hospital):
 
     ventana = tk.Tk()
     ventana.title("HOSPITAL ANDINO")
-    ventana.geometry("1280x720")
+    ventana.geometry("800x600+400+40")
     ventana.protocol("WM_DELETE_WINDOW", hospital.serializar())
     
     titulo = Label(ventana, text="HOSPITAL ANDINO", font=("Verdana", 16))
