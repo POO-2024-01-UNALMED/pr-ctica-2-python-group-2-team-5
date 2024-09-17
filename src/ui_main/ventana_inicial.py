@@ -264,25 +264,25 @@ def ventana_inicial(hospital):
                     Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
                     Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000))],
 
-                   [Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000))],
+                   [Image.open("src/ui_main/imagenes/fun2.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun2.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun2.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun2.jpg").resize((1000, 1000))],
 
-                   [Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000))],
+                   [Image.open("src/ui_main/imagenes/fun3.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun3.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun3.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun3.jpg").resize((1000, 1000))],
 
-                   [Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000))],
+                   [Image.open("src/ui_main/imagenes/fun4.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun4.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun4.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun4.jpg").resize((1000, 1000))],
 
-                   [Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000))],
+                   [Image.open("src/ui_main/imagenes/fun5.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun5.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun5.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun5.jpg").resize((1000, 1000))],
                    ]
 
     foto00 = tk.Canvas(frame_p6)
