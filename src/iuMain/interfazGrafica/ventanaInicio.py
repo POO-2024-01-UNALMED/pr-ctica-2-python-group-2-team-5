@@ -57,7 +57,7 @@ def abrirVentanaInicio(hospital):
 
     def abrirVentPrincipal():
         ventanaInicio.withdraw()
-        VentanaPrincipalDelUsuario.abrirVentanaPrincipal(hospital)
+        VentanaPrincipalDelUsuario.abrirVentanaPrincipal( hospital)
 
     # ------------------------------------------------------------
 
