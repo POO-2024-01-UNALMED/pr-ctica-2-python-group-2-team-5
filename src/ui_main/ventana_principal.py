@@ -60,20 +60,7 @@ def implementacion_default(frame_implementacion):
         widget.destroy()
 
     # Ejecuta la implementacion por defecto
-    texto_inicial = """
-    Te encuentras en la ventana principal de la aplicación
 
-    Tienes varias opciones:
-
-    Archivo > Aplicacion: Muestra una descripcion de la aplicación
-    Archivo > Salir: Regresa a la ventana inicial
-
-    Procesos y consultas: Acá estan todos los servicios que permite gestionar la aplicación
-
-    Ayuda > Acerca de: Muestra los creadores de la aplicación
-
-    Seleccione una opcion para continuar
-    """
 
     label_inicial = tk.Label(frame_implementacion, text=texto_inicial, bg="white", font=("Helvetica", 14, "bold"))
     label_inicial.pack()
@@ -83,15 +70,15 @@ def implementacion_default(frame_implementacion):
 def ventana_principal(hospital):
     def acerca_de():
         acerca_de_texto = """
-        MedPlus - Sistema de gestion hospitalaria
+        HOSPITAL ANDINO
 
         Hecha por:
 
-        Juan Camilo Gutiérrez Martínez
-        Daniel Giraldo Vanegas
-        Diego Andres Gracia Granados
-        Elian David Velandia Riveros
-        Santiago Arboleda Acevedo
+        Samuel
+        Juan Pablo
+        Hernando
+        Manuel Mera
+        Jeronimo Zapata
         """
         messagebox.showinfo("Acerca de", acerca_de_texto)
 
@@ -101,9 +88,9 @@ def ventana_principal(hospital):
         ventana_descripcion.geometry("500x500")
 
         texto_descripcion = """
-        MedPlus - Sistema de gestion hospitalaria
+        HOSPITAL ANDINO
 
-        MedPlus es una aplicacion enfocada en la gestion eficiente de los servicios que ofrece el hospital.
+        Es una aplicacion enfocada en la gestion eficiente de los servicios que ofrece el hospital.
 
         La aplicacion cuenta con varias funcionalidades:
 
