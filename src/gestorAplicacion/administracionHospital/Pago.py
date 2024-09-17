@@ -7,7 +7,7 @@ from src.gestorAplicacion.servicios.Habitacion import Habitacion
 #Elaborado por Jeronimo
 class Pago:
 
-    def calcular_precio(self, servicio):
+    def calcularPrecio(self, servicio):
         if isinstance(servicio, Formula):
             IVA = 1.19
             precio_total = 0
