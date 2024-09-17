@@ -206,7 +206,7 @@ def ventana_inicial(hospital):
         messagebox.showinfo("Descripcion", descripcion_texto)
 
     ventana = tk.Tk()
-    ventana.title("MedPlus - Sistema de gestion hospitalaria")
+    ventana.title("HOSPITAL ANDINO - Sistema de gestion hospitalaria")
     ventana.geometry("600x600+400+40")
     ventana.protocol("WM_DELETE_WINDOW", hospital.serializar())
 
@@ -253,7 +253,7 @@ def ventana_inicial(hospital):
 
     nombre.config(text="Nombre: Jeronimo Zapata Quiroz", font=("Helvetica", 12))
     email.config(text="Correo: jzapataq@unal.edu.co", font=("Helvetica", 12))
-    github.config(text="github.com/Camilog2004", font=("Helvetica", 12))
+    github.config(text="github.com/jerozapata", font=("Helvetica", 12))
     carrera.config(text="Carrera: Ingeniería de Sistemas e Informática", font=("Helvetica", 12))
 
     # Fotos desarrolladores
