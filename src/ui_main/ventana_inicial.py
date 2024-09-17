@@ -96,7 +96,7 @@ def ventana_inicial(hospital):
     def desarrollador0():
         global tk_foto1_nueva, tk_foto2_nueva, tk_foto3_nueva, tk_foto4_nueva
 
-        nombre.config(text="Juan Camilo Gutiérrez Martínez", font=("Helvetica", 12))
+        nombre.config(text="Nombre: Jeronimo Zapata Quiroz", font=("Helvetica", 12))
         email.config(text="juagutierrezma@unal.edu.co", font=("Helvetica", 12))
         github.config(text="github.com/Camilog2004", font=("Helvetica", 12))
         carrera.config(text="Ingeniería de Sistemas e Informática", font=("Helvetica", 12))
@@ -201,13 +201,13 @@ def ventana_inicial(hospital):
         canvas_imagenes_aplicacion.create_image(0, 0, image=tk_aplicacion, anchor="nw")
 
     def descripcion():
-        descripcion_texto = "MedPlus - Sistema de gestion hospitalaria es una aplicacion que se encarga de gestionar " \
+        descripcion_texto = "HOSPITAL ANDINO es una aplicacion que se encarga de gestionar " \
                           "los servicios de salud que ofrece su hospital"
         messagebox.showinfo("Descripcion", descripcion_texto)
 
     ventana = tk.Tk()
     ventana.title("MedPlus - Sistema de gestion hospitalaria")
-    ventana.geometry("1280x720")
+    ventana.geometry("600x600+400+40")
     ventana.protocol("WM_DELETE_WINDOW", hospital.serializar())
 
     # Menu inicio
@@ -219,31 +219,29 @@ def ventana_inicial(hospital):
     opcion_archivo.add_command(label="Salir", command=lambda: [hospital.serializar(), ventana.destroy()])
 
     # Frames principales
-    frame_p1 = ttk.Frame(ventana)
+    frame_p1 = ttk.Frame(ventana, width=200)
     frame_p2 = ttk.Frame(ventana)
 
     # Mensaje de bienvenida
     frame_p3 = ttk.Frame(frame_p1)
-    bienvenida = ttk.Label(frame_p3, text="Bienvenido a MedPlus", anchor="center", font=("Helvetica", 14, "bold"))
+    bienvenida = ttk.Label(frame_p3, text="Bienvenido al sistema de informacion hospitalario, HOSPITAL ANDINO", anchor="center", font=("Arial", 12), wraplength=200)
 
     # Imagenes de la aplicacion
     frame_p4 = ttk.Frame(frame_p1)
     p4_imagenes = ttk.Frame(frame_p4)
     p4_imagenes.configure(borderwidth=7, relief="solid", padding=0)
     canvas_imagenes_aplicacion = tk.Canvas(p4_imagenes)
-    lista_imagenes = [Image.open("src/ui_main/imagenes/img1.jpg").resize((1000, 1000)),
-                      Image.open("src/ui_main/imagenes/img2.jpg").resize((1000, 1000)),
-                      Image.open("src/ui_main/imagenes/img3.jpg").resize((1000, 1000)),
-                      Image.open("src/ui_main/imagenes/img4.jpg").resize((1000, 1000)),
-                      Image.open("src/ui_main/imagenes/img5.jpg").resize((1000, 1000))]
+    lista_imagenes = [Image.open("src/ui_main/imagenes/fun1.jpg").resize((400, 400)),
+                      Image.open("src/ui_main/imagenes/fun2.jpg").resize((400, 400)),
+                      Image.open("src/ui_main/imagenes/fun3.jpg").resize((400, 400)),
+                      Image.open("src/ui_main/imagenes/fun4.jpg").resize((400, 400)),
+                      Image.open("src/ui_main/imagenes/fun5.jpg").resize((400, 400))]
 
     # Boton para continuar
     p4_continuar = ttk.Frame(frame_p4)
     style = ttk.Style()
     style.configure("My.TButton.TButton", foreground="black", background="#4D5BE4", font=("Helvetica", 10, "bold"))
 
-    continuar = ttk.Button(p4_continuar, text="Ingresar a la aplicación", style="My.TButton.TButton",
-                           command=lambda: [ventana.destroy(), ventana_principal(hospital)])
 
     # Hoja de vida desarrolladores
     frame_p5 = ttk.Frame(frame_p2)
@@ -252,37 +250,37 @@ def ventana_inicial(hospital):
     github = ttk.Label(frame_p5, anchor="center")
     carrera = ttk.Label(frame_p5, anchor="center")
 
-    nombre.config(text="Juan Camilo Gutiérrez Martínez", font=("Helvetica", 12))
-    email.config(text="juagutierrezma@unal.edu.co", font=("Helvetica", 12))
+    nombre.config(text="Nombre: Jeronimo Zapata Quiroz", font=("Helvetica", 12))
+    email.config(text="Correo: jzapataq@unal.edu.co", font=("Helvetica", 12))
     github.config(text="github.com/Camilog2004", font=("Helvetica", 12))
-    carrera.config(text="Ingeniería de Sistemas e Informática", font=("Helvetica", 12))
+    carrera.config(text="Carrera: Ingeniería de Sistemas e Informática", font=("Helvetica", 12))
 
     # Fotos desarrolladores
     frame_p6 = ttk.Frame(frame_p2)
-    lista_fotos = [[Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000))],
+    lista_fotos = [[Image.open("src/ui_main/imagenes/jero1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/jero2.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/jero3.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/jero4.jpg").resize((1000, 1000))],
 
-                   [Image.open("src/ui_main/imagenes/fun2.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun2.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun2.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun2.jpg").resize((1000, 1000))],
+                   [Image.open("src/ui_main/imagenes/juan1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/juan2.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/juan3.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/juan4.jpg").resize((1000, 1000))],
 
-                   [Image.open("src/ui_main/imagenes/fun3.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun3.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun3.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun3.jpg").resize((1000, 1000))],
+                   [Image.open("src/ui_main/imagenes/manuel1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/manuel2.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/manuel3.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/manuel4.jpg").resize((1000, 1000))],
 
-                   [Image.open("src/ui_main/imagenes/fun4.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun4.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun4.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun4.jpg").resize((1000, 1000))],
+                   [Image.open("src/ui_main/imagenes/hernando1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/hernando2.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/hernando3.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/hernando4.jpg").resize((1000, 1000))],
 
-                   [Image.open("src/ui_main/imagenes/fun5.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun5.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun5.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/fun5.jpg").resize((1000, 1000))],
+                   [Image.open("src/ui_main/imagenes/samuel1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/samuel2.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/samuel3.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/samuel4.jpg").resize((1000, 1000))],
                    ]
 
     foto00 = tk.Canvas(frame_p6)
@@ -291,8 +289,8 @@ def ventana_inicial(hospital):
     foto11 = tk.Canvas(frame_p6)
 
     # Diseño
-    frame_p1.pack(side="left", expand=True, fill="both")
-    frame_p2.pack(side="left", expand=True, fill="both")
+    frame_p1.pack(side="left", fill="both")
+    frame_p2.pack(side="left", fill="both")
 
     frame_p3.pack(fill="both")
     bienvenida.pack(expand=True, fill="both", ipady=10, padx=10, pady=10)
@@ -304,7 +302,7 @@ def ventana_inicial(hospital):
     canvas_imagenes_aplicacion.bind("<Enter>", cambiar_imagen_aplicacion)
 
     p4_continuar.pack(fill="both")
-    continuar.pack(expand=True, fill="both", ipady=10, padx=10, pady=10)
+
 
     frame_p5.pack(fill="both")
     nombre.pack(expand=True, fill="both", ipady=5)
