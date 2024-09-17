@@ -3,7 +3,6 @@ from tkinter import messagebox
 import tkinter as tk
 
 from gestorAplicacion.personas.Paciente import Paciente
-from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 from manejoDeErrores.ErroresAplicacion import DatoDuplicado, TipoIncorrecto, CampoVacio
 
 
@@ -43,6 +42,9 @@ def registrarPaciente(hospital, frame):
 
         labelTipoEpsPaciente = tk.Label(framePaciente, text=tipo_eps, bg="white")
         labelTipoEpsPaciente.grid(row=2, column=1, padx=10, pady=5, sticky="w")
+
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
         botonRegresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
         botonRegresar.pack()
@@ -97,7 +99,8 @@ def registrarPaciente(hospital, frame):
                 verPaciente(cedula, nombre, tipoEps)
             else:
                 messagebox.showinfo("Paciente no registrado", "No se ha registrado el paciente")
-                # Se importa aca para evitar una referencia circular
+                # Se importa aca para evitar una referencia circula
+                from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
                 implementacionDefault(frame)
 
     def borrarCampos():

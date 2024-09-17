@@ -1,6 +1,5 @@
 import tkinter as tk
 
-from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
 
 
@@ -26,7 +25,10 @@ def verVacuna(hospital, frame_implementacion):
         vacuna.tipo,cadenaTipoEps,vacuna.precio],[False,False,False,False],34)
         fp.pack()
 
-        botonRegresar = tk.Button(frame_implementacion, text="Regresar", command=lambda: implementacion_default(frame_implementacion),font=("Helvetica", 10, "bold"))
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+
+        botonRegresar = tk.Button(frame_implementacion, text="Regresar", command=lambda: implementacionDefault(frame_implementacion),font=("Helvetica", 10, "bold"))
         botonRegresar.pack(pady=20)
 
 
@@ -65,6 +67,8 @@ def verVacuna(hospital, frame_implementacion):
     botonBuscarVacuna = tk.Button(frame_implementacion, text="Buscar", command=busquedaVacuna, font=("Helvetica", 10, "bold"))
     botonBuscarVacuna.pack(pady=5)
 
+    # Se importa aca para evitar una referencia circula
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     botonRegresar = tk.Button(frame_implementacion, text="Regresar", command=lambda: implementacionDefault(frame_implementacion),font=("Helvetica", 10, "bold"))
     botonRegresar.pack(pady=20)

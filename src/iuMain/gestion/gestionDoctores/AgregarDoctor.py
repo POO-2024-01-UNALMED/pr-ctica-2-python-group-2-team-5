@@ -4,7 +4,6 @@ import tkinter as tk
 
 from src.gestorAplicacion.personas.Doctor import Doctor
 from src.manejoDeErrores.ErroresAplicacion import DatoDuplicado, TipoIncorrecto, CampoVacio
-from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault, FieldFrame
 
 
 def imprimirTitulo(frame):
@@ -47,7 +46,8 @@ def agregarDoctor(hospital, frame):
         label_especialidad_doctor = tk.Label(frame_doctor, text=especialidad, bg="white")
         label_especialidad_doctor.grid(row=3, column=1, padx=10, pady=5, sticky="w")
 
-
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
         boton_regresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
         boton_regresar.pack()
@@ -150,6 +150,8 @@ def agregarDoctor(hospital, frame):
     # Funcionalidad para regresar a la ventana principal
 
     # Se importa aca para evitar una referencia circular
+    # Se importa aca para evitar una referencia circula
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     boton_regresar = tk.Button(frame, text="Regresar",command=lambda: implementacionDefault(frame))
     boton_regresar.pack()

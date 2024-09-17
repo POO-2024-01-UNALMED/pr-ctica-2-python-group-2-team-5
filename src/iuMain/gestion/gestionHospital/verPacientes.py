@@ -1,7 +1,5 @@
 import tkinter as tk
 
-from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
-
 
 def imprimirTitulo(frame_implementacion):
     # Limpia el frame
@@ -37,8 +35,8 @@ def verPacientes(hospital, frame_implementacion):
     pacientesText.config(highlightthickness=5, highlightbackground="#4D5BE4")
     pacientesText.config(state="disabled")
 
+    # Se importa aca para evitar una referencia circula
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
-    botonRegresar = tk.Button(frame_implementacion, text="Regresar",
-                               command=lambda: implementacionDefault(frame_implementacion),
-                               font=("Helvetica", 10, "bold"))
+    botonRegresar = tk.Button(frame_implementacion, text="Regresar",command=lambda: implementacionDefault(frame_implementacion), font=("Helvetica", 10, "bold"))
     botonRegresar.pack(pady=20)

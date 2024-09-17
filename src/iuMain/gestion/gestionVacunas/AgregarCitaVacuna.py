@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import messagebox
 
 from gestorAplicacion.servicios.CitaVacuna import CitaVacuna
-from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
 
 
@@ -40,7 +39,8 @@ def agregarCitaVacuna(hospital, frame):
         agendaVacunaText.config(highlightthickness=5, highlightbackground="#4D5BE4")
         agendaVacunaText.config(state="disabled")
 
-        # Se importa aca para evitar una referencia circular
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
         botonRegresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
         botonRegresar.pack()
@@ -57,7 +57,8 @@ def agregarCitaVacuna(hospital, frame):
                 verCitasVacuna(vacuna)
             else:
                 messagebox.showinfo("Cita cancelada", "La cita no ha sido agregada")
-                # Se importa aca para evitar una referencia circular
+                # Se importa aca para evitar una referencia circula
+                from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
                 implementacionDefault(frame)
 
         imprimirTtiulo(frame)
@@ -71,6 +72,9 @@ def agregarCitaVacuna(hospital, frame):
 
         botonGuardar = tk.Button(frame, text="Guardar", command=lambda: confirmarCita())
         botonGuardar.pack(pady=5)
+
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
         botonRegresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
         botonRegresar.pack()
@@ -111,6 +115,8 @@ def agregarCitaVacuna(hospital, frame):
     botonBuscarVacuna = tk.Button(frame, text="Buscar", command=busquedaVacuna, font=("Helvetica", 10, "bold"))
     botonBuscarVacuna.pack(pady=5)
 
+    # Se importa aca para evitar una referencia circula
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     botonRegresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame),font=("Helvetica", 10, "bold"))
     botonRegresar.pack(pady=20)

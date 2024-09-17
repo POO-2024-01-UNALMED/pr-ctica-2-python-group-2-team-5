@@ -4,7 +4,6 @@ import tkinter as tk
 from src.gestorAplicacion.administracionHospital.Hospital import Hospital
 from src.gestorAplicacion.personas.Doctor import Doctor
 from src.gestorAplicacion.servicios.Cita import Cita
-from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import fieldFrame, FieldFrame, implementacionDefault
 from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
 
 
@@ -38,6 +37,8 @@ def agregarCita(hospital, frame):
         agendaText.config(padx=30)
         agendaText.config(highlightbackground="#4D5BE4", highlightthickness=5)
         agendaText.config(state="disabled")
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
         botonRegresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
         botonRegresar.pack()
@@ -56,6 +57,9 @@ def agregarCita(hospital, frame):
                 verCitaDoctor(doctor)
             else:
                 messagebox.showinfo("Cita cancelada", "La cita no ha sido agregada")
+                # Se importa aca para evitar una referencia circula
+                from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+
                 implementacionDefault(frame)
 
         imprimirTitulo(frame)
@@ -70,9 +74,12 @@ def agregarCita(hospital, frame):
         fp2.pack()
 
         botonGuardar = tk.Button(frame, text="Guardar", command=confirmarCita)
+        botonGuardar.pack()
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
         botonRegresar = tk.Button(frame, text="Regresar", command=implementacionDefault(frame))
-        botonGuardar.pack()
+        botonRegresar.pack()
 
         def busquedaDoctor():
             cedula = fp1.getValue(1)
@@ -110,6 +117,8 @@ def agregarCita(hospital, frame):
 
         botonBuscarDoctor = tk.Button(frame, text="Buscar", command=busquedaDoctor)
         botonBuscarDoctor.pack(pady=5)
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
         botonRegresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
         botonRegresar.pack()

@@ -2,9 +2,6 @@ from tkinter import messagebox
 
 import tkinter as tk
 
-import frame
-
-from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 from src.manejoDeErrores.ErroresAplicacion import TipoIncorrecto, CampoVacio, DatosFalsos
 
 
@@ -27,10 +24,13 @@ def administrarPaciente(hospital, frame):
             hospital.listaPacientes.remove(paciente)
             messagebox.showinfo("Paciente eliminado", "El paciente se ha eliminado exitosamente")
             # Se importa aca para evitar una referencia circular
+            from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+
             implementacionDefault(frame)
         else:
             messagebox.showinfo("Eliminacion cancelada", "El paciente no ha sido eliminado")
             # Se importa aca para evitar una referencia circula
+            from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
             implementacionDefault(frame)
 
     def verPaciente(paciente):
@@ -58,8 +58,12 @@ def administrarPaciente(hospital, frame):
         labelTipoEpsPaciente = tk.Label(framePaciente, text=paciente.tipoEps, bg="white")
         labelTipoEpsPaciente.grid(row=2, column=1, padx=10, pady=5, sticky="w")
 
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+
         botonRegresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
         botonRegresar.pack()
+
     def actualizarPaciente(fp, paciente):
         nombre = fp.getValue(2)
         error = False
@@ -86,7 +90,8 @@ def administrarPaciente(hospital, frame):
                 verPaciente(paciente)
             else:
                 messagebox.showinfo("Cambio cancelado", "El nombre no se ha cambiado")
-                # Se importa aca para evitar una referencia circular
+                # Se importa aca para evitar una referencia circula
+                from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
                 implementacionDefault(frame)
 
 

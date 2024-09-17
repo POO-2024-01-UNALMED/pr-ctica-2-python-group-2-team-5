@@ -2,7 +2,6 @@ from tkinter import messagebox
 
 import tkinter as tk
 
-from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault, FieldFrame
 from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, CampoVacio
 
 
@@ -22,10 +21,14 @@ def destruirHabitacion(hospital, frame):
         if respuesta:
             hospital.habitaciones.remove(habitacion)
             messagebox.showinfo("Habitación Destruida", "La habitación se ha destruido exitosamente")
+            # Se importa aca para evitar una referencia circula
+            from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+
             implementacionDefault(frame)
         else:
             messagebox.showinfo("Destrución cancelada", "La habitacion no ha sido eliminado")
-            # Se importa aca para evitar una referencia circular
+            # Se importa aca para evitar una referencia circula
+            from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
             implementacionDefault(frame)
 
     def elementosHabitacion(habitacion):
@@ -43,7 +46,8 @@ def destruirHabitacion(hospital, frame):
             fp = FieldFrame(frame, "Criterio", criterios, "Valor",[habitacion.numero, habitacion.categoria.name, "Ocupada", habitacion.paciente.nombre,habitacion.dias], [False, False, False, False, False])
             fp.pack()
 
-
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
         boton_regresar = tk.Button(frame, text="Regresar",command=lambda: implementacionDefault(frame))
         boton_regresar.pack(pady=10)
@@ -81,6 +85,8 @@ def destruirHabitacion(hospital, frame):
     botonBuscarDoctor = tk.Button(frame, text="Buscar", command=busquedaHabitacion)
     botonBuscarDoctor.pack(pady=5)
 
+    # Se importa aca para evitar una referencia circula
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     botonRegresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
     botonRegresar.pack()
