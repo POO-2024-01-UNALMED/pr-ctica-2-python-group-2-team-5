@@ -4,11 +4,14 @@ from PIL import Image, ImageTk
 import VentanaPrincipalDelUsuario
 
 
-def abrirVentanaInicio():
+def abrirVentanaInicio(hospital):
     # Ventana de inicio
+    
     ventanaInicio = Tk()
     ventanaInicio.title("Ventana de Inicio")
     ventanaInicio.geometry("600x600+400+40")
+   # ventanaInicio.protocol("WM_DELETE_WINDOW", hospital.serializar())
+    
 
     # ------------ EVENTOS -------------------
 
@@ -54,7 +57,7 @@ def abrirVentanaInicio():
 
     def abrirVentPrincipal():
         ventanaInicio.withdraw()
-        VentanaPrincipalDelUsuario.abrirVentanaPrincipal(ventanaInicio)
+        VentanaPrincipalDelUsuario.abrirVentanaPrincipal(hospital)
 
     # ------------------------------------------------------------
 
@@ -65,7 +68,7 @@ def abrirVentanaInicio():
     barraMenu.add_cascade(label="Inicio", menu=menuInicio)
     menuInicio.add_command(label="Descripcion del sistema", command=descripcionSistema)
     menuInicio.add_separator()
-    menuInicio.add_command(label="Salir", command=ventanaInicio.destroy)
+    menuInicio.add_command(label="Salir", command=lambda: [hospital.serializar(),ventanaInicio.destroy])
 
     # ------------------- Frames P1 y P2 -----------------------------------------
     frameP1 = Frame(ventanaInicio, bg="black")
