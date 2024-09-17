@@ -4,8 +4,8 @@ import tkinter as tk
 
 import frame
 
-from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
-from manejoDeErrores.ErroresAplicacion import TipoIncorrecto, CampoVacio, DatosFalsos
+from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+from src.manejoDeErrores.ErroresAplicacion import TipoIncorrecto, CampoVacio, DatosFalsos
 
 
 def imprimirTitulo(frame):

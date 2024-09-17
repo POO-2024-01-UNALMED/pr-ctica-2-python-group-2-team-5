@@ -2,8 +2,8 @@
 import os
 import pickle
 
-from gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
-from manejoDeErrores.ErroresAplicacion import DatosFalsos
+from src.gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
+from src.manejoDeErrores.ErroresAplicacion import DatosFalsos
 
 class Hospital:
     #Atributo de clase.
@@ -16,16 +16,10 @@ class Hospital:
         self.listaPacientes = []
         self.listaMedicamentos = []
         self.listaVacunas = []
+        self.deserializar()
 
     #Métodos.
 
-    #Buscar doctores por especialidad.
-    def buscarTipoDoctor(self, especialidad):
-        doctoresDisponibles = []
-        for doctor in self.listaDoctores:
-            if doctor.especialidad == especialidad:
-                doctoresDisponibles.append(doctor)
-        return doctoresDisponibles
 
     #Buscar paciente con su número de cedula.
     def buscarPaciente(self, cedula):
@@ -33,7 +27,6 @@ class Hospital:
             if paciente.getCedula() == cedula:
                 return paciente
         raise DatosFalsos()
-
 
     #Buscar doctor con la cédula.
     def buscarDoctor(self, cedula):
@@ -49,6 +42,14 @@ class Hospital:
                 disponibles.append(medicamento)
         return disponibles
 
+    #Buscar doctores por especialidad.
+    def buscarTipoDoctor(self, especialidad):
+        doctoresDisponibles = []
+        for doctor in self.listaDoctores:
+            if doctor.especialidad == especialidad:
+                doctoresDisponibles.append(doctor)
+        return doctoresDisponibles
+
     #Buscar vacunas por tipo.
     def buscarTipoVacuna(self, tipo):
         vacunasdisponibles = []
@@ -57,21 +58,13 @@ class Hospital:
                 vacunasdisponibles.append(vacuna)
         return vacunasdisponibles
 
+    def buscarVacuna(self, nombre):
+        vacunaSeleccionada = None
+        for vacuna in self.listaVacunas:
+            if vacuna.nombre == nombre:
+                vacunaSeleccionada = vacuna
+        return vacunaSeleccionada
 
-
-    def deserializar(self):
-        with open(os.path.abspath("src/baseDatos/temp/registro_doctores.pickle"), "rb") as file:
-            self.listaDoctores = pickle.load(file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_pacientes.pickle"), "rb") as file:
-            self.listaPacientes = pickle.load(file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_medicamentos.pickle"), "rb") as file:
-            self.listaMedicamentos = pickle.load(file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_vacunas.pickle"), "rb") as file:
-            self.listaVacunas = pickle.load(file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_enfermedades.pickle"), "rb") as file:
-            Enfermedad._enfermedades_registradas = pickle.load(file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_habitaciones.pickle"), "rb") as file:
-            self.habitaciones = pickle.load(file)
 
     def serializar(self):
         with open(os.path.abspath("src/baseDatos/temp/registro_doctores.pickle"), "wb") as file:
@@ -92,6 +85,21 @@ class Hospital:
         with open(os.path.abspath("src/baseDatos/temp/registro_habitaciones.pickle"), "wb") as file:
             file.truncate()
             pickle.dump(self.habitaciones, file)
+
+    def deserializar(self):
+        with open(os.path.abspath("src/baseDatos/temp/registro_doctores.pickle"), "rb") as file:
+            self.listaDoctores = pickle.load(file)
+        with open(os.path.abspath("src/baseDatos/temp/registro_pacientes.pickle"), "rb") as file:
+            self.listaPacientes = pickle.load(file)
+        with open(os.path.abspath("src/baseDatos/temp/registro_medicamentos.pickle"), "rb") as file:
+            self.listaMedicamentos = pickle.load(file)
+        with open(os.path.abspath("src/baseDatos/temp/registro_vacunas.pickle"), "rb") as file:
+            self.listaVacunas = pickle.load(file)
+        with open(os.path.abspath("src/baseDatos/temp/registro_enfermedades.pickle"), "rb") as file:
+            Enfermedad._enfermedades_registradas = pickle.load(file)
+        with open(os.path.abspath("src/baseDatos/temp/registro_habitaciones.pickle"), "rb") as file:
+            self.habitaciones = pickle.load(file)
+
 
     #Setters y getters.
     def getListaDoctores(self):

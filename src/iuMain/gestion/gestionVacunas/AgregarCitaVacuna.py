@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 from gestorAplicacion.servicios.CitaVacuna import CitaVacuna
+from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
 
 
@@ -83,7 +84,7 @@ def agregarCitaVacuna(hospital, frame):
                 if nombre.isdigit():
                     raise ValueError
                 else:
-                    vacuna = hospital.buscar_vacuna(nombre)
+                    vacuna = hospital.buscarVacuna(nombre)
                     if vacuna is not None:
                         agregarFechaVacuna(vacuna)
                     else:
