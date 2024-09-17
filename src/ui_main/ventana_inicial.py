@@ -259,30 +259,30 @@ def ventana_inicial(hospital):
 
     # Fotos desarrolladores
     frame_p6 = ttk.Frame(frame_p2)
-    lista_fotos = [[Image.open("src/ui_main/imagenes/desarrolladores/camilo/foto1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/camilo/foto2.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/camilo/foto3.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/camilo/foto4.jpg").resize((1000, 1000))],
+    lista_fotos = [[Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000))],
 
-                   [Image.open("src/ui_main/imagenes/desarrolladores/daniel/foto1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/daniel/foto2.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/daniel/foto3.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/daniel/foto4.jpg").resize((1000, 1000))],
+                   [Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000))],
 
-                   [Image.open("src/ui_main/imagenes/desarrolladores/diego/foto1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/diego/foto2.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/diego/foto3.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/diego/foto4.jpg").resize((1000, 1000))],
+                   [Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000))],
 
-                   [Image.open("src/ui_main/imagenes/desarrolladores/elian/foto1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/elian/foto2.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/elian/foto3.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/elian/foto4.jpg").resize((1000, 1000))],
+                   [Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000))],
 
-                   [Image.open("src/ui_main/imagenes/desarrolladores/santiago/foto1.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/santiago/foto2.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/santiago/foto3.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/desarrolladores/santiago/foto4.jpg").resize((1000, 1000))],
+                   [Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000)),
+                    Image.open("src/ui_main/imagenes/fun1.jpg").resize((1000, 1000))],
                    ]
 
     foto00 = tk.Canvas(frame_p6)
