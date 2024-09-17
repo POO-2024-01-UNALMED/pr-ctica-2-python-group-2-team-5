@@ -55,7 +55,7 @@ def ventana_inicial(hospital):
         global tk_foto1_nueva, tk_foto2_nueva, tk_foto3_nueva, tk_foto4_nueva
 
         nombre.config(text="Manuel Mera Mera", font=("Helvetica", 12))
-        email.config(text="dgraciag@unal.edu.co", font=("Helvetica", 12))
+        email.config(text="MmeraM@unal.edu.co", font=("Helvetica", 12))
         github.config(text="github.com/Manuelmera", font=("Helvetica", 12))
         carrera.config(text="Ingeniería de Sistemas e Informática", font=("Helvetica", 12))
 
