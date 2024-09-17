@@ -1,5 +1,3 @@
-
-
 from src.gestorAplicacion.administracionHospital import Hospital, Vacuna
 from src.gestorAplicacion.servicios import CitaVacuna
 from src.gestorAplicacion.personas import Paciente
