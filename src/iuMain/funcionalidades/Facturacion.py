@@ -1,8 +1,8 @@
 from tkinter import *
 from tkinter import messagebox
 
-from src.gestorAplicacion.servicios.Servicio import Servicio
-from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio, SinServicioSeleccionado
+from gestorAplicacion.servicios.Servicio import Servicio
+from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio, SinServicioSeleccionado
 #from src.iuMain.gestion.FieldFrame import FieldFrame ---> TODO: Crear clase FieldFrame
 
 # Mostrar el titulo de la funcionalidad.
