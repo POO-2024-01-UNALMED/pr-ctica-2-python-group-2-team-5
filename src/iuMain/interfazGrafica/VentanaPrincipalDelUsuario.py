@@ -15,11 +15,11 @@ def cambiarContenido(opcion, Hospital, frame_implementacion):
 
     # Cambios con funcionalidades
     opciones={
-        "agendarCita": AgendarCita.agendar_citas,
-        "asignarHabitacion": AsignarHabitacion.AsignarHabitacion,
+        "agendarCita": AgendarCita.agendarCitas,
+        "asignarHabitacion": AsignarHabitacion.asignarHabitacion,
         "vacunacion": Vacunacion.Vacunacion,
         "pago": Facturacion.Facturacion,
-        "formulaMedica": FormulaMedica.FormulaMedica,
+       # "formulaMedica": FormulaMedica.FormulaMedica,
 
         #Gestion Hospital
         "verPacientes": verPacientes.verPacientes,
@@ -92,11 +92,30 @@ def implementacionDefault(frame_implementacion):
     labelInicial.place(relx=0.5, rely=0.5, anchor="center")
 
 # Ventana principal.
-def abrirVentanaPrincipal(ventanaInicio):
+def abrirVentanaPrincipal(hospital):
+
+    def infoAplicacion():
+        messagebox.showinfo("Información básica de la Aplicación","Con esta aplicación puedes gestionar tus tramites hospitalarios.")
+
+
+
+    # Método para mostrar los nombres de los autores de la aplicación.
+    def acercaDe():
+        messagebox.showinfo("Acerca de la aplicación.","Los autores de la aplicación son:\nJeronimo Zapata.\nJuan Pablo Vergara.\nHernando Montes.\nManuel Mera.\nSamuel Ramírez.")
+
+
+    # Eventos menu Procesos y Consultas
+    def actualizarFormulario():
+        pass
+
+    def asignarCita():
+        pass
+
 
     ventanaPrincipalDelUsuario = Toplevel()
     ventanaPrincipalDelUsuario.title("Ventana Principal del Usuario")
     ventanaPrincipalDelUsuario.geometry("600x500+400+90")
+#    ventanaPrincipalDelUsuario.protocol("WM_DELETE_WINDOW", hospital.serializar())
 
     ################## ZONA O ##################
 
@@ -159,24 +178,6 @@ def abrirVentanaPrincipal(ventanaInicio):
 
     # Método para mostrar la info. básica de la aplicación al presionar el menú Archivo.
     # Configurar el mensaje para que sea más apropiado.
-    def infoAplicacion():
-        messagebox.showinfo("Información básica de la Aplicación","Con esta aplicación puedes gestionar tus tramites hospitalarios.")
-
-    def salir():
-        ventanaInicio.deiconify()
-        ventanaPrincipalDelUsuario.destroy()
-
-    # Método para mostrar los nombres de los autores de la aplicación.
-    def acercaDe():
-        messagebox.showinfo("Acerca de la aplicación.","Los autores de la aplicación son:\nJeronimo Zapata.\nJuan Pablo Vergara.\nHernando Montes.\nManuel Mera.\nSamuel Ramírez.")
-
-
-    # Eventos menu Procesos y Consultas
-    def actualizarFormulario():
-        pass
-
-    def asignarCita():
-        pass
 
 
 
@@ -192,7 +193,9 @@ def abrirVentanaPrincipal(ventanaInicio):
     archivoMenu = Menu(menuArchivo, tearoff=0)
     archivoMenu.add_command(label="Aplicación", command=infoAplicacion)
 
-    archivoMenu.add_command(label="Salir", command = salir)
+    import ventanaInicio
+
+    archivoMenu.add_command(label="Salir", command = lambda: [ventanaPrincipalDelUsuario.destroy(), ventanaInicio(hospital)])
     menuArchivo.config(menu=archivoMenu)
 
     # menu Procesos y consultas
@@ -200,11 +203,11 @@ def abrirVentanaPrincipal(ventanaInicio):
     menuProcesosConsultas.pack(side="left", padx=(0, 2))
 
     procesosMenu = Menu(menuProcesosConsultas, tearoff=0)
-    procesosMenu.add_command(label="1. Agendar Citas", command=lambda: cambiarContenido("agendarCita", Hospital, frame_implementacion))
-    procesosMenu.add_command(label="2. Fórmula Médica", command=lambda: cambiarContenido("formualMedica", Hospital, frame_implementacion) )
-    procesosMenu.add_command(label="3. Asignar Habitación", command=lambda: cambiarContenido("asignarHabitacion", Hospital, frame_implementacion))
-    procesosMenu.add_command(label="4. Vacunación", command=lambda: cambiarContenido("vacunacion", Hospital, frame_implementacion))
-    procesosMenu.add_command(label="5. Facturación", command=lambda: cambiarContenido("pago", Hospital, frame_implementacion))
+    procesosMenu.add_command(label="1. Agendar Citas", command=lambda: cambiarContenido("agendarCita", hospital, frame_implementacion))
+    procesosMenu.add_command(label="2. Fórmula Médica", command=lambda: cambiarContenido("formualMedica", hospital, frame_implementacion) )
+    procesosMenu.add_command(label="3. Asignar Habitación", command=lambda: cambiarContenido("asignarHabitacion", hospital, frame_implementacion))
+    procesosMenu.add_command(label="4. Vacunación", command=lambda: cambiarContenido("vacunacion", hospital, frame_implementacion))
+    procesosMenu.add_command(label="5. Facturación", command=lambda: cambiarContenido("pago", hospital, frame_implementacion))
 
     procesosMenu.add_separator()
 
@@ -231,7 +234,7 @@ def abrirVentanaPrincipal(ventanaInicio):
     tituloProceso.pack(padx=10, pady=10)
 
     descripcionProceso = Label(frameZona2, text="Descripción del detalle del proceso o la consulta", font=("Arial", 10),
-                               bg="white")
+                                bg="white")
     descripcionProceso.pack(padx=10, pady=10)
 
     formularioFrame = Frame(frameZona2, bg="white", bd=2, relief="ridge")
