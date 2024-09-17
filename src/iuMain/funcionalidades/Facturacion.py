@@ -1,9 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
 
-from src.gestorAplicacion.servicios.Servicio import Servicio
-from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio, SinServicioSeleccionado
-from src.iuMain.gestion.FieldFrame import FieldFrame
+from gestorAplicacion.servicios.Servicio import Servicio
+from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio, SinServicioSeleccionado
+from iuMain.gestion.FieldFrame import FieldFrame
 
 # Mostrar el titulo de la funcionalidad.
 def mostrarTitulo(frame):

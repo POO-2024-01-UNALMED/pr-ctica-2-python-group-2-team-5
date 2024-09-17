@@ -1,8 +1,8 @@
 from tkinter import *
 from tkinter import ttk, messagebox
-from src.gestorAplicacion.servicios.Formula import Formula
-from src.manejoDeErrores.ErroresAplicacion import *
-from src.iuMain.gestion.FieldFrame import FieldFrame
+from gestorAplicacion.servicios.Formula import Formula
+from manejoDeErrores.ErroresAplicacion import *
+from iuMain.gestion.FieldFrame import FieldFrame
 
 def mostratTitulo(frame):
     # Limpia el frame
@@ -14,3 +14,4 @@ def mostratTitulo(frame):
     titulo.pack()
 
 def formulaMedica(hospital, frame):
+    pass
