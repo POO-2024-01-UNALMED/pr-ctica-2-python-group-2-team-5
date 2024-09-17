@@ -231,11 +231,11 @@ def ventana_inicial(hospital):
     p4_imagenes = ttk.Frame(frame_p4)
     p4_imagenes.configure(borderwidth=7, relief="solid", padding=0)
     canvas_imagenes_aplicacion = tk.Canvas(p4_imagenes)
-    lista_imagenes = [Image.open("src/ui_main/imagenes/aplicacion/imagen1.jpg").resize((1000, 1000)),
-                      Image.open("src/ui_main/imagenes/aplicacion/imagen2.jpg").resize((1000, 1000)),
-                      Image.open("src/ui_main/imagenes/aplicacion/imagen3.jpg").resize((1000, 1000)),
-                      Image.open("src/ui_main/imagenes/aplicacion/imagen4.jpg").resize((1000, 1000)),
-                      Image.open("src/ui_main/imagenes/aplicacion/imagen5.jpg").resize((1000, 1000))]
+    lista_imagenes = [Image.open("src/ui_main/imagenes/img1.jpg").resize((1000, 1000)),
+                      Image.open("src/ui_main/imagenes/img2.jpg").resize((1000, 1000)),
+                      Image.open("src/ui_main/imagenes/img3.jpg").resize((1000, 1000)),
+                      Image.open("src/ui_main/imagenes/img4.jpg").resize((1000, 1000)),
+                      Image.open("src/ui_main/imagenes/img5.jpg").resize((1000, 1000))]
 
     # Boton para continuar
     p4_continuar = ttk.Frame(frame_p4)
