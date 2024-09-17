@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-
+from tkinter import *
 from src.ui_main.funcionalidades import agendar_citas, formula_medica, asignar_habitacion, vacunacion, \
     facturacion
 from src.ui_main.gestion.gestion_doctores import agregar_doctor, ver_doctor, eliminar_doctor, agregar_cita
@@ -60,23 +60,7 @@ def implementacion_default(frame_implementacion):
         widget.destroy()
 
     # Ejecuta la implementacion por defecto
-    texto_inicial = """
-    
-    Esta es la pantalla principal de la ventana principal.
-    
-    Algunas indicaciones a tener en cuenta son:
-    
-    - Al presionar el menú Archivo > Aplicación, verá una descripción de lo que hace el programa en general.
-    
-    - Al presionar el menú Archivo > Salir, volverá a la ventana inicial
-    
-    - Al presionar el menú Procesos y Consultas, se desplegará la lista de funcionalidades a las que puede acceder.
-      Asegurese de leer el manual de usuario para entender como se utiliza cada una.
-      
-    - Al presionar el menú Ayuda > Acerca de, podrá ver los nombres de los desarrolladores de la aplicación
-    
-    
-    """
+    texto_inicial = "Bienvenido al sistema"
 
 
     label_inicial = tk.Label(frame_implementacion, text=texto_inicial, bg="white", font=("Helvetica", 14, "bold"), justify="left")
@@ -86,24 +70,13 @@ def implementacion_default(frame_implementacion):
 
 def ventana_principal(hospital):
     def acerca_de():
-        acerca_de_texto = """
-        HOSPITAL ANDINO
+       
+        messagebox.showinfo("Acerca de la aplicación.","Los autores de la aplicación son:\nJeronimo Zapata.\nJuan Pablo Vergara.\nHernando Montes.\nManuel Mera.\nSamuel Ramírez.")
 
-        Hecha por:
 
-        Samuel
-        Juan Pablo
-        Hernando
-        Manuel Mera
-        Jeronimo Zapata
-        """
-        messagebox.showinfo("Acerca de", acerca_de_texto)
 
     def descripcion_aplicacion():
-        ventana_descripcion = tk.Toplevel()
-        ventana_descripcion.title("SISTEMA HOSPITALARIO HOSPITAL ANDINO")
-        ventana_descripcion.geometry("500x500")
-
+        
         texto_descripcion = """
         HOSPITAL ANDINO
 
@@ -119,24 +92,26 @@ def ventana_principal(hospital):
         6. Gestion: Se encarga de procesos como agregar pacientes, agregar vacunas, agregar medicamentos, etc...
         """
 
-        label_descripcion = tk.Label(ventana_descripcion, text=texto_descripcion, padx=10, pady=10, anchor="w",
-                                     width=70, height=20, wraplength=480)
-        label_descripcion.pack()
+        messagebox.showinfo("Descripcion aplicacion", texto_descripcion)
+    
 
-        boton_continuar_descripcion = tk.Button(ventana_descripcion, text="Continuar",
-                                                command=lambda: ventana_descripcion.destroy())
-        boton_continuar_descripcion.pack(pady=20)
-
-        ventana_descripcion.mainloop()
-
+    
     ventana = tk.Tk()
     ventana.title("HOSPITAL ANDINO")
     ventana.geometry("800x600+400+40")
     ventana.protocol("WM_DELETE_WINDOW", hospital.serializar())
 
+    titulo = Label(ventana, text="HOSPITAL ANDINO", font=("Verdana", 16))
+    titulo.pack(padx=10, pady=10)
+
     # Menu de opciones (Zona 1)
-    barra_menu = tk.Menu(ventana)
+
+    menuFrame = Frame(ventana, bd=2, relief="ridge")
+    menuFrame.pack(padx=10, pady=10)
+
+    barra_menu = tk.Menu(menuFrame)
     ventana.config(menu=barra_menu)
+    
 
     opcion_archivo = tk.Menu(barra_menu, tearoff=0)
     barra_menu.add_cascade(label="Archivo", menu=opcion_archivo)
