@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 
 
+<<<<<<< Updated upstream
 from iuMain.funcionalidades import AgendarCita,AsignarHabitacion,Vacunacion,Facturacion,FormulaMedica
 from iuMain.gestion.gestionHospital import verPacientes,verMedicamentos,verDoctores,verVacunas,agregarMedicamentos,construirHabitacion,destruirHabitacion
 
