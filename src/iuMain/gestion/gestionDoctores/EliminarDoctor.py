@@ -82,7 +82,7 @@ def eliminarDoctor(hospital, frame):
     botonBuscarDoctor.pack(pady=5)
 
     # Se importa aca para evitar una referencia circula
-    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+    from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     botonRegresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
     botonRegresar.pack()
