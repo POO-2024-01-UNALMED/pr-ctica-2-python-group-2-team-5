@@ -67,38 +67,52 @@ class Hospital:
 
 
     def serializar(self):
-        with open(os.path.abspath("src/baseDatos/temp/registro_doctores.pickle"), "wb") as file:
-            file.truncate()
-            pickle.dump(self.listaDoctores, file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_pacientes.pickle"), "wb") as file:
-            file.truncate()
-            pickle.dump(self.listaPacientes, file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_medicamentos.pickle"), "wb") as file:
-            file.truncate()
-            pickle.dump(self.listaMedicamentos, file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_vacunas.pickle"), "wb") as file:
-            file.truncate()
-            pickle.dump(self.listaVacunas, file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_enfermedades.pickle"), "wb") as file:
-            file.truncate()
-            pickle.dump(Enfermedad.enfermedadesRegistradas, file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_habitaciones.pickle"), "wb") as file:
-            file.truncate()
-            pickle.dump(self.habitaciones, file)
+        try:
+            with open(os.path.abspath("src/baseDatos/temp/registro_doctores.pickle"), "wb") as file:
+                file.truncate()
+                pickle.dump(self.listaDoctores, file)
+            with open(os.path.abspath("src/baseDatos/temp/registro_pacientes.pickle"), "wb") as file:
+                file.truncate()
+                pickle.dump(self.listaPacientes, file)
+            with open(os.path.abspath("src/baseDatos/temp/registro_medicamentos.pickle"), "wb") as file:
+                file.truncate()
+                pickle.dump(self.listaMedicamentos, file)
+            with open(os.path.abspath("src/baseDatos/temp/registro_vacunas.pickle"), "wb") as file:
+                file.truncate()
+                pickle.dump(self.listaVacunas, file)
+            with open(os.path.abspath("src/baseDatos/temp/registro_enfermedades.pickle"), "wb") as file:
+                file.truncate()
+                pickle.dump(Enfermedad.enfermedadesRegistradas, file)
+            with open(os.path.abspath("src/baseDatos/temp/registro_habitaciones.pickle"), "wb") as file:
+                file.truncate()
+                pickle.dump(self.habitaciones, file)
+        except FileNotFoundError as e:
+            print(f"Archivo no encontrado: {e}")
+        except pickle.UnpicklingError as e:
+            print(f"Error al deserializar: {e}")
+        except Exception as e:
+            print(f"Ocurrió un error: {e}")
 
     def deserializar(self):
-        with open(os.path.abspath("src/baseDatos/temp/registro_doctores.pickle"), "rb") as file:
-            self.listaDoctores = pickle.load(file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_pacientes.pickle"), "rb") as file:
-            self.listaPacientes = pickle.load(file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_medicamentos.pickle"), "rb") as file:
-            self.listaMedicamentos = pickle.load(file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_vacunas.pickle"), "rb") as file:
-            self.listaVacunas = pickle.load(file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_enfermedades.pickle"), "rb") as file:
-            Enfermedad.enfermedadesRegistradas = pickle.load(file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_habitaciones.pickle"), "rb") as file:
-            self.habitaciones = pickle.load(file)
+        try:
+            with open(os.path.abspath("src/baseDatos/temp/registro_doctores.pickle"), "rb") as file:
+                self.listaDoctores = pickle.load(file)
+            with open(os.path.abspath("src/baseDatos/temp/registro_pacientes.pickle"), "rb") as file:
+                self.listaPacientes = pickle.load(file)
+            with open(os.path.abspath("src/baseDatos/temp/registro_medicamentos.pickle"), "rb") as file:
+                self.listaMedicamentos = pickle.load(file)
+            with open(os.path.abspath("src/baseDatos/temp/registro_vacunas.pickle"), "rb") as file:
+                self.listaVacunas = pickle.load(file)
+            with open(os.path.abspath("src/baseDatos/temp/registro_enfermedades.pickle"), "rb") as file:
+                Enfermedad.enfermedadesRegistradas = pickle.load(file)
+            with open(os.path.abspath("src/baseDatos/temp/registro_habitaciones.pickle"), "rb") as file:
+                self.habitaciones = pickle.load(file)
+        except FileNotFoundError as e:
+            print(f"Archivo no encontrado: {e}")
+        except pickle.UnpicklingError as e:
+            print(f"Error al deserializar: {e}")
+        except Exception as e:
+            print(f"Ocurrió un error: {e}")
 
 
     #Setters y getters.

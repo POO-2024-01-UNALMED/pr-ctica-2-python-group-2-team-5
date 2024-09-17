@@ -1,8 +1,7 @@
 from tkinter import *
 from PIL import Image, ImageTk
 
-import VentanaPrincipalDelUsuario
-
+from iuMain.interfazGrafica import VentanaPrincipalDelUsuario
 
 
 def abrirVentanaInicio():
