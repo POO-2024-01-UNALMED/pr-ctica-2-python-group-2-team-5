@@ -1,5 +1,6 @@
 import tkinter as tk
 
+from iuMain.gestion.FieldFrame import FieldFrame
 from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
 
 

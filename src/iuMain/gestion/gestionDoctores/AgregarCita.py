@@ -1,8 +1,7 @@
 from tkinter import messagebox
 import tkinter as tk
 
-from src.gestorAplicacion.administracionHospital.Hospital import Hospital
-from src.gestorAplicacion.personas.Doctor import Doctor
+from iuMain.gestion.FieldFrame import FieldFrame
 from src.gestorAplicacion.servicios.Cita import Cita
 from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
 
@@ -90,8 +89,6 @@ def agregarCita(hospital, frame):
                     doctor = hospital.buscarDoctor(cedula)
                     if doctor is not None:
                         agregarCita(doctor)
-
-
                     else:
                         raise DatosFalsos
                 except DatosFalsos as e:

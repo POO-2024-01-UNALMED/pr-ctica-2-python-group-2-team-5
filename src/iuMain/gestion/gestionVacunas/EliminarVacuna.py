@@ -2,6 +2,7 @@ from tkinter import messagebox
 
 import tkinter as tk
 
+from iuMain.gestion.FieldFrame import FieldFrame
 from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
 
 

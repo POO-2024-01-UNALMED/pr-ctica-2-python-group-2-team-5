@@ -3,6 +3,7 @@ from tkinter import messagebox
 import tkinter as tk
 
 from gestorAplicacion.personas.Paciente import Paciente
+from iuMain.gestion.FieldFrame import FieldFrame
 from manejoDeErrores.ErroresAplicacion import DatoDuplicado, TipoIncorrecto, CampoVacio
 
 

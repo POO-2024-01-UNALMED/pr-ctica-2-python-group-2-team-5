@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 from gestorAplicacion.servicios.CitaVacuna import CitaVacuna
+from iuMain.gestion.FieldFrame import FieldFrame
 from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
 
 
