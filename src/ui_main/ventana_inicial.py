@@ -242,6 +242,7 @@ def ventana_inicial(hospital):
     style = ttk.Style()
     style.configure("My.TButton.TButton", foreground="black", background="#4D5BE4", font=("Helvetica", 10, "bold"))
 
+    continuar = ttk.Button(p4_continuar, text="Ingresar a la aplicación", style="My.TButton.TButton", command=lambda: [ventana.destroy(), ventana_principal(hospital)])
 
     # Hoja de vida desarrolladores
     frame_p5 = ttk.Frame(frame_p2)
@@ -302,6 +303,7 @@ def ventana_inicial(hospital):
     canvas_imagenes_aplicacion.bind("<Enter>", cambiar_imagen_aplicacion)
 
     p4_continuar.pack(fill="both")
+    continuar.pack(expand=True, fill="both", ipady=10, padx=10, pady=10)
 
 
     frame_p5.pack(fill="both")

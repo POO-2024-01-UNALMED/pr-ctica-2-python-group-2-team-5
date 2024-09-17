@@ -60,6 +60,7 @@ def implementacion_default(frame_implementacion):
         widget.destroy()
 
     # Ejecuta la implementacion por defecto
+    
 
 
     label_inicial = tk.Label(frame_implementacion, text=texto_inicial, bg="white", font=("Helvetica", 14, "bold"))
@@ -84,7 +85,7 @@ def ventana_principal(hospital):
 
     def descripcion_aplicacion():
         ventana_descripcion = tk.Toplevel()
-        ventana_descripcion.title("MedPlus - Sistema de gestion hospitalaria")
+        ventana_descripcion.title("SISTEMA HOSPITALARIO HOSPITAL ANDINO")
         ventana_descripcion.geometry("500x500")
 
         texto_descripcion = """
