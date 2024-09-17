@@ -68,7 +68,7 @@ class Hospital:
 
     def serializar(self):
         try:
-            with open(os.path.abspath("src/baseDatos/temp/registro_doctores.pickle"), "wb") as file:
+            with open(os.path.abspath("src/baseDatos/temp/registro_doctores"), "wb") as file:
                 file.truncate()
                 pickle.dump(self.listaDoctores, file)
             with open(os.path.abspath("src/baseDatos/temp/registro_pacientes.pickle"), "wb") as file:
@@ -95,7 +95,7 @@ class Hospital:
 
     def deserializar(self):
         try:
-            with open(os.path.abspath("src/baseDatos/temp/registro_doctores.pickle"), "rb") as file:
+            with open(os.path.abspath("src/baseDatos/temp/registro_doctores"), "rb") as file:
                 self.listaDoctores = pickle.load(file)
             with open(os.path.abspath("src/baseDatos/temp/registro_pacientes.pickle"), "rb") as file:
                 self.listaPacientes = pickle.load(file)
