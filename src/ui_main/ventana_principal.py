@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import *
 
 from src.ui_main.funcionalidades import agendar_citas, formula_medica, asignar_habitacion, vacunacion, \
     facturacion
@@ -62,29 +63,21 @@ def implementacion_default(frame_implementacion):
     # Ejecuta la implementacion por defecto
 
 
-    label_inicial = tk.Label(frame_implementacion, text=texto_inicial, bg="white", font=("Helvetica", 14, "bold"))
+    label_inicial = tk.Label(frame_implementacion, bg="white", font=("Helvetica", 14, "bold"))
     label_inicial.pack()
     label_inicial.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
 
 def ventana_principal(hospital):
     def acerca_de():
-        acerca_de_texto = """
-        HOSPITAL ANDINO
+        acerca_de_texto = "Acerca de la aplicación.","Los autores de la aplicación son:\nJeronimo Zapata.\nJuan Pablo Vergara.\nHernando Montes.\nManuel Mera.\nSamuel Ramírez."
 
-        Hecha por:
 
-        Samuel
-        Juan Pablo
-        Hernando
-        Manuel Mera
-        Jeronimo Zapata
-        """
         messagebox.showinfo("Acerca de", acerca_de_texto)
 
     def descripcion_aplicacion():
         ventana_descripcion = tk.Toplevel()
-        ventana_descripcion.title("MedPlus - Sistema de gestion hospitalaria")
+        ventana_descripcion.title("Hospital Andino - Sistema de gestion hospitalaria")
         ventana_descripcion.geometry("500x500")
 
         texto_descripcion = """
@@ -117,8 +110,14 @@ def ventana_principal(hospital):
     ventana.geometry("1280x720")
     ventana.protocol("WM_DELETE_WINDOW", hospital.serializar())
 
+    titulo = Label(ventana, text="HOSPITAL ANDINO", font=("Verdana", 16))
+    titulo.pack(padx=10, pady=10)
+
     # Menu de opciones (Zona 1)
-    barra_menu = tk.Menu(ventana)
+    menuFrame = Frame(ventana, bd=2, relief="ridge")
+    menuFrame.pack(padx=10, pady=10)
+    
+    barra_menu = tk.Menu(menuFrame)
     ventana.config(menu=barra_menu)
 
     opcion_archivo = tk.Menu(barra_menu, tearoff=0)
