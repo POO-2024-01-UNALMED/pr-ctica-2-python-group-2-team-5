@@ -1,6 +1,6 @@
-from src.gestorAplicacion.administracionHospital.Hospital import Hospital
-from src.gestorAplicacion.personas import Paciente
-from src.gestorAplicacion.servicios import Cita, CitaVacuna,Formula
+from gestorAplicacion.administracionHospital.Hospital import Hospital
+from gestorAplicacion.personas import Paciente
+from gestorAplicacion.servicios import Cita, CitaVacuna,Formula
 
 # Clase HistoriaClinica: Revisar actividad del paciente dentro del hospital.
 

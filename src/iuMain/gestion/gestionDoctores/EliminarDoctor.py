@@ -1,7 +1,7 @@
 from tkinter import messagebox
 
+from iuMain.gestion.FieldFrame import FieldFrame
 from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
-from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault, FieldFrame
 import tkinter as tk
 
 def imprimirTitulo(frame):
@@ -20,10 +20,14 @@ def eliminarDoctor(hospital, frame):
         if respuesta:
             hospital.listaDoctores.remove(doctor)
             messagebox.showinfo("Doctor eliminado", "El doctor se ha eliminado exitosamente")
+            # Se importa aca para evitar una referencia circula
+            from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+
             implementacionDefault(frame)
         else:
             messagebox.showinfo("Eliminacion cancelada", "El doctor no ha sido eliminado")
-            # Se importa aca para evitar una referencia circular
+            # Se importa aca para evitar una referencia circula
+            from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
             implementacionDefault(frame)
 
     def elementosDoctor(doctor):
@@ -39,6 +43,8 @@ def eliminarDoctor(hospital, frame):
 
         botonEliminar = tk.Button(frame, text="Eliminar", command=lambda:eliminacionDoctor(doctor))
         botonEliminar.pack(pady=10)
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
         botonRegresar = tk.Button(frame, text="Regresar",command=lambda: implementacionDefault(frame))
         botonRegresar.pack(pady=10)
@@ -75,6 +81,8 @@ def eliminarDoctor(hospital, frame):
     botonBuscarDoctor = tk.Button(frame, text="Buscar", command=busquedaDoctor)
     botonBuscarDoctor.pack(pady=5)
 
+    # Se importa aca para evitar una referencia circula
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     botonRegresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
     botonRegresar.pack()

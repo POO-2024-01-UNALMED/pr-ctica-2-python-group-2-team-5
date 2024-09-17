@@ -1,7 +1,7 @@
-from src.gestorAplicacion.servicios.Cita import Cita
-from src.gestorAplicacion.servicios.CitaVacuna import CitaVacuna
-from src.gestorAplicacion.servicios.Formula import Formula
-from src.gestorAplicacion.servicios.Habitacion import Habitacion
+from gestorAplicacion.servicios.Cita import Cita
+from gestorAplicacion.servicios.CitaVacuna import CitaVacuna
+from gestorAplicacion.servicios.Formula import Formula
+from gestorAplicacion.servicios.Habitacion import Habitacion
 
 
 #Elaborado por Jeronimo

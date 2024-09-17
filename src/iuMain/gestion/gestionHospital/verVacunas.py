@@ -1,6 +1,5 @@
 import tkinter as tk
 
-from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
 
 def imprimirTitulo(frame_implementacion):
@@ -42,6 +41,8 @@ def verVacunas(hospital, frame_implementacion):
     vacunasText.config(highlightthickness=5, highlightbackground="#4D5BE4")
     vacunasText.config(state="disabled")
 
+    # Se importa aca para evitar una referencia circula
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     botonRegresar = tk.Button(frame_implementacion, text="Regresar",
                                command=lambda: implementacionDefault(frame_implementacion),

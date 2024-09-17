@@ -3,7 +3,7 @@ from tkinter import messagebox, ttk
 import tkinter as tk
 
 from gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
-from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+from iuMain.gestion.FieldFrame import FieldFrame
 from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio, DatoDuplicado
 
 
@@ -75,12 +75,14 @@ def registrarEnfermedad(hospital, frame):
                     enf = Enfermedad(nombre, tipologia, especialidad)
                     paciente.historiaClinica.enfermedades.append(enf)
                     messagebox.showinfo("Enfermedad agregada", "La enfermedad se ha agregado exitosamente")
-                    # Se importa aca para evitar una referencia circular
+                    # Se importa aca para evitar una referencia circula
+                    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
                     implementacionDefault(frame)
 
                 else:
                     messagebox.showinfo("Enfermedad no agregada", "No se ha agregado la enfermedad")
-                    # Se importa aca para evitar una referencia circular
+                    # Se importa aca para evitar una referencia circula
+                    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
                     implementacionDefault(frame)
 
         imprimirTitulo(frame)
@@ -113,11 +115,13 @@ def registrarEnfermedad(hospital, frame):
 
                     paciente.historiaClinica.agregarEnfermedades(objetoSeleccionado)
                     messagebox.showinfo("Enfermedad agregada", "La enfermedad se ha agregado exitosamente")
-                    # Se importa aca para evitar una referencia circular
+                    # Se importa aca para evitar una referencia circula
+                    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
                     implementacionDefault(frame)
                 else:
                     messagebox.showinfo("Agregar enfermedad cancelada", "No se ha agregado la enfermedad")
-                    # Se importa aca para evitar una referencia circular
+                    # Se importa aca para evitar una referencia circula
+                    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
                     implementacionDefault(frame)
 
     def registrarEnfermedad(paciente):

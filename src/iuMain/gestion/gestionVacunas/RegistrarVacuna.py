@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 from gestorAplicacion.administracionHospital.Vacuna import Vacuna
-from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+from iuMain.gestion.FieldFrame import FieldFrame
 from manejoDeErrores.ErroresAplicacion import DatoDuplicado, TipoIncorrecto, CampoVacio
 
 
@@ -39,8 +39,10 @@ def registrarVacuna(hospital, frame_implementacion):
         labelPrecio.grid(row=2, column=1, padx=10, pady=5, sticky="w")
 
         #Boton regresar
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
-        botonRegresar = tk.Button(frame_implementacion, text="Regresar", command=lambda: implementacion_default(frame_implementacion))
+        botonRegresar = tk.Button(frame_implementacion, text="Regresar", command=lambda: implementacionDefault(frame_implementacion))
         botonRegresar.pack(pady=5)
 
 
@@ -115,7 +117,8 @@ def registrarVacuna(hospital, frame_implementacion):
                 verVacunaRegistrada(tipo, nombre, precio)
             else:
                 messagebox.showinfo("Vacuna no agregada", "No se ha agregado la vacuna")
-                # Se importa acá para evitar una referencia circular
+                # Se importa aca para evitar una referencia circula
+                from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
                 implementacionDefault(frame_implementacion)
 
     def borrarCampos():
@@ -154,7 +157,8 @@ def registrarVacuna(hospital, frame_implementacion):
 
     # Funcionalidad para regresar a la ventana principal
 
-    # Se importa aca para evitar una referencia circular
+    # Se importa aca para evitar una referencia circula
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     botonRegresar = tk.Button(frame_implementacion, text="Regresar", command=lambda: implementacionDefault(frame_implementacion))
     botonRegresar.pack(pady=20)

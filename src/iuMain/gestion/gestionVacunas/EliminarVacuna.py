@@ -2,7 +2,7 @@ from tkinter import messagebox
 
 import tkinter as tk
 
-from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+from iuMain.gestion.FieldFrame import FieldFrame
 from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
 
 
@@ -22,10 +22,14 @@ def eliminarVacuna(hospital, frame):
         if respuesta:
             hospital.listaVacunas.remove(vacuna)
             messagebox.showinfo("Vacuna eliminada", "La vacuna se ha eliminado exitosamente")
+            # Se importa aca para evitar una referencia circula
+            from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+
             implementacionDefault(frame)
         else:
             messagebox.showinfo("Eliminacion cancelada", "La vacuna no ha sido eliminada")
-            # Se importa aca para evitar una referencia circular
+            # Se importa aca para evitar una referencia circula
+            from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
             implementacionDefault(frame)
 
     def elementosVacuna(vacuna):
@@ -44,6 +48,9 @@ def eliminarVacuna(hospital, frame):
 
         botonEliminar = tk.Button(frame, text="Eliminar", command=lambda: eliminacionVacuna(vacuna),font=("Helvetica", 10, "bold"))
         botonEliminar.pack(pady=10)
+
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
         #Boton de regresar
         botonRegresar = tk.Button(frame, text="Regresar",
@@ -91,6 +98,8 @@ def eliminarVacuna(hospital, frame):
     botonBuscarDoctor = tk.Button(frame, text="Buscar", command=busquedaVacuna,font=("Helvetica", 10, "bold"))
     botonBuscarDoctor.pack(pady=5)
 
+    # Se importa aca para evitar una referencia circula
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     botonRegresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame),font=("Helvetica", 10, "bold"))
     botonRegresar.pack()

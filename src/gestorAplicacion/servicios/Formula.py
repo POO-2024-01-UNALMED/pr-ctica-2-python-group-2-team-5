@@ -1,4 +1,4 @@
-from src.gestorAplicacion.servicios.Servicio import Servicio
+from gestorAplicacion.servicios.Servicio import Servicio
 
 
 #Clase Formula, permite recetanle los medicamentos necesarios a los pácientes según sus enfermedades a tratar.

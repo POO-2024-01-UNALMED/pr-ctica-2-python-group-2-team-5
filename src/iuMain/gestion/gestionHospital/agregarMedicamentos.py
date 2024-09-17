@@ -3,10 +3,10 @@ from tkinter import messagebox, ttk
 
 import tkinter as tk
 
-from src.gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
-from src.gestorAplicacion.administracionHospital.Medicamento import Medicamento
-from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault, FieldFrame
-from src.manejoDeErrores.ErroresAplicacion import TipoIncorrecto, DatoDuplicado, CampoVacio
+from iuMain.gestion.FieldFrame import FieldFrame
+from gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
+from gestorAplicacion.administracionHospital.Medicamento import Medicamento
+from manejoDeErrores.ErroresAplicacion import TipoIncorrecto, DatoDuplicado, CampoVacio
 
 
 def imprimirTitulo(frame):
@@ -108,7 +108,8 @@ def agregarMedicamento(hospital, frame):
 
     # Funcionalidad para regresar a la ventana principal
 
-    # Se importa aca para evitar una referencia circular
+    # Se importa aca para evitar una referencia circula
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     boton_regresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
     boton_regresar.pack(pady=10)

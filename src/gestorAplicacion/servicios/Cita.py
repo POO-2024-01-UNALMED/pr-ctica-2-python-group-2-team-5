@@ -1,4 +1,4 @@
-from src.gestorAplicacion.servicios.Servicio import Servicio
+from gestorAplicacion.servicios.Servicio import Servicio
 
 #Elaborado por Jeronimo
 

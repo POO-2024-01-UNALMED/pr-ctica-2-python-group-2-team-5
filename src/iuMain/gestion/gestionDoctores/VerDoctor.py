@@ -1,8 +1,7 @@
 import tkinter as tk
 
-from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import FieldFrame
+from iuMain.gestion.FieldFrame import FieldFrame
 from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
-from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
 
 def imprimirTitulo(frame):
@@ -26,6 +25,8 @@ def verDoctor(hospital, frame):
         fp = FieldFrame(frame, "Criterio", criterios, "Valor",[doctor.cedula,
         doctor.nombre,doctor.tipoEps,doctor.especialidad],[False,False,False,False])
         fp.pack()
+        # Se importa aca para evitar una referencia circula
+        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
         botonRegresar = tk.Button(frame, text="Regresar",command=lambda: implementacionDefault(frame))
         botonRegresar.pack(pady=20)
@@ -62,6 +63,8 @@ def verDoctor(hospital, frame):
     botonBuscarDoctor = tk.Button(frame, text="Buscar", command=busquedaDoctor)
     botonBuscarDoctor.pack(pady=5)
 
+    # Se importa aca para evitar una referencia circula
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     botonRegresar = tk.Button(frame, text="Regresar",command=lambda: implementacionDefault(frame))
     botonRegresar.pack()

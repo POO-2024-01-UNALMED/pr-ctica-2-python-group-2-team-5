@@ -2,10 +2,10 @@ from tkinter import messagebox
 
 import tkinter as tk
 
-from src.gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
-from src.gestorAplicacion.servicios.Habitacion import Habitacion
-from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault, FieldFrame
-from src.manejoDeErrores.ErroresAplicacion import DatoDuplicado
+from iuMain.gestion.FieldFrame import FieldFrame
+from gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
+from gestorAplicacion.servicios.Habitacion import Habitacion
+from manejoDeErrores.ErroresAplicacion import DatoDuplicado
 
 
 def imprimirTitulo(frame):
@@ -123,7 +123,8 @@ def construirHabitacion(hospital, frame):
 
     # Funcionalidad para regresar a la ventana principal
 
-    # Se importa aca para evitar una referencia circular
+    # Se importa aca para evitar una referencia circula
+    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     botonRegresar = tk.Button(frame, text="Regresar",command=lambda: implementacionDefault(frame))
     botonRegresar.pack()

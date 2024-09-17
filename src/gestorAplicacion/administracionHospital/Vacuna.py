@@ -1,4 +1,4 @@
-from src.gestorAplicacion.servicios.CitaVacuna import CitaVacuna
+from gestorAplicacion.servicios.CitaVacuna import CitaVacuna
 
 
 #Clase vacuna para llevar un registro de las vacunas que se ofrecen en el hospital.
