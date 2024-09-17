@@ -2,8 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 
 
-from iuMain.funcionalidades import AgendarCita,AsignarHabitacion,Vacunacion,Facturacion,FormulaMedica
-from iuMain.gestion.gestionHospital import verPacientes,verMedicamentos,verDoctores,verVacunas,agregarMedicamentos,construirHabitacion,destruirHabitacion
+from src.iuMain.funcionalidades import AgendarCita,AsignarHabitacion,Vacunacion,Facturacion,FormulaMedica
+from src.iuMain.gestion.gestionHospital import verPacientes,verMedicamentos,verDoctores,verVacunas,agregarMedicamentos,construirHabitacion,destruirHabitacion
 
 def cambiarContenido(opcion, hospital, frame_implementacion):
 
