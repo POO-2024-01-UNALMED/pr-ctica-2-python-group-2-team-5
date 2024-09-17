@@ -7,7 +7,7 @@ sys.path.append("src")
 from iuMain.funcionalidades import AgendarCita,AsignarHabitacion,Vacunacion,Facturacion,FormulaMedica
 from iuMain.gestion.gestionHospital import verPacientes,verMedicamentos,verDoctores,verVacunas,agregarMedicamentos,construirHabitacion,destruirHabitacion
 
-def cambiarContenido(opcion, hospital, frame_implementacion):
+def cambiarContenido(opcion, Hospital, frame_implementacion):
 
     #limpiar frame
     for widget in frame_implementacion.winfo_children():
@@ -37,7 +37,7 @@ def cambiarContenido(opcion, hospital, frame_implementacion):
     }
 
     if opcion in opciones:
-        opciones[opcion](hospital, frame_implementacion)
+        opciones[opcion](Hospital, frame_implementacion)
 
 def implementacionDefault(frame_implementacion):
         # Limpia el frame
@@ -92,7 +92,7 @@ def implementacionDefault(frame_implementacion):
     labelInicial.place(relx=0.5, rely=0.5, anchor="center")
 
 # Ventana principal.
-def abrirVentanaPrincipal(ventanaInicio, Hospital):
+def abrirVentanaPrincipal(ventanaInicio):
 
     ventanaPrincipalDelUsuario = Toplevel()
     ventanaPrincipalDelUsuario.title("Ventana Principal del Usuario")
