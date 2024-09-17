@@ -206,7 +206,11 @@ def ventana_inicial(hospital):
         messagebox.showinfo("Descripcion", descripcion_texto)
 
     ventana = tk.Tk()
-    ventana.title("MedPlus - Sistema de gestion hospitalaria")
+
+    ventana.title("HOSPITAL ANDINO")
+
+    ventana.title("HOSPITAL ANDINO")
+
     ventana.geometry("600x600+400+40")
     ventana.protocol("WM_DELETE_WINDOW", hospital.serializar())
 
@@ -231,11 +235,13 @@ def ventana_inicial(hospital):
     p4_imagenes = ttk.Frame(frame_p4)
     p4_imagenes.configure(borderwidth=7, relief="solid", padding=0)
     canvas_imagenes_aplicacion = tk.Canvas(p4_imagenes)
+
     lista_imagenes = [Image.open("src/ui_main/imagenes/fun1.jpg").resize((400, 400)),
                       Image.open("src/ui_main/imagenes/fun2.jpg").resize((400, 400)),
                       Image.open("src/ui_main/imagenes/fun3.jpg").resize((400, 400)),
                       Image.open("src/ui_main/imagenes/fun4.jpg").resize((400, 400)),
                       Image.open("src/ui_main/imagenes/fun5.jpg").resize((400, 400))]
+
 
     # Boton para continuar
     p4_continuar = ttk.Frame(frame_p4)
@@ -258,6 +264,7 @@ def ventana_inicial(hospital):
 
     # Fotos desarrolladores
     frame_p6 = ttk.Frame(frame_p2)
+
     lista_fotos = [[Image.open("src/ui_main/imagenes/jero1.jpg").resize((1000, 1000)),
                     Image.open("src/ui_main/imagenes/jero2.jpg").resize((1000, 1000)),
                     Image.open("src/ui_main/imagenes/jero3.jpg").resize((1000, 1000)),
@@ -281,8 +288,10 @@ def ventana_inicial(hospital):
                    [Image.open("src/ui_main/imagenes/samuel1.jpg").resize((1000, 1000)),
                     Image.open("src/ui_main/imagenes/samuel2.jpg").resize((1000, 1000)),
                     Image.open("src/ui_main/imagenes/samuel3.jpg").resize((1000, 1000)),
-                    Image.open("src/ui_main/imagenes/samuel4.jpg").resize((1000, 1000))],
+                    Image.open("src/ui_main/imagenes/samuel4.jpg").resize((1000, 1000))]
                    ]
+
+
 
     foto00 = tk.Canvas(frame_p6)
     foto01 = tk.Canvas(frame_p6)

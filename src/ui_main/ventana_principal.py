@@ -60,10 +60,26 @@ def implementacion_default(frame_implementacion):
         widget.destroy()
 
     # Ejecuta la implementacion por defecto
+    texto_inicial = """
     
+    Esta es la pantalla principal de la ventana principal.
+    
+    Algunas indicaciones a tener en cuenta son:
+    
+    - Al presionar el menú Archivo > Aplicación, verá una descripción de lo que hace el programa en general.
+    
+    - Al presionar el menú Archivo > Salir, volverá a la ventana inicial
+    
+    - Al presionar el menú Procesos y Consultas, se desplegará la lista de funcionalidades a las que puede acceder.
+      Asegurese de leer el manual de usuario para entender como se utiliza cada una.
+      
+    - Al presionar el menú Ayuda > Acerca de, podrá ver los nombres de los desarrolladores de la aplicación
+    
+    
+    """
 
 
-    label_inicial = tk.Label(frame_implementacion, text=texto_inicial, bg="white", font=("Helvetica", 14, "bold"))
+    label_inicial = tk.Label(frame_implementacion, text=texto_inicial, bg="white", font=("Helvetica", 14, "bold"), justify="left")
     label_inicial.pack()
     label_inicial.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
@@ -114,7 +130,7 @@ def ventana_principal(hospital):
         ventana_descripcion.mainloop()
 
     ventana = tk.Tk()
-    ventana.title("MedPlus - Sistema de gestion hospitalaria")
+    ventana.title("HOSPITAL ANDINO")
     ventana.geometry("1280x720")
     ventana.protocol("WM_DELETE_WINDOW", hospital.serializar())
 
