@@ -207,7 +207,7 @@ def ventana_inicial(hospital):
 
     ventana = tk.Tk()
     ventana.title("MedPlus - Sistema de gestion hospitalaria")
-    ventana.geometry("1280x720")
+    ventana.geometry("1080x520")
     ventana.protocol("WM_DELETE_WINDOW", hospital.serializar())
 
     # Menu inicio
