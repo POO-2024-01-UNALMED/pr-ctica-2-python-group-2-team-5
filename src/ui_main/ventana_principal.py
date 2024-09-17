@@ -76,10 +76,7 @@ def ventana_principal(hospital):
         messagebox.showinfo("Acerca de", acerca_de_texto)
 
     def descripcion_aplicacion():
-        ventana_descripcion = tk.Toplevel()
-        ventana_descripcion.title("Hospital Andino - Sistema de gestion hospitalaria")
-        ventana_descripcion.geometry("500x500")
-
+        
         texto_descripcion = """
         HOSPITAL ANDINO
 
@@ -94,16 +91,9 @@ def ventana_principal(hospital):
         5. Facturacion: Se encarga de la gestion del pago de los servicios prestados al paciente.
         6. Gestion: Se encarga de procesos como agregar pacientes, agregar vacunas, agregar medicamentos, etc...
         """
+        messagebox.showinfo("Descripción de la aplicación", texto_descripcion)
 
-        label_descripcion = tk.Label(ventana_descripcion, text=texto_descripcion, padx=10, pady=10, anchor="w",
-                                     width=70, height=20, wraplength=480)
-        label_descripcion.pack()
-
-        boton_continuar_descripcion = tk.Button(ventana_descripcion, text="Continuar",
-                                                command=lambda: ventana_descripcion.destroy())
-        boton_continuar_descripcion.pack(pady=20)
-
-        ventana_descripcion.mainloop()
+     
 
     ventana = tk.Tk()
     ventana.title("MedPlus - Sistema de gestion hospitalaria")
