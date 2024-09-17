@@ -2,8 +2,8 @@ from tkinter import messagebox
 import tkinter as tk
 
 from iuMain.gestion.FieldFrame import FieldFrame
-from src.gestorAplicacion.servicios.Cita import Cita
-from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
+from gestorAplicacion.servicios.Cita import Cita
+from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio
 
 
 def imprimirTitulo(frame):

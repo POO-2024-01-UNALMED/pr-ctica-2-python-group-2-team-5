@@ -1,4 +1,4 @@
-from gestorAplicacion.administracionHospital.Hospital import *
+from gestorAplicacion.administracionHospital.Hospital import Hospital
 from iuMain.interfazGrafica.ventanaInicio import abrirVentanaInicio
 
 if __name__ == '__main__':

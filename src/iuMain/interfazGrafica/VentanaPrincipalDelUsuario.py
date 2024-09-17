@@ -6,6 +6,10 @@ sys.path.append("src")
 
 from iuMain.funcionalidades import AgendarCita,AsignarHabitacion,Vacunacion,Facturacion,FormulaMedica
 from iuMain.gestion.gestionHospital import verPacientes,verMedicamentos,verDoctores,verVacunas,agregarMedicamentos,construirHabitacion,destruirHabitacion
+from iuMain.gestion.gestionDoctores import AgregarCita, AgregarDoctor, EliminarDoctor, VerDoctor
+from iuMain.gestion.gestionPacientes import registrarEnfermedades, registrarPacientes,administrarPacientes
+from iuMain.gestion.gestionVacunas import VerVacuna, EliminarVacuna, RegistrarVacuna, AgregarCitaVacuna
+
 
 def cambiarContenido(opcion, Hospital, frame_implementacion):
 
@@ -17,9 +21,9 @@ def cambiarContenido(opcion, Hospital, frame_implementacion):
     opciones={
         "agendarCita": AgendarCita.agendarCitas,
         "asignarHabitacion": AsignarHabitacion.asignarHabitacion,
-        "vacunacion": Vacunacion.Vacunacion,
+        "vacunacion": Vacunacion.vacunacion,
         "pago": Facturacion.facturacion,
-       # "formulaMedica": FormulaMedica.FormulaMedica,
+        "formulaMedica": FormulaMedica.formulaMedica,
 
         #Gestion Hospital
         "verPacientes": verPacientes.verPacientes,
@@ -30,9 +34,22 @@ def cambiarContenido(opcion, Hospital, frame_implementacion):
         "construirHabitacion": construirHabitacion.construirHabitacion,
         "destruirHabitacion": destruirHabitacion.destruirHabitacion,
 
-        
-        
+        #gestion vacunas
+        "verVacuna": VerVacuna.verVacuna,
+        "eliminarVacuna": EliminarVacuna.eliminarVacuna,
+        "registrarVacuna": RegistrarVacuna.registrarVacuna,
+        "agregarCitaVacuna": AgregarCitaVacuna.agregarCitaVacuna,
 
+        #gestion doctores
+        "agregarDoctor": AgregarDoctor.agregarDoctor,
+        "eliminarDoctor": EliminarDoctor.eliminarDoctor,
+        "verDoctor": VerDoctor.verDoctor,
+        "agregarCita": AgregarCita.agregarCita,
+
+        #gestion pacientes
+        "administrarPaciente": administrarPacientes.administrarPaciente,
+        "registrarEnfermedad": registrarEnfermedades.registrarEnfermedad,
+        "registrarPaciente": registrarPacientes.registrarPaciente,
 
     }
 
@@ -45,6 +62,7 @@ def implementacionDefault(frame_implementacion):
             widget.destroy()
 
         # Ejecuta la implementacion por defecto
+        
 
         label_inicial = Label(frame_implementacion, bg="white", font=("Helvetica", 14, "bold"))
         label_inicial.pack()
@@ -91,51 +109,42 @@ def abrirVentanaPrincipal(hospital):
     menuFrame.pack(padx=10, pady=10)
     
     class FieldFrame(Frame):
-        def __init__(self, parent, tituloCriterios, criterios, tituloValores, valores=None, habilitado=None):
-            super().__init__(parent, bg="white")
-            self.tituloCriterios = tituloCriterios
-            self.criterios = criterios
-            self.tituloValores = tituloValores
-            self.valores = valores if valores is not None else ["" for _ in criterios]
-            self.habilitado = habilitado if habilitado is not None else [True for _ in criterios]
+        def __init__(self, frame,tituloCriterios, criterios, tituloValores, valores, habilitado,ancho_entry=20):
+            super().__init__(frame,bg="white")
 
-            # Crear los títulos de las columnas
-            Label(self, text=self.tituloCriterios, font=("Arial", 10), bg="white").grid(row=0, column=0, padx=10,
-                                                                                        pady=5, sticky="w")
-            Label(self, text=self.tituloValores, font=("Arial", 10), bg="white").grid(row=0, column=1, padx=10, pady=5,
-                                                                                      sticky="e")
+            self.valores=[]
 
-            # Crear etiquetas y campos de entrada para cada criterio
-            self.entries = {}  # Diccionario para almacenar las entradas
-            for i, criterio in enumerate(self.criterios):
-                # Etiqueta del criterio
-                label = Label(self, text=criterio, font=("Arial", 10), bg="white")
-                label.grid(row=i + 1, column=0, padx=10, pady=5, sticky="w")
+            #Etiquetas para los títulos de las columnas
+            Label(self, text=tituloCriterios,bg="white",font=("Helvetica", 12, "bold")).grid(row=0, column=0)
+            Label(self, text=tituloValores,bg="white",font=("Helvetica", 12, "bold")).grid(row=0, column=1)
 
-                # Campo de entrada para el valor
-                entry = Entry(self, width=30)
-                entry.grid(row=i + 1, column=1, padx=10, pady=5)
+            # Etiquetas y campos de entrada para cada criterio
+            for i, criterio in enumerate(criterios, start=1):
+                Label(self, text=criterio,bg="white", font=("Helvetica", 10, "bold")).grid(row=i, column=0, padx=20, pady=5, sticky="w")
+                entry = Entry(self,width=ancho_entry)
+                entry.grid(row=i, column=1, padx=5, pady=5, sticky="w")
+                # Se inserta los valores por defecto que queramos
+                if valores is not None:
+                    #el número 0 indica que se inserta desde el inicio del string
+                    entry.insert(0, valores[i - 1])
+                #Para deshabilitar el entry
+                if habilitado is not None and not habilitado[i - 1]:
+                    entry.config(state='readonly')
 
-                # Si tiene valor predeterminado, lo coloca
-                if self.valores[i]:
-                    entry.insert(0, self.valores[i])
+                #Se guarda la referencia de ese entry
+                self.valores.append(entry)
 
-                # Si el campo no está habilitado, lo desactiva
-                if not self.habilitado[i]:
-                    entry.config(state="disabled")
-
-                # Guardar la referencia del campo de entrada
-                self.entries[criterio] = entry
+        def habilitarEntry(self, indice, habilitar):
+            if habilitar:
+                return self.valores[indice - 1].config(state="normal")
+            else:
+                return self.valores[indice - 1].config(state="readonly")
 
         def getValue(self, criterio):
-            """Devuelve el valor ingresado en el campo del criterio dado."""
-            return self.entries[criterio].get()
+            return self.valores[criterio-1].get()
 
-        def clearFields(self):
-            """Limpia todos los campos de entrada."""
-            for entry in self.entries.values():
-                entry.delete(0, "end")
 
+     
     # Eventos menu Archivo
 
     # Método para mostrar la info. básica de la aplicación al presionar el menú Archivo.
@@ -166,14 +175,48 @@ def abrirVentanaPrincipal(hospital):
 
     procesosMenu = Menu(menuProcesosConsultas, tearoff=0)
     procesosMenu.add_command(label="1. Agendar Citas", command=lambda: cambiarContenido("agendarCita", hospital, frame_implementacion))
-    procesosMenu.add_command(label="2. Fórmula Médica", command=lambda: cambiarContenido("formualMedica", hospital, frame_implementacion) )
+    procesosMenu.add_command(label="2. Fórmula Médica", command=lambda: cambiarContenido("formulaMedica", hospital, frame_implementacion) )
     procesosMenu.add_command(label="3. Asignar Habitación", command=lambda: cambiarContenido("asignarHabitacion", hospital, frame_implementacion))
     procesosMenu.add_command(label="4. Vacunación", command=lambda: cambiarContenido("vacunacion", hospital, frame_implementacion))
     procesosMenu.add_command(label="5. Facturación", command=lambda: cambiarContenido("pago", hospital, frame_implementacion))
 
     procesosMenu.add_separator()
+    
+    #gestion hospital submenu
 
+    procesosMenuHospital=Menu(procesosMenu, tearoff=0)
+    procesosMenu.add_cascade(label="Gestión Hospital", menu=procesosMenuHospital)
+    procesosMenuHospital.add_command(label="Vacunas del hospital", command=lambda: cambiarContenido("verVacunas", hospital, frame_implementacion))
+    procesosMenuHospital.add_command(label="Pacientes del hospital", command=lambda: cambiarContenido("verPacientes", hospital, frame_implementacion))
+    procesosMenuHospital.add_command(label="Medicos del hospital", command=lambda: cambiarContenido("verDoctores", hospital, frame_implementacion))
+    procesosMenuHospital.add_command(label="Construir habitacion", command=lambda: cambiarContenido("construirHabitacion", hospital, frame_implementacion))
+    procesosMenuHospital.add_command(label="Destruir habitacion", command=lambda: cambiarContenido("destruirHabitacion", hospital,frame_implementacion))
+    procesosMenuHospital.add_command(label="Ver medicamentos", command=lambda: cambiarContenido("verMedicamentos", hospital, frame_implementacion))
+    procesosMenuHospital.add_command(label="Agregar medicamentos", command=lambda: cambiarContenido("agregarMedicamentos", hospital, frame_implementacion))
 
+    #gestion vacunas
+    procesosMenuVacunas=Menu(procesosMenu, tearoff=0)
+    procesosMenu.add_cascade(label="Gestión Vacunas", menu=procesosMenuVacunas)
+    procesosMenuVacunas.add_command(label="Registrar vacuna", command=lambda: cambiarContenido("registrarVacuna", hospital, frame_implementacion))
+    procesosMenuVacunas.add_command(label="Ver vacunas", command=lambda: cambiarContenido("verVacuna", hospital, frame_implementacion))
+    procesosMenuVacunas.add_command(label="Eliminar vacuna", command=lambda: cambiarContenido("eliminarVacuna", hospital, frame_implementacion))
+    procesosMenuVacunas.add_command(label="Agregar cita a vacuna", command=lambda: cambiarContenido("agregarCitaVacuna", hospital, frame_implementacion))
+
+    #gestion doctores
+    procesosMenuDoctores= Menu(procesosMenu, tearoff=0)
+    procesosMenu.add_cascade(label="Gestión Doctores", menu=procesosMenuDoctores)
+    procesosMenuDoctores.add_command(label="Registrar doctor", command=lambda: cambiarContenido("registrarDoctor", hospital, frame_implementacion))
+    procesosMenuDoctores.add_command(label="Ver doctores", command=lambda: cambiarContenido("verDoctor", hospital, frame_implementacion))
+    procesosMenuDoctores.add_command(label="Eliminar doctor", command=lambda: cambiarContenido("eliminarDoctor", hospital, frame_implementacion))
+    procesosMenuDoctores.add_command(label="Agregar cita", command=lambda: cambiarContenido("agregarCita", hospital, frame_implementacion))
+    
+    #gestion pacientes submenu
+    procesosMenuPacientes=Menu(procesosMenu, tearoff=0)
+    procesosMenu.add_cascade(label="Gestión Pacientes", menu=procesosMenuPacientes)
+    procesosMenuPacientes.add_command(label="Registrar paciente", command=lambda: cambiarContenido("registrarPaciente", hospital, frame_implementacion))
+    procesosMenuPacientes.add_command(label="Administrar paciente", command=lambda: cambiarContenido("administrarPaciente", hospital, frame_implementacion))
+    procesosMenuPacientes.add_command(label="Registra enfermedad", command=lambda: cambiarContenido("registrarEnfermedad", hospital, frame_implementacion))
+    
 
     menuProcesosConsultas.config(menu=procesosMenu)
 
@@ -193,22 +236,30 @@ def abrirVentanaPrincipal(hospital):
     frameZona2.pack()
 
 
-    formularioFrame = Frame(frameZona2, bg="white", bd=2, relief="ridge")
-    formularioFrame.pack(padx=10, pady=10)
 
-    
+    #tituloProceso = Label(frameZona2, text="Nombre del Proceso o Consulta", font=("Arial", 14), bg="white")
+    #tituloProceso.pack(padx=10, pady=10)
+
+    #descripcionProceso = Label(frameZona2, text="Descripción del detalle del proceso o la consulta", font=("Arial", 10),bg="white")
+    #descripcionProceso.pack(padx=10, pady=10)
+
+    #formularioFrame = Frame(frameZona2, bg="white", bd=2, relief="ridge")
+    #formularioFrame.pack(padx=10, pady=10)
+
+    #fieldFrame = FieldFrame(formularioFrame, "Criterios", ["Nombre", "Fecha", "Doctor"], "Valores")
+    #fieldFrame.pack(padx=10, pady=10)
 
     # Frame adicional para los botones.
 
-    frameBotones = Frame(frameZona2)
-    frameBotones.pack(expand=True)
+    #frameBotones = Frame(frameZona2)
+    #frameBotones.pack(expand=True)
 
     # Botones para guardar los datos o limpiar los Entry.
 
-    botonAceptar = Button(frameBotones, text="Aceptar")
-    botonBorrar = Button(frameBotones, text="Borrar")
-    botonAceptar.pack(padx=10, pady=10, side="left")
-    botonBorrar.pack(padx=10, pady=10, side="left")
+    #botonAceptar = Button(frameBotones, text="Aceptar")
+    #botonBorrar = Button(frameBotones, text="Borrar")
+    #botonAceptar.pack(padx=10, pady=10, side="left")
+    #botonBorrar.pack(padx=10, pady=10, side="left")
 
     frame_implementacion = Frame(frameZona2)
     frame_implementacion.pack(fill="both", expand=True)

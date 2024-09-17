@@ -205,13 +205,13 @@ def asignarHabitacion(hospital, frame):
     framePaciente = FieldFrame(frame, "", criterios, "", None, None)
     framePaciente.pack()
 
-    botonBuscarPaciente = Button(frame, text="Buscar", command=buscarPaciente())
+    botonBuscarPaciente = Button(frame, text="Buscar", command=buscarPaciente)
     botonBuscarPaciente.pack(pady=10)
 
     # Funcionalidad para regresar a la ventana principal
 
     # Se importa aca para evitar una referencia circular
-    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+    from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     botonRegresar = Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
     botonRegresar.pack()

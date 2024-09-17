@@ -1,5 +1,5 @@
-from src.gestorAplicacion.servicios.Cita import Cita
-from src.gestorAplicacion.personas.Persona import Persona
+from gestorAplicacion.servicios.Cita import Cita
+from gestorAplicacion.personas.Persona import Persona
 
 
 class Doctor(Persona):

@@ -1,7 +1,9 @@
 from tkinter import *
 from PIL import Image, ImageTk
+import sys
+sys.path.append("src")
 
-import VentanaPrincipalDelUsuario
+from iuMain.interfazGrafica import VentanaPrincipalDelUsuario
 
 
 def abrirVentanaInicio(hospital):

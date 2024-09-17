@@ -10,7 +10,7 @@ def mostarTitulo(frame):
         item.destroy()
 
         # Imprime el titulo
-        titulo = Label(frame, text="Agendar citas", bg="white", font=("Arial", 16))
+        titulo = Label(frame, text="Agendar citas", bg="white", font=("Arial", 16, "bold"))
         titulo.pack(padx = 10, pady=10)
 
 def agendarCitas(hospital, frame):
@@ -194,12 +194,12 @@ def agendarCitas(hospital, frame):
     fieldPaciente.pack()
 
     # Botón para buscar paciente
-    botonBuscarPaciente = Button(frame, text="Buscar", command=buscarPaciente())
+    botonBuscarPaciente = Button(frame, text="Buscar", command=buscarPaciente)
     botonBuscarPaciente.pack(pady=10)
 
     # Botón para regresar a la presentación pincipal.
     # Se importa aca para evitar una referencia circular.
-    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+    from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     botonRegresar = Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
     botonRegresar.pack(pady=5)
