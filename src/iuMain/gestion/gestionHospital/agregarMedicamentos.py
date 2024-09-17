@@ -109,7 +109,7 @@ def agregarMedicamento(hospital, frame):
     # Funcionalidad para regresar a la ventana principal
 
     # Se importa aca para evitar una referencia circula
-    from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+    from iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
     boton_regresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
     boton_regresar.pack(pady=10)
