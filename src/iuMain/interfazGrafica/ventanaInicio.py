@@ -5,7 +5,7 @@ from src.iuMain.interfazGrafica import VentanaPrincipalDelUsuario
 
 
 
-def abrirVentanaInicio(Hospital):
+def abrirVentanaInicio():
     # Ventana de inicio
     ventanaInicio = Tk()
     ventanaInicio.title("Ventana de Inicio")
