@@ -41,7 +41,7 @@ def abrirVentanaInicio(hospital):
         # Cambiar las imágenes del frameP6
         global indiceImgs
         labelImg1.config(image=listaImgs[indiceImgs][0])
-        labelImg1.image = listaImgs[indiceImgs][0]  # Mantener referencia
+        labelImg1.image = listaImgs[indiceImgs][0]
         labelImg2.config(image=listaImgs[indiceImgs][1])
         labelImg2.image = listaImgs[indiceImgs][1]
         labelImg3.config(image=listaImgs[indiceImgs][2])
@@ -54,7 +54,7 @@ def abrirVentanaInicio(hospital):
     def imagenesP4(event):
         global indiceFunc
         btnImgsFunc.config(image=imgsFunc[indiceFunc])
-        btnImgsFunc.image = imgsFunc[indiceFunc]  # Mantener referencia
+        btnImgsFunc.image = imgsFunc[indiceFunc]
         indiceFunc = (indiceFunc + 1) % len(imgsFunc)
 
     def abrirVentPrincipal():
