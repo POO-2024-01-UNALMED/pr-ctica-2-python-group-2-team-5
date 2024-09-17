@@ -96,7 +96,7 @@ class Hospital:
         with open(os.path.abspath("src/baseDatos/temp/registro_vacunas.pickle"), "rb") as file:
             self.listaVacunas = pickle.load(file)
         with open(os.path.abspath("src/baseDatos/temp/registro_enfermedades.pickle"), "rb") as file:
-            Enfermedad._enfermedades_registradas = pickle.load(file)
+            Enfermedad.enfermedadesRegistradas = pickle.load(file)
         with open(os.path.abspath("src/baseDatos/temp/registro_habitaciones.pickle"), "rb") as file:
             self.habitaciones = pickle.load(file)
 
