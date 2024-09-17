@@ -18,7 +18,7 @@ def cambiarContenido(opcion, Hospital, frame_implementacion):
         "agendarCita": AgendarCita.agendarCitas,
         "asignarHabitacion": AsignarHabitacion.asignarHabitacion,
         "vacunacion": Vacunacion.Vacunacion,
-        "pago": Facturacion.Facturacion,
+        "pago": Facturacion.facturacion,
        # "formulaMedica": FormulaMedica.FormulaMedica,
 
         #Gestion Hospital
@@ -45,8 +45,6 @@ def implementacionDefault(frame_implementacion):
             widget.destroy()
 
         # Ejecuta la implementacion por defecto
-    
-
 
         label_inicial = Label(frame_implementacion, bg="white", font=("Helvetica", 14, "bold"))
         label_inicial.pack()
@@ -194,18 +192,11 @@ def abrirVentanaPrincipal(hospital):
     frameZona2 = Frame(menuFrame)
     frameZona2.pack()
 
-    tituloProceso = Label(frameZona2, text="Nombre del Proceso o Consulta", font=("Arial", 14), bg="white")
-    tituloProceso.pack(padx=10, pady=10)
-
-    descripcionProceso = Label(frameZona2, text="Descripción del detalle del proceso o la consulta", font=("Arial", 10),
-                                bg="white")
-    descripcionProceso.pack(padx=10, pady=10)
 
     formularioFrame = Frame(frameZona2, bg="white", bd=2, relief="ridge")
     formularioFrame.pack(padx=10, pady=10)
 
-    fieldFrame = FieldFrame(formularioFrame, "Criterios", ["Nombre", "Fecha", "Doctor"], "Valores")
-    fieldFrame.pack(padx=10, pady=10)
+    
 
     # Frame adicional para los botones.
 
@@ -219,7 +210,7 @@ def abrirVentanaPrincipal(hospital):
     botonAceptar.pack(padx=10, pady=10, side="left")
     botonBorrar.pack(padx=10, pady=10, side="left")
 
-    frame_implementacion = Frame(ventanaPrincipalDelUsuario)
+    frame_implementacion = Frame(frameZona2)
     frame_implementacion.pack(fill="both", expand=True)
     frame_implementacion.configure(bg="white")
 
