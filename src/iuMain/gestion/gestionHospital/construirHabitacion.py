@@ -3,9 +3,9 @@ from tkinter import messagebox
 import tkinter as tk
 
 from iuMain.gestion.FieldFrame import FieldFrame
-from src.gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
-from src.gestorAplicacion.servicios.Habitacion import Habitacion
-from src.manejoDeErrores.ErroresAplicacion import DatoDuplicado
+from gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
+from gestorAplicacion.servicios.Habitacion import Habitacion
+from manejoDeErrores.ErroresAplicacion import DatoDuplicado
 
 
 def imprimirTitulo(frame):

@@ -3,7 +3,7 @@ from tkinter import messagebox
 import tkinter as tk
 
 from iuMain.gestion.FieldFrame import FieldFrame
-from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, CampoVacio
+from manejoDeErrores.ErroresAplicacion import DatosFalsos, CampoVacio
 
 
 def imprimirTitulo(frame):

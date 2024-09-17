@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import messagebox
 
+import sys
+sys.path.append("src")
 
 from iuMain.funcionalidades import AgendarCita,AsignarHabitacion,Vacunacion,Facturacion,FormulaMedica
 from iuMain.gestion.gestionHospital import verPacientes,verMedicamentos,verDoctores,verVacunas,agregarMedicamentos,construirHabitacion,destruirHabitacion

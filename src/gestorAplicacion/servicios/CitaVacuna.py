@@ -1,4 +1,4 @@
-from src.gestorAplicacion.servicios.Cita import Cita
+from gestorAplicacion.servicios.Cita import Cita
 
 
 #Elaborado por Jerónimo

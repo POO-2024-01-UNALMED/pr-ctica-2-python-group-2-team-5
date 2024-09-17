@@ -1,7 +1,7 @@
-from src.gestorAplicacion.administracionHospital import Hospital, Vacuna
-from src.gestorAplicacion.servicios import CitaVacuna
-from src.gestorAplicacion.personas import Paciente
-from src.iuMain.gestion.gestionPacientes import administrarPacientes
+from gestorAplicacion.administracionHospital import Hospital, Vacuna
+from gestorAplicacion.servicios import CitaVacuna
+from gestorAplicacion.personas import Paciente
+from iuMain.gestion.gestionPacientes import administrarPacientes
 
 
 class Vacunacion:

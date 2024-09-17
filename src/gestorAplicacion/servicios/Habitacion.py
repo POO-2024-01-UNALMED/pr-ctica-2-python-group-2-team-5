@@ -1,6 +1,6 @@
-from src.gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
-from src.gestorAplicacion.administracionHospital.Hospital import Hospital
-from src.gestorAplicacion.servicios.Servicio import Servicio
+from gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
+from gestorAplicacion.administracionHospital.Hospital import Hospital
+from gestorAplicacion.servicios.Servicio import Servicio
 
 
 #Clase Habitacion, que permite la revisión de disponibilidad de habitaciones y separación por categorías

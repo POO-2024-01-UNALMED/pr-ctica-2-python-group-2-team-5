@@ -1,9 +1,9 @@
-from src.gestorAplicacion.servicios.Cita import Cita
-from src.gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
-from src.gestorAplicacion.administracionHospital.HistoriaClinica import HistoriaClinica
-from src.gestorAplicacion.administracionHospital.Pago import Pago
-from src.gestorAplicacion.personas.Persona import Persona
-from src.gestorAplicacion.servicios.Habitacion import Habitacion
+from gestorAplicacion.servicios.Cita import Cita
+from gestorAplicacion.administracionHospital.CategoriaHabitacion import CategoriaHabitacion
+from gestorAplicacion.administracionHospital.HistoriaClinica import HistoriaClinica
+from gestorAplicacion.administracionHospital.Pago import Pago
+from gestorAplicacion.personas.Persona import Persona
+from gestorAplicacion.servicios.Habitacion import Habitacion
 
 class Paciente(Persona, Pago):
 

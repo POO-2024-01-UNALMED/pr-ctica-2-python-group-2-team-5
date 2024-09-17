@@ -1,9 +1,9 @@
 from tkinter import *
 from tkinter import ttk, messagebox
 
-from src.gestorAplicacion.servicios.Habitacion import Habitacion
-from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio, EstaHospitalizado
-#from src.iuMain.gestion.FieldFrame import FieldFrame TODO: Crear la clase FieldFrame
+from gestorAplicacion.servicios.Habitacion import Habitacion
+from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio, EstaHospitalizado
+from iuMain.gestion.FieldFrame import FieldFrame
 
 
 def mostraTitulo(frame):

@@ -2,8 +2,8 @@
 import os
 import pickle
 
-from src.gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
-from src.manejoDeErrores.ErroresAplicacion import DatosFalsos
+from gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
+from manejoDeErrores.ErroresAplicacion import DatosFalsos
 
 class Hospital:
     #Atributo de clase.

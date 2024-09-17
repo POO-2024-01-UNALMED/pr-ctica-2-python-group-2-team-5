@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk, messagebox
-from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio, SinDoctores, SinAgenda
-#from src.iuMain.gestion.FieldFrame import FieldFrame
+from manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio, SinDoctores, SinAgenda
+from iuMain.gestion.FieldFrame import FieldFrame
 
 # Mostrar el titulo de la funcionalidad.
 def mostarTitulo(frame):

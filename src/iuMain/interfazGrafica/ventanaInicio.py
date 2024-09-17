@@ -1,7 +1,7 @@
 from tkinter import *
 from PIL import Image, ImageTk
 
-from src.iuMain.interfazGrafica import VentanaPrincipalDelUsuario
+import VentanaPrincipalDelUsuario
 
 
 

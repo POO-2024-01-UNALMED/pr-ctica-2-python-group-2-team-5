@@ -4,9 +4,9 @@ from tkinter import messagebox, ttk
 import tkinter as tk
 
 from iuMain.gestion.FieldFrame import FieldFrame
-from src.gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
-from src.gestorAplicacion.administracionHospital.Medicamento import Medicamento
-from src.manejoDeErrores.ErroresAplicacion import TipoIncorrecto, DatoDuplicado, CampoVacio
+from gestorAplicacion.administracionHospital.Enfermedad import Enfermedad
+from gestorAplicacion.administracionHospital.Medicamento import Medicamento
+from manejoDeErrores.ErroresAplicacion import TipoIncorrecto, DatoDuplicado, CampoVacio
 
 
 def imprimirTitulo(frame):
