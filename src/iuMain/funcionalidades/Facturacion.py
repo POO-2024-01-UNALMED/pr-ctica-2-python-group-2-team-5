@@ -3,7 +3,7 @@ from tkinter import messagebox
 
 from src.gestorAplicacion.servicios.Servicio import Servicio
 from src.manejoDeErrores.ErroresAplicacion import DatosFalsos, TipoIncorrecto, CampoVacio, SinServicioSeleccionado
-#from src.iuMain.gestion.FieldFrame import FieldFrame ---> TODO: Crear clase FieldFrame
+from src.iuMain.gestion.FieldFrame import FieldFrame
 
 # Mostrar el titulo de la funcionalidad.
 def mostrarTitulo(frame):
@@ -89,7 +89,7 @@ def facturacion(hospital, frame):
         # Boton para regresar a la ventana principal.
 
         # Lo importamos acá para evitar una referencia circular.
-        from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
+        #from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
 
         botonRegresar = Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
         botonRegresar.pack()
