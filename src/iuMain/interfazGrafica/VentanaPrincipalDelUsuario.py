@@ -2,8 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 
 
-from src.iuMain.funcionalidades import AgendarCita,AsignarHabitacion,Vacunacion,Facturacion,FormulaMedica
-from src.iuMain.gestion.gestionHospital import verPacientes,verMedicamentos,verDoctores,verVacunas,agregarMedicamentos,construirHabitacion,destruirHabitacion
+from iuMain.funcionalidades import AgendarCita,AsignarHabitacion,Vacunacion,Facturacion,FormulaMedica
+from iuMain.gestion.gestionHospital import verPacientes,verMedicamentos,verDoctores,verVacunas,agregarMedicamentos,construirHabitacion,destruirHabitacion
 
 def cambiarContenido(opcion, hospital, frame_implementacion):
 
@@ -62,6 +62,34 @@ def implementacionDefault(frame_implementacion):
         label_inicial.pack()
         label_inicial.place(relx=0.5, rely=0.5, anchor=CENTER)
 
+=======
+# Presentacion antes de la ventana principal.
+
+def implementacionDefault(frame_implementacion):
+    # Limpia el frame
+    for widget in frame_implementacion.winfo_children():
+        widget.destroy()
+
+    # Ejecuta la implementacion por defecto
+    textoInicial = """
+        Te encuentras en la ventana principal de la aplicación
+
+        Tienes varias opciones:
+
+        Archivo > Aplicacion: Muestra una descripcion de la aplicación
+        Archivo > Salir: Regresa a la ventana inicial
+
+        Procesos y consultas: Acá estan todos los servicios que permite gestionar la aplicación
+
+        Ayuda > Acerca de: Muestra los creadores de la aplicación
+
+        Seleccione una opcion para continuar
+        """
+
+    labelInicial = Label(frame_implementacion, text=textoInicial, bg="white", font=("Helvetica", 14, "bold"))
+    labelInicial.pack()
+    labelInicial.place(relx=0.5, rely=0.5, anchor="center")
+>>>>>>> Stashed changes
 
 # Ventana principal.
 def abrirVentanaPrincipal(ventanaInicio, Hospital):
@@ -142,7 +170,18 @@ def abrirVentanaPrincipal(ventanaInicio, Hospital):
     def acercaDe():
         messagebox.showinfo("Acerca de la aplicación.","Los autores de la aplicación son:\nJeronimo Zapata.\nJuan Pablo Vergara.\nHernando Montes.\nManuel Mera.\nSamuel Ramírez.")
 
+<<<<<<< Updated upstream
     
+=======
+    # Eventos menu Procesos y Consultas
+    def actualizarFormulario():
+        pass
+
+    def asignarCita():
+        pass
+
+
+>>>>>>> Stashed changes
     # Frame adicional para la zona 1.
 
     framezona1 = Frame(menuFrame)

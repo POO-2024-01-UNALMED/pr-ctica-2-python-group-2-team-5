@@ -49,6 +49,13 @@ class Hospital:
                 disponibles.append(medicamento)
         return disponibles
 
+    def buscarVacuna(self, nombre):
+        vacunaSeleccionada = None
+        for vacuna in self.listaVacunas:
+            if vacuna.nombre == nombre:
+                vacunaSeleccionada = vacuna
+        return vacunaSeleccionada
+
     #Buscar vacunas por tipo.
     def buscarTipoVacuna(self, tipo):
         vacunasdisponibles = []

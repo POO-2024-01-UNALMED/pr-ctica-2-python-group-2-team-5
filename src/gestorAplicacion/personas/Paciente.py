@@ -12,7 +12,7 @@ class Paciente(Persona, Pago):
     def __init__(self, cedula, nombre, tipoEps):
         super().__init__(cedula, nombre, tipoEps)
         self.habitacionAsignada = None
-        self.historiaClinica = HistoriaClinica(self)
+        self.HISTORIACLINICA = HistoriaClinica(self)
 
 
 
