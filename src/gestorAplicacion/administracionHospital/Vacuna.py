@@ -26,7 +26,7 @@ class Vacuna:
         if len(agendaDisponible) != 0:
             return agendaDisponible
         else:
-            pass # Todo: Haer la excepcion aca
+            pass # Todo: Hacer la excepcion aca
 
     #Actualizar agenda al asignar una cita para vacunación.
     def actualizarAgenda(self, pacienteAsignado, numeroCita, agendaDisponible):
