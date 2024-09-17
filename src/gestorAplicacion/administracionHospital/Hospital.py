@@ -66,32 +66,38 @@ class Hospital:
         return vacunaSeleccionada
 
     def serializar(self):
-        with open(os.path.abspath("src/baseDatos/temp/registro_doctores.pickle"), "wb") as file:
-            pickle.dump(self.listaDoctores, file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_pacientes.pickle"), "wb") as file:
-            pickle.dump(self.listaPacientes, file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_medicamentos.pickle"), "wb") as file:
-            pickle.dump(self.listaMedicamentos, file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_vacunas.pickle"), "wb") as file:
-            pickle.dump(self.listaVacunas, file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_enfermedades.pickle"), "wb") as file:
-            pickle.dump(Enfermedad.enfermedadesRegistradas, file)
-        with open(os.path.abspath("src/baseDatos/temp/registro_habitaciones.pickle"), "wb") as file:
-            pickle.dump(self.habitaciones, file)
+        serializarDoctores = open("src/baseDatos/temp/registro_doctores.pickle", "wb")
+        pickle.dump(self.listaDoctores, serializarDoctores)
+        serializarDoctores.close()
+        serializarPacientes =  open("src/baseDatos/temp/registro_pacientes.pickle", "wb")
+        pickle.dump(self.listaPacientes, serializarPacientes)
+        serializarPacientes.close()
+        serializarMedicamento =  open("src/baseDatos/temp/registro_medicamentos.pickle", "wb")
+        pickle.dump(self.listaMedicamentos, serializarMedicamento)
+        serializarMedicamento.close()
+        serializarVacunas = open("src/baseDatos/temp/registro_vacunas.pickle", "wb")
+        pickle.dump(self.listaVacunas, serializarVacunas)
+        serializarVacunas.close()
+        serializarEnfermedades = open("src/baseDatos/temp/registro_enfermedades.pickle", "wb")
+        pickle.dump(Enfermedad.enfermedadesRegistradas, serializarEnfermedades)
+        serializarEnfermedades.close()
+        serializarHabitaciones =  open("src/baseDatos/temp/registro_habitaciones.pickle", "wb")
+        pickle.dump(self.habitaciones, serializarHabitaciones)
+        serializarHabitaciones.close()
 
     def deserializar(self):
-        with open(os.path.abspath("src/base_datos/temp/registro_doctores.pickle"), "rb") as file:
-            self.listaDoctores = pickle.load(file)
-        with open(os.path.abspath("src/base_datos/temp/registro_pacientes.pickle"), "rb") as file:
-            self.listaPacientes = pickle.load(file)
-        with open(os.path.abspath("src/base_datos/temp/registro_medicamentos.pickle"), "rb") as file:
-            self.listaMedicamentos = pickle.load(file)
-        with open(os.path.abspath("src/base_datos/temp/registro_vacunas.pickle"), "rb") as file:
-            self.listaVacunas = pickle.load(file)
-        with open(os.path.abspath("src/base_datos/temp/registro_enfermedades.pickle"), "rb") as file:
-            Enfermedad._enfermedades_registradas = pickle.load(file)
-        with open(os.path.abspath("src/base_datos/temp/registro_habitaciones.pickle"), "rb") as file:
-            self.habitaciones = pickle.load(file)
+        deserealizarDoctores = open("src/base_datos/temp/registro_doctores.pickle", "rb")
+        self.listaDoctores = pickle.load(deserealizarDoctores)
+        deserealizarPacientes = open("src/base_datos/temp/registro_pacientes.pickle", "rb")
+        self.listaPacientes = pickle.load(deserealizarPacientes)
+        deserealizarMedicamentos =  open("src/base_datos/temp/registro_medicamentos.pickle", "rb")
+        self.listaMedicamentos = pickle.load(deserealizarMedicamentos)
+        deserealizarVacunas = open("src/base_datos/temp/registro_vacunas.pickle", "rb")
+        self.listaVacunas = pickle.load(deserealizarVacunas)
+        deserealizarEnfermedades =  open("src/base_datos/temp/registro_enfermedades.pickle", "rb")
+        Enfermedad.enfermedadesRegistradas = pickle.load(deserealizarEnfermedades)
+        deserealizarHabitaciones = open("src/base_datos/temp/registro_habitaciones.pickle", "rb")
+        self.habitaciones = pickle.load(deserealizarHabitaciones)
 
 
 
