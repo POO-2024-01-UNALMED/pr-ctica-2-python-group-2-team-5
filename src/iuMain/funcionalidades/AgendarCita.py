@@ -43,7 +43,7 @@ def agendarCitas(hospital, frame):
         botonRegresar.pack()
 
     # Ingresar datos para agendar una cita.
-    def ingresarDatos(paciente):
+    def ingresarDatosCita(paciente):
         # Se le pregunta si desea confirmar la cita.
         def confirmarCita():
             eleccion = cboxElegirCita.get()
@@ -171,7 +171,7 @@ def agendarCitas(hospital, frame):
                 paciente = hospital.buscarPaciente(int(cedula))
 
                 # Si el paciente existe, llamamos a la función que permite agendar citas.
-                ingresarDatos(paciente)
+                ingresarDatosCita(paciente)
             except DatosFalsos as d:
                 d.enviarMensaje()
             except ValueError:
