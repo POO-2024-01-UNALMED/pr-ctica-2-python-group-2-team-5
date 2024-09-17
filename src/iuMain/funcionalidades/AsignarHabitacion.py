@@ -166,7 +166,7 @@ def asignarHabitacion(hospital, frame):
         # Se importa aca para evitar una referencia circular
         from src.iuMain.interfazGrafica.VentanaPrincipalDelUsuario import implementacionDefault
         # Boton para regresar a la ventana principal
-        boton_regresar = tk.Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
+        boton_regresar = Button(frame, text="Regresar", command=lambda: implementacionDefault(frame))
         boton_regresar.pack(pady=5)
 
     # Aca se verifica que el paciente exista, que no tenga ya una habitacion asignada y que no hubieron errores al ingresarlo
