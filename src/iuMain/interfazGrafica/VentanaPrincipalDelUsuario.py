@@ -127,52 +127,43 @@ def abrirVentanaPrincipal(hospital):
     # Frame para los menus
     menuFrame = Frame(ventanaPrincipalDelUsuario, bd=2, relief="ridge")
     menuFrame.pack(padx=10, pady=10)
-
     class FieldFrame(Frame):
-        def __init__(self, parent, tituloCriterios, criterios, tituloValores, valores=None, habilitado=None):
-            super().__init__(parent, bg="white")
-            self.tituloCriterios = tituloCriterios
-            self.criterios = criterios
-            self.tituloValores = tituloValores
-            self.valores = valores if valores is not None else ["" for _ in criterios]
-            self.habilitado = habilitado if habilitado is not None else [True for _ in criterios]
 
-            # Crear los títulos de las columnas
-            Label(self, text=self.tituloCriterios, font=("Arial", 10), bg="white").grid(row=0, column=0, padx=10,
-                                                                                        pady=5, sticky="w")
-            Label(self, text=self.tituloValores, font=("Arial", 10), bg="white").grid(row=0, column=1, padx=10, pady=5,
-                                                                                      sticky="e")
+        def __init__(self, frame,tituloCriterios, criterios, tituloValores, valores, habilitado,ancho_entry=20):
+            super().__init__(frame,bg="white")
 
-            # Crear etiquetas y campos de entrada para cada criterio
-            self.entries = {}  # Diccionario para almacenar las entradas
-            for i, criterio in enumerate(self.criterios):
-                # Etiqueta del criterio
-                label = Label(self, text=criterio, font=("Arial", 10), bg="white")
-                label.grid(row=i + 1, column=0, padx=10, pady=5, sticky="w")
+            self.valores=[]
 
-                # Campo de entrada para el valor
-                entry = Entry(self, width=30)
-                entry.grid(row=i + 1, column=1, padx=10, pady=5)
+            #Etiquetas para los títulos de las columnas
+            Label(self, text=tituloCriterios,bg="white",font=("Helvetica", 12, "bold")).grid(row=0, column=0)
+            Label(self, text=tituloValores,bg="white",font=("Helvetica", 12, "bold")).grid(row=0, column=1)
 
-                # Si tiene valor predeterminado, lo coloca
-                if self.valores[i]:
-                    entry.insert(0, self.valores[i])
+            # Etiquetas y campos de entrada para cada criterio
+            for i, criterio in enumerate(criterios, start=1):
+                Label(self, text=criterio,bg="white", font=("Helvetica", 10, "bold")).grid(row=i, column=0, padx=20, pady=5, sticky="w")
+                entry = Entry(self,width=ancho_entry)
+                entry.grid(row=i, column=1, padx=5, pady=5, sticky="w")
+                # Se inserta los valores por defecto que queramos
+                if valores is not None:
+                    #el número 0 indica que se inserta desde el inicio del string
+                    entry.insert(0, valores[i - 1])
+                #Para deshabilitar el entry
+                if habilitado is not None and not habilitado[i - 1]:
+                    entry.config(state='readonly')
 
-                # Si el campo no está habilitado, lo desactiva
-                if not self.habilitado[i]:
-                    entry.config(state="disabled")
+                #Se guarda la referencia de ese entry
+                self.valores.append(entry)
 
-                # Guardar la referencia del campo de entrada
-                self.entries[criterio] = entry
+        def habilitarEntry(self, indice, habilitar):
+            if habilitar:
+                return self.valores[indice - 1].config(state="normal")
+            else:
+                return self.valores[indice - 1].config(state="readonly")
 
         def getValue(self, criterio):
-            """Devuelve el valor ingresado en el campo del criterio dado."""
-            return self.entries[criterio].get()
+            return self.valores[criterio-1].get()
 
-        def clearFields(self):
-            """Limpia todos los campos de entrada."""
-            for entry in self.entries.values():
-                entry.delete(0, "end")
+
 
     # Eventos menu Archivo
 
@@ -193,9 +184,9 @@ def abrirVentanaPrincipal(hospital):
     archivoMenu = Menu(menuArchivo, tearoff=0)
     archivoMenu.add_command(label="Aplicación", command=infoAplicacion)
 
-    import ventanaInicio
+    from ventanaInicio import abrirVentanaInicio
 
-    archivoMenu.add_command(label="Salir", command = lambda: [ventanaPrincipalDelUsuario.destroy(), ventanaInicio(hospital)])
+    archivoMenu.add_command(label="Salir", command = lambda: [ventanaPrincipalDelUsuario.destroy(), abrirVentanaInicio(hospital="rr")])
     menuArchivo.config(menu=archivoMenu)
 
     # menu Procesos y consultas
